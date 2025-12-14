@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Your Data - GATE Tracker</title>
+    <meta name="description"
+        content="Learn how to delete your data from GATE Tracker. Complete guide for removing all your personal information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --background: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-muted: #94a3b8;
+        }
+
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--background);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .header {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--danger) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .content-section {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .content-section:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.1);
+        }
+
+        .content-section h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.25rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--text-secondary);
+        }
+
+        .content-section p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .content-section ol,
+        .content-section ul {
+            color: var(--text-secondary);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.75rem;
+            line-height: 1.8;
+        }
+
+        .step {
+            background: var(--surface-light);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 32px;
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        .step h3 {
+            margin-top: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(236, 72, 153, 0.2) 100%);
+            border-left: 4px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .warning-box strong {
+            color: var(--danger);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .info-box strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+
+        .success-box strong {
+            color: var(--success);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .data-list {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .data-list h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .data-list ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .data-list li:before {
+            content: "✓ ";
+            color: var(--danger);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .footer {
+            background: var(--surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            text-align: center;
+            color: var(--text-muted);
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 101;
+        }
+
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        code {
+            background: rgba(99, 102, 241, 0.2);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: var(--primary);
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .step {
+                padding: 1rem;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                max-width: 300px;
+                background: var(--surface);
+                flex-direction: column;
+                gap: 0;
+                padding: 5rem 2rem 2rem;
+                border-left: 1px solid rgba(255, 255, 255, 0.1);
+                transition: right 0.3s ease;
+                z-index: 100;
+                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                margin: 0;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+                font-size: 1.1rem;
+            }
+
+            .nav-links a:hover {
+                padding-left: 1rem;
+                transition: padding-left 0.3s ease;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">GATE Tracker</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="privacy-policy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1 class="page-title">🗑️ Delete Your Data</h1>
+        <p class="subtitle">Complete guide to removing all your personal information from GATE Tracker</p>
+
+        <div class="warning-box">
+            <strong>⚠️ Important Warning</strong>
+            <p>Deleting your data is <strong>permanent and irreversible</strong>. All your study progress, notes, to-do
+                lists, and settings will be permanently removed from our servers and cannot be recovered.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>📊 What Data Will Be Deleted?</h2>
+            <p>When you delete your data, the following information will be permanently removed:</p>
+
+            <div class="data-list">
+                <h4>Account & Profile Information</h4>
+                <ul>
+                    <li>Your name, email address, and profile picture</li>
+                    <li>Account creation date and last login information</li>
+                    <li>Selected exam branch (CS/CE/DA)</li>
+                </ul>
+            </div>
+
+            <div class="data-list">
+                <h4>Study Progress & Data</h4>
+                <ul>
+                    <li>All chapter completion progress</li>
+                    <li>Subject-wise study statistics</li>
+                    <li>Daily question attempts and answers</li>
+                    <li>To-do lists and study notes</li>
+                    <li>Exam date and countdown settings</li>
+                    <li>All custom preferences and settings</li>
+                </ul>
+            </div>
+
+            <div class="data-list">
+                <h4>Cloud Backups</h4>
+                <ul>
+                    <li>All database backups stored on our servers</li>
+                    <li>Sync data across all your devices</li>
+                </ul>
+            </div>
+
+            <div class="info-box">
+                <strong>📝 Note About Google Drive</strong>
+                <p>If you've used our Google Drive backup feature, those backup files are stored in <strong>your Google
+                        Drive</strong>, not our servers. You'll need to manually delete those files from your Google
+                    Drive if you want to remove them.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🔧 How to Delete Your Data</h2>
+            <p>Follow these simple steps to permanently delete all your data from GATE Tracker:</p>
+
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Open the App</h3>
+                <p>Launch the GATE Tracker app on your device and make sure you're signed in to your account.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Navigate to Settings</h3>
+                <p>Tap on the <strong>Settings</strong> icon in the app's navigation menu (usually located at the
+                    bottom or in the hamburger menu).</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Scroll to Account Section</h3>
+                <p>In the Settings screen, scroll down to find the <strong>"Account"</strong> or <strong>"Data
+                        Management"</strong> section.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <h3>Tap "Delete All Data"</h3>
+                <p>Look for the <strong>"Delete All Data"</strong> button. It will be clearly marked with a red color
+                    to indicate it's a destructive action.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <h3>Confirm Deletion</h3>
+                <p>The app will show you a confirmation dialog explaining what will be deleted. Read it carefully, then
+                    confirm that you want to proceed with the deletion.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">6</span>
+                <h3>Wait for Completion</h3>
+                <p>The app will delete all your data from our servers. This process usually takes just a few seconds.
+                    You'll see a confirmation message when the deletion is complete.</p>
+            </div>
+
+            <div class="success-box">
+                <strong>✅ Deletion Complete</strong>
+                <p>Once the process is complete, you'll be signed out of the app. All your data has been permanently
+                    removed from our servers.</p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>🔄 Alternative Options</h2>
+            <p>Before deleting all your data, consider these alternatives:</p>
+
+            <h3>Sign Out Instead</h3>
+            <p>If you just want to stop using the app temporarily, you can simply sign out. Your data will remain
+                stored, and you can sign back in anytime to continue where you left off.</p>
+
+            <h3>Switch Branch</h3>
+            <p>If you want to start fresh with a different GATE branch (CS/CE/DA), you can use the "Switch Branch"
+                option in Settings instead of deleting everything.</p>
+
+            <h3>Export Your Data First</h3>
+            <p>Consider creating a backup of your data before deletion. You can use the Google Drive backup feature to
+                save a copy of your progress.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>❓ Frequently Asked Questions</h2>
+
+            <h3>Can I recover my data after deletion?</h3>
+            <p><strong>No.</strong> Data deletion is permanent and irreversible. Once deleted, we cannot recover your
+                information.</p>
+
+            <h3>How long does the deletion process take?</h3>
+            <p>The deletion is immediate and usually completes within a few seconds. However, it may take up to 24
+                hours for all data to be completely removed from our backup systems.</p>
+
+            <h3>Will deleting data remove the app from my device?</h3>
+            <p>No, this only deletes your data from our servers. To remove the app from your device, you need to
+                uninstall it separately.</p>
+
+            <h3>What happens to my Google account connection?</h3>
+            <p>Your Google account connection will be revoked. If you want to completely remove GATE Tracker's access
+                to your Google account, you should also visit your <a href="https://myaccount.google.com/permissions"
+                    target="_blank" style="color: var(--primary);">Google Account Permissions</a> page and revoke
+                access there.</p>
+
+            <h3>I deleted my data by mistake. What can I do?</h3>
+            <p>Unfortunately, there's nothing we can do to recover deleted data. If you had a Google Drive backup, you
+                might be able to restore from that, but server-side data cannot be recovered.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>📧 Need Help?</h2>
+            <p>If you're experiencing issues with data deletion or have questions, please contact us:</p>
+            <p><strong>Email:</strong> support@gatetracker.app</p>
+            <p>We typically respond within 24-48 hours.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 GATE Tracker. All rights reserved. | <a href="privacy-policy.html"
+                style="color: var(--primary);">Privacy Policy</a> | <a href="terms.html"
+                style="color: var(--primary);">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const navLinkItems = document.querySelectorAll('.nav-links a');
+        navLinkItems.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav')) {
+                mobileMenuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
