@@ -148,23 +148,9 @@
             width: 100%;
         }
 
-        /* Mobile Menu */
+        /* Mobile Menu Toggle - Hidden on mobile, using bottom nav instead */
         .mobile-menu-toggle {
             display: none;
-            flex-direction: column;
-            gap: 4px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-
-        .mobile-menu-toggle span {
-            width: 20px;
-            height: 2px;
-            background: var(--text-primary);
-            border-radius: 2px;
-            transition: all 0.3s;
         }
 
         /* Hero */
@@ -538,6 +524,7 @@
 
         /* Mobile */
         @media (max-width: 768px) {
+
             /* App-like touch targets */
             .btn {
                 min-height: 48px;
@@ -598,36 +585,78 @@
             .stats {
                 padding: 0 1.5rem;
             }
-            .mobile-menu-toggle {
+
+            /* Hide desktop nav links on mobile */
+            .nav .nav-links {
+                display: none;
+            }
+
+            /* Bottom Navigation Bar - iOS style */
+            .bottom-nav {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(23, 23, 23, 0.95);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                border-top: 1px solid var(--border);
+                padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+                z-index: 100;
+                box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+            }
+
+            .bottom-nav-container {
                 display: flex;
+                justify-content: space-around;
+                align-items: center;
+                max-width: 500px;
+                margin: 0 auto;
+                gap: 0.5rem;
+            }
+
+            .bottom-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-decoration: none;
+                color: var(--text-secondary);
+                font-size: 0.75rem;
+                font-weight: 500;
+                padding: 0.5rem 1rem;
+                border-radius: 8px;
+                transition: all 0.3s;
+                flex: 1;
+                min-height: 48px;
+                justify-content: center;
+            }
+
+            .bottom-nav-item:active {
+                transform: scale(0.95);
+                background: rgba(249, 115, 22, 0.1);
+            }
+
+            .bottom-nav-item.active {
+                color: var(--accent);
+                background: rgba(249, 115, 22, 0.15);
+            }
+
+            .bottom-nav-icon {
+                font-size: 1.25rem;
+                margin-bottom: 0.25rem;
+            }
+
+            /* Add bottom padding to body to account for fixed bottom nav */
+            body {
+                padding-bottom: calc(70px + env(safe-area-inset-bottom));
+            }
+
+            .mobile-menu-toggle {
+                display: none;
             }
 
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 280px;
-                background: var(--surface);
-                flex-direction: column;
-                gap: 0;
-                padding: 6rem 2rem;
-                border-left: 1px solid var(--border);
-                transition: right 0.3s;
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem 0;
-                font-size: 1.125rem;
+                display: none;
             }
 
             .hero {
@@ -800,6 +829,28 @@
             <p>&copy; 2025 VN Labs. Built with curiosity.</p>
         </div>
     </footer>
+
+    <!-- Bottom Navigation for Mobile -->
+    <nav class="bottom-nav" aria-label="Mobile bottom navigation">
+        <div class="bottom-nav-container">
+            <a href="index.html" class="bottom-nav-item active" aria-label="Home">
+                <span class="bottom-nav-icon">🏠</span>
+                <span>Home</span>
+            </a>
+            <a href="products.html" class="bottom-nav-item" aria-label="Products">
+                <span class="bottom-nav-icon">📱</span>
+                <span>Products</span>
+            </a>
+            <a href="about.html" class="bottom-nav-item" aria-label="About">
+                <span class="bottom-nav-icon">🧪</span>
+                <span>About</span>
+            </a>
+            <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
+                <span class="bottom-nav-icon">💬</span>
+                <span>Contact</span>
+            </a>
+        </div>
+    </nav>
 
     <script defer>
         // Mobile menu
