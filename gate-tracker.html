@@ -4,13 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GATE Tracker - VN Labs</title>
+    <title>GATE Tracker - Track your prep simply | VN Labs</title>
     <meta name="description"
-        content="GATE Tracker is a comprehensive exam preparation platform designed to help engineering students ace their GATE exams with intelligent study planning and progress tracking.">
+        content="Free GATE prep tracker. Chapter tracking, reminders, cloud sync. For CS, CE, DA students.">
+    <meta name="keywords" content="GATE Tracker, GATE prep, study tracker, exam preparation, CS CE DA">
+    <meta name="author" content="VN Labs">
+    <link rel="canonical" href="https://vnlabs.in/gate-tracker.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vnlabs.in/gate-tracker.html">
+    <meta property="og:title" content="GATE Tracker - Track your prep simply">
+    <meta property="og:description" content="Free GATE prep tracker. Chapter tracking, reminders, cloud sync. For CS, CE, DA students.">
+    <meta property="og:image" content="https://vnlabs.in/images/Screenshots/1.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="GATE Tracker">
+    <meta name="twitter:description" content="Track your GATE prep, chapter by chapter. Free for CS, CE, DA.">
+    <meta name="twitter:image" content="https://vnlabs.in/images/Screenshots/1.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -19,286 +35,261 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
-            --success: #10b981;
-            --background: #0f172a;
-            --surface: #1e293b;
-            --surface-light: #334155;
-            --text-primary: #f1f5f9;
-            --text-secondary: #cbd5e1;
-            --text-muted: #94a3b8;
-        }
-
-        html {
-            overflow-x: hidden;
-            scroll-behavior: smooth;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #f97316;
+            --background: #0a0a0a;
+            --surface: #171717;
+            --border: #262626;
+            --text-primary: #fafafa;
+            --text-secondary: #a3a3a3;
+            --text-muted: #525252;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--background);
             color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
+            -webkit-font-smoothing: antialiased;
         }
 
+        /* Header */
         .header {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+            padding: 1.25rem 0;
             position: sticky;
             top: 0;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
             z-index: 100;
         }
 
         .nav {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.75rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.5px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
             text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
         }
 
         .nav-links {
             display: flex;
-            gap: 2.5rem;
+            gap: 2rem;
             list-style: none;
         }
 
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--text-primary);
         }
 
         .mobile-menu-toggle {
             display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 101;
         }
 
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
+        /* Hero */
         .hero {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 8rem 2rem 6rem;
+            padding: 5rem 2rem 4rem;
             text-align: center;
         }
 
-        .product-badge {
+        .badge {
             display: inline-block;
-            background: rgba(99, 102, 241, 0.2);
-            color: var(--primary);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            padding: 0.375rem 0.875rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.813rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             font-weight: 900;
             line-height: 1.1;
+            letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -2px;
         }
 
-        .hero .subtitle {
-            font-size: 1.5rem;
+        .hero p {
+            font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            font-weight: 500;
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
         }
 
-        .cta-buttons {
+        .cta-group {
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             justify-content: center;
-            margin-bottom: 4rem;
+            flex-wrap: wrap;
         }
 
         .btn {
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            display: inline-block;
+            font-size: 0.938rem;
+            transition: all 0.2s;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--primary);
             color: white;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+            background: var(--primary-dark);
         }
 
         .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: transparent;
             color: var(--text-primary);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border);
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 6rem auto;
+        /* Screenshots */
+        .screenshots {
+            max-width: 1280px;
+            margin: 4rem auto;
             padding: 0 2rem;
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .features-grid {
+        .screenshot-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
-        .feature-card {
+        .screenshot {
             background: var(--surface);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
         }
 
-        .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.2);
+        .screenshot img {
+            width: 100%;
+            border-radius: 8px;
         }
 
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+        .screenshot h3 {
+            font-size: 1.125rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-primary);
-        }
-
-        .feature-card p {
+        .screenshot p {
             color: var(--text-secondary);
-            line-height: 1.7;
+            font-size: 0.938rem;
         }
 
-        .screenshots {
-            background: var(--surface);
-            border-radius: 24px;
-            padding: 4rem;
+        /* Features */
+        .features {
+            max-width: 1280px;
+            margin: 6rem auto;
+            padding: 0 2rem;
+        }
+
+        .features h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
             text-align: center;
+            margin-bottom: 3rem;
         }
 
-        .screenshot-placeholder {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
-            border-radius: 20px;
-            padding: 6rem;
-            font-size: 5rem;
-            margin-top: 2rem;
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
+        .feature {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .feature h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature p {
+            color: var(--text-secondary);
+        }
+
+        /* Download Section */
+        .download {
+            max-width: 800px;
+            margin: 6rem auto;
+            padding: 3rem 2rem;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+        }
+
+        .download h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .download p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* Footer */
         .footer {
-            background: var(--surface);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border);
             padding: 4rem 2rem 2rem;
             margin-top: 8rem;
         }
 
         .footer-content {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
 
         .footer-section h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            font-weight: 700;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         .footer-section p {
             color: var(--text-muted);
-            line-height: 1.8;
+            font-size: 0.938rem;
         }
 
         .footer-section ul {
@@ -306,66 +297,54 @@
         }
 
         .footer-section a {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             text-decoration: none;
             display: block;
             margin-bottom: 0.75rem;
-            transition: color 0.3s ease;
+            font-size: 0.938rem;
         }
 
         .footer-section a:hover {
-            color: var(--primary);
+            color: var(--text-primary);
         }
 
         .copyright {
             text-align: center;
             color: var(--text-muted);
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--border);
+            font-size: 0.875rem;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .header {
-                padding: 0.875rem 1.5rem;
-            }
-
-            .hero {
-                padding: 5rem 1.5rem 4rem;
-            }
-
             .hero h1 {
                 font-size: 2.5rem;
-                letter-spacing: -1px;
             }
 
-            .hero .subtitle {
-                font-size: 1.1rem;
-            }
-
-            .section {
-                margin: 4rem auto;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .features-grid {
+            .screenshot-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
 
-            .feature-card {
-                padding: 2rem;
-            }
-
-            .screenshots {
-                padding: 2rem;
+            .footer-content {
+                grid-template-columns: 1fr;
             }
 
             .mobile-menu-toggle {
                 display: flex;
+                flex-direction: column;
+                gap: 4px;
+                background: transparent;
+                border: none;
+                cursor: pointer;
+                padding: 0.5rem;
+            }
+
+            .mobile-menu-toggle span {
+                width: 20px;
+                height: 2px;
+                background: var(--text-primary);
+                border-radius: 2px;
             }
 
             .nav-links {
@@ -373,89 +352,22 @@
                 top: 0;
                 right: -100%;
                 height: 100vh;
-                width: 70%;
-                max-width: 300px;
+                width: 280px;
                 background: var(--surface);
                 flex-direction: column;
                 gap: 0;
-                padding: 5rem 2rem 2rem;
-                border-left: 1px solid rgba(255, 255, 255, 0.1);
-                transition: right 0.3s ease;
-                z-index: 100;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+                padding: 6rem 2rem;
+                border-left: 1px solid var(--border);
+                transition: right 0.3s;
             }
 
             .nav-links.active {
                 right: 0;
             }
 
-            .nav-links li {
-                width: 100%;
-                margin: 0;
-            }
-
             .nav-links a {
-                display: block;
                 padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                font-size: 1.1rem;
-            }
-
-            .nav-links a:hover {
-                padding-left: 1rem;
-                transition: padding-left 0.3s ease;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header {
-                padding: 0.75rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.5rem;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-                letter-spacing: -0.5px;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            .section {
-                margin: 3rem auto;
-                padding: 0 1.5rem;
-            }
-
-            .btn {
-                padding: 0.875rem 2rem;
-                font-size: 1rem;
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .screenshots {
-                padding: 1.5rem;
-            }
-
-            .screenshot-placeholder {
-                padding: 4rem 2rem;
-                font-size: 3.5rem;
-            }
-
-            .footer {
-                padding: 3rem 1.5rem 1.5rem;
+                font-size: 1.125rem;
             }
         }
     </style>
@@ -464,14 +376,13 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <a href="index.html" class="logo">VN Labs</a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <a href="index.html" class="logo">vn<span>labs</span></a>
+            <button class="mobile-menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -481,74 +392,72 @@
 
     <main>
         <section class="hero">
-            <div class="product-badge">📚 VN Labs Product</div>
+            <div class="badge">Free • Android</div>
             <h1>GATE Tracker</h1>
-            <p class="subtitle">Master Your GATE Journey with intelligent study planning, progress tracking, and cloud
-                backup features.</p>
-            <div class="cta-buttons">
-                <a href="https://github.com/Vijendra-chaudhary/GATE_TRACKER/raw/master/GATE-Tracker.apk"
-                    class="btn btn-primary">Download for Android</a>
+            <p>Track your GATE prep chapter by chapter. Set reminders, sync to cloud, work offline. Simple tool for CS,
+                CE, and DA students.</p>
+            <div class="cta-group">
+                <a href="https://github.com/vijendra-7/GATE_TRACKER/raw/master/GATE-Tracker.apk"
+                    class="btn btn-primary">Download APK</a>
+                <a href="#features" class="btn btn-secondary">See features</a>
             </div>
         </section>
 
-        <section class="section">
-            <h2 class="section-title">Key Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Progress Tracking</h3>
-                    <p>Monitor your preparation with detailed analytics. Track chapter completion, subject-wise
-                        progress, and stay on top of your study goals.</p>
+        <section class="screenshots">
+            <div class="screenshot-grid">
+                <div class="screenshot">
+                    <img src="images/Screenshots/1.png" alt="Dashboard view">
+                    <h3>Your dashboard</h3>
+                    <p>See your progress at a glance</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Smart Study Planner</h3>
-                    <p>Organize your syllabus efficiently with our intelligent study planner. Create custom to-do lists
-                        and manage your revision schedule seamlessly.</p>
+                <div class="screenshot">
+                    <img src="images/Screenshots/2.png" alt="Chapter tracking">
+                    <h3>Track chapters</h3>
+                    <p>Mark what you've covered</p>
                 </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">☁️</div>
-                    <h3>Cloud Backup</h3>
-                    <p>Never lose your progress. Automatic cloud backup with Google Drive ensures your study data is
-                        safe and accessible across all your devices.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Revision Mode</h3>
-                    <p>Dedicated revision mode helps you review completed topics efficiently and solidify your
-                        understanding before the exam.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">⏰</div>
-                    <h3>Exam Countdown</h3>
-                    <p>Stay motivated with exam countdown timer and receive timely notifications about your study goals
-                        and milestones.</p>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Modern UI</h3>
-                    <p>Beautiful, intuitive interface designed with Material Design principles for a seamless user
-                        experience.</p>
+                <div class="screenshot">
+                    <img src="images/Screenshots/3.png" alt="Subject view">
+                    <h3>Subject breakdown</h3>
+                    <p>Organize by subject</p>
                 </div>
             </div>
         </section>
 
-        <section class="section">
-            <div class="screenshots">
-                <h2 class="section-title">App Screenshots</h2>
-                <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto 2rem;">Experience the sleek and
-                    intuitive interface designed to make your GATE preparation efficient and enjoyable.</p>
-                <div class="screenshot-placeholder">
-                    📱
-                    <p style="font-size: 1.2rem; margin-top: 2rem; color: var(--text-muted);">Screenshots Coming Soon
-                    </p>
+        <section class="features" id="features">
+            <h2>What it does</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>Chapter tracking</h3>
+                    <p>120+ chapters across CS, CE, and DA. Mark them as you go.</p>
+                </div>
+                <div class="feature">
+                    <h3>Reminders</h3>
+                    <p>Set study reminders. Get notified when it's time to prep.</p>
+                </div>
+                <div class="feature">
+                    <h3>Cloud sync</h3>
+                    <p>Backup to Google Drive. Switch devices, keep your progress.</p>
+                </div>
+                <div class="feature">
+                    <h3>Works offline</h3>
+                    <p>No internet? No problem. Track your progress anywhere.</p>
+                </div>
+                <div class="feature">
+                    <h3>Exam countdown</h3>
+                    <p>See how many days until GATE. Stay motivated.</p>
+                </div>
+                <div class="feature">
+                    <h3>Free forever</h3>
+                    <p>No ads, no premium tiers, no tricks. Just free.</p>
                 </div>
             </div>
+        </section>
+
+        <section class="download">
+            <h2>Ready to organize your prep?</h2>
+            <p>Download the APK and start tracking today.</p>
+            <a href="https://github.com/vijendra-7/GATE_TRACKER/raw/master/GATE-Tracker.apk"
+                class="btn btn-primary">Download GATE Tracker</a>
         </section>
     </main>
 
@@ -556,9 +465,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>VN Labs</h4>
-                <p>Building innovative educational technology solutions to empower learners worldwide.</p>
+                <p>Student tools, built by students.</p>
             </div>
-
             <div class="footer-section">
                 <h4>Products</h4>
                 <ul>
@@ -566,56 +474,36 @@
                     <li><a href="products.html">All Products</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
                 <h4>Company</h4>
                 <ul>
-                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="about.html">About</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
-
             <div class="footer-section">
-                <h4>Resources</h4>
+                <h4>Legal</h4>
                 <ul>
-                    <li><a href="gate-tracker/privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="gate-tracker/terms.html">Terms of Service</a></li>
-                    <li><a href="gate-tracker/delete-data.html">Delete Your Data</a></li>
-                    <li><a href="mailto:vnlabs.in@gmail.com">Support</a></li>
+                    <li><a href="gate-tracker/privacy-policy.html">Privacy</a></li>
+                    <li><a href="gate-tracker/terms.html">Terms</a></li>
                 </ul>
             </div>
         </div>
-
         <div class="copyright">
-            <p>&copy; 2025 VN Labs. All rights reserved.</p>
+            <p>&copy; 2025 VN Labs. Built with curiosity.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav-links');
 
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
-        const navLinkItems = document.querySelectorAll('.nav-links a');
-        navLinkItems.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav')) {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => nav.classList.remove('active'));
         });
     </script>
 </body>
