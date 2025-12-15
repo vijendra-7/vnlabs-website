@@ -419,6 +419,37 @@
             }
         }
 
+        /* Tablet / iPad (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero p {
+                font-size: 1.125rem;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-large {
+                grid-column: 1;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5rem;
+            }
+        }
+
+        /* Mobile */
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: flex;
