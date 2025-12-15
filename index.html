@@ -119,13 +119,29 @@
         .nav-links a {
             color: var(--text-secondary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.938rem;
             font-weight: 500;
-            transition: color 0.2s;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links a:hover {
-            color: var(--text-primary);
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
         }
 
         /* Mobile Menu */
@@ -202,26 +218,42 @@
             text-decoration: none;
             font-weight: 600;
             font-size: 0.938rem;
-            transition: all 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
             display: inline-block;
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-primary {
             background: var(--primary);
             color: white;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
         }
 
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
             border: 1px solid var(--border);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
         }
 
         .btn-secondary:hover {
@@ -296,6 +328,29 @@
             font-weight: 700;
         }
 
+        .product-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(249, 115, 22, 0.1));
+            opacity: 0;
+            transition: opacity 0.4s;
+            z-index: -1;
+        }
+
         .product-visual {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -325,14 +380,42 @@
             padding: 2rem;
             border: 1px solid var(--border);
             border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-number {
+        .stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
+            transition: left 0.6s;
+        }
+
+        .stat:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+        }
+
+        .stat:hover::before {
+            left: 100%;
+        }
+
+        .stat-value {
             font-size: 3rem;
             font-weight: 900;
             color: var(--accent);
-            line-height: 1;
+            letter-spacing: -0.03em;
             margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .stat-label {
