@@ -217,7 +217,7 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -325,6 +325,14 @@
         }
 
         @media (max-width: 768px) {
+            .header {
+                padding: 0.875rem 1.5rem;
+            }
+
+            .hero {
+                padding: 5rem 1.5rem 4rem;
+            }
+
             .hero h1 {
                 font-size: 2.5rem;
                 letter-spacing: -1px;
@@ -334,6 +342,10 @@
                 font-size: 1.1rem;
             }
 
+            .section {
+                margin: 4rem auto;
+            }
+
             .cta-buttons {
                 flex-direction: column;
                 align-items: center;
@@ -341,6 +353,11 @@
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .feature-card {
+                padding: 2rem;
             }
 
             .screenshots {
@@ -387,6 +404,58 @@
             .nav-links a:hover {
                 padding-left: 1rem;
                 transition: padding-left 0.3s ease;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 0.75rem 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.75rem;
+                letter-spacing: -0.5px;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .section {
+                margin: 3rem auto;
+                padding: 0 1.5rem;
+            }
+
+            .btn {
+                padding: 0.875rem 2rem;
+                font-size: 1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .screenshots {
+                padding: 1.5rem;
+            }
+
+            .screenshot-placeholder {
+                padding: 4rem 2rem;
+                font-size: 3.5rem;
+            }
+
+            .footer {
+                padding: 3rem 1.5rem 1.5rem;
             }
         }
     </style>
