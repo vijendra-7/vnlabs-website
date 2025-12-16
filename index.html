@@ -54,19 +54,72 @@
         }
 
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #a855f7;
             --accent: #f97316;
+            --highlight: #ec4899;
             --background: #0a0a0a;
             --surface: #171717;
             --border: #262626;
             --text-primary: #fafafa;
             --text-secondary: #a3a3a3;
             --text-muted: #525252;
+            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
+            --gradient-accent: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+            --gradient-full: linear-gradient(135deg, #0ea5e9 0%, #a855f7 50%, #f97316 100%);
         }
 
         html {
             scroll-behavior: smooth;
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes glow-pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -1000px 0;
+            }
+
+            100% {
+                background-position: 1000px 0;
+            }
         }
 
         body {
@@ -76,10 +129,43 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            position: relative;
             /* App-like features for mobile */
             -webkit-tap-highlight-color: rgba(249, 115, 22, 0.2);
             -webkit-touch-callout: none;
             -webkit-overflow-scrolling: touch;
+        }
+
+        /* Animated background effects */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
         }
 
         /* Header */
@@ -158,6 +244,27 @@
             max-width: 1280px;
             margin: 0 auto;
             padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 150%;
+            height: 150%;
+            background: linear-gradient(135deg,
+                    rgba(14, 165, 233, 0.2) 0%,
+                    rgba(168, 85, 247, 0.2) 50%,
+                    rgba(249, 115, 22, 0.2) 100%);
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
         }
 
         .hero-content {
@@ -167,33 +274,63 @@
         .badge {
             display: inline-block;
             padding: 0.375rem 0.875rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(168, 85, 247, 0.2));
+            border: 1px solid rgba(14, 165, 233, 0.4);
             border-radius: 20px;
             font-size: 0.813rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            animation: shimmer 3s infinite;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
             line-height: 1.1;
             letter-spacing: -0.03em;
             margin-bottom: 1.5rem;
+            background: var(--gradient-full);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradient-shift 8s ease infinite;
+            filter: drop-shadow(0 0 30px rgba(14, 165, 233, 0.5));
         }
 
         .hero h1 .highlight {
-            color: var(--accent);
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            background-size: 200% auto;
+            animation: gradient-shift 6s ease infinite;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.375rem;
             color: var(--text-secondary);
             line-height: 1.7;
             margin-bottom: 2.5rem;
             max-width: 580px;
+            font-weight: 500;
         }
 
         .cta-group {
@@ -203,29 +340,54 @@
         }
 
         .btn {
-            padding: 0.875rem 1.75rem;
-            border-radius: 8px;
+            padding: 1rem 2rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.938rem;
+            font-weight: 700;
+            font-size: 1rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
             cursor: pointer;
             display: inline-block;
             position: relative;
             overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: -1;
+        }
+
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4),
+                0 0 40px rgba(168, 85, 247, 0.2);
+            border: 2px solid transparent;
+            background-size: 200% auto;
+            animation: glow-pulse 3s ease-in-out infinite;
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 32px rgba(14, 165, 233, 0.6),
+                0 0 60px rgba(168, 85, 247, 0.4);
+            background-position: right center;
         }
 
         .btn-primary:active {
@@ -235,19 +397,18 @@
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            border: 1px solid var(--border);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--primary);
+            position: relative;
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
         }
 
         .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-secondary);
+            border-color: var(--secondary);
+            color: var(--text-primary);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(168, 85, 247, 0.2));
         }
 
         /* Product Showcase */
@@ -262,10 +423,14 @@
         }
 
         .product-header h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 900;
             letter-spacing: -0.02em;
             margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .product-header p {
@@ -282,10 +447,14 @@
         }
 
         .product-info h3 {
-            font-size: 1.875rem;
+            font-size: 2rem;
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .product-info p {
@@ -313,18 +482,21 @@
         }
 
         .features li::before {
-            content: '—';
-            color: var(--accent);
+            content: '→';
+            color: var(--primary);
             font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .product-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
+            background: linear-gradient(var(--surface), var(--surface)) padding-box,
+                linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
+            border: 2px solid transparent;
+            border-radius: 16px;
             padding: 2rem;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         }
 
         .product-card::before {
@@ -334,11 +506,26 @@
             left: 0;
             right: 0;
             bottom: 0;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(249, 115, 22, 0.1));
+            border-radius: 16px;
+            background: linear-gradient(135deg,
+                    rgba(14, 165, 233, 0.15),
+                    rgba(168, 85, 247, 0.15),
+                    rgba(249, 115, 22, 0.15));
             opacity: 0;
-            transition: opacity 0.4s;
+            transition: opacity 0.5s;
             z-index: -1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px) scale(1.03) rotateX(2deg);
+            box-shadow: 0 24px 48px rgba(14, 165, 233, 0.3),
+                0 0 60px rgba(168, 85, 247, 0.2),
+                0 0 100px rgba(249, 115, 22, 0.1);
+            border-color: var(--primary);
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
         }
 
         .product-visual {
@@ -367,12 +554,15 @@
 
         .stat {
             text-align: center;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 3rem 2rem;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1) 0%, transparent 70%),
+                var(--surface);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
         }
 
         .stat::before {
@@ -382,14 +572,19 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.1), transparent);
-            transition: left 0.6s;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(14, 165, 233, 0.3),
+                    rgba(168, 85, 247, 0.3),
+                    transparent);
+            transition: left 0.8s;
         }
 
         .stat:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.15);
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 16px 32px rgba(14, 165, 233, 0.4),
+                0 0 60px rgba(168, 85, 247, 0.3);
+            border-color: var(--primary);
         }
 
         .stat:hover::before {
@@ -522,6 +717,11 @@
             }
         }
 
+        /* Hide bottom nav on desktop - only show on mobile */
+        .bottom-nav {
+            display: none;
+        }
+
         /* Mobile */
         @media (max-width: 768px) {
 
@@ -591,22 +791,46 @@
                 display: none;
             }
 
-            /* Bottom Navigation Bar - Floating iOS style */
+            /* Bottom Navigation Bar - Enhanced Glassmorphism */
             .bottom-nav {
+                display: block;
                 position: fixed;
                 bottom: 1rem;
                 left: 1rem;
                 right: 1rem;
-                background: rgba(23, 23, 23, 0.95);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid var(--border);
-                border-radius: 20px;
-                padding: 0.5rem;
+                background: linear-gradient(135deg,
+                        rgba(23, 23, 23, 0.7) 0%,
+                        rgba(38, 38, 38, 0.6) 100%);
+                backdrop-filter: blur(40px) saturate(180%);
+                -webkit-backdrop-filter: blur(40px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                border-radius: 24px;
+                padding: 0.75rem;
                 z-index: 100;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+                box-shadow:
+                    0 8px 32px rgba(0, 0, 0, 0.6),
+                    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
+                    0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
                 max-width: 500px;
                 margin: 0 auto;
+            }
+
+            /* Add gradient glow effect */
+            .bottom-nav::before {
+                content: '';
+                position: absolute;
+                inset: -2px;
+                border-radius: 24px;
+                padding: 2px;
+                background: linear-gradient(135deg,
+                        rgba(14, 165, 233, 0.4) 0%,
+                        rgba(168, 85, 247, 0.4) 50%,
+                        rgba(249, 115, 22, 0.4) 100%);
+                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+                pointer-events: none;
+                opacity: 0.6;
             }
 
             .bottom-nav-container {
@@ -625,11 +849,30 @@
                 color: var(--text-secondary);
                 font-size: 0.688rem;
                 font-weight: 600;
-                padding: 0.625rem 0.75rem;
-                border-radius: 14px;
-                transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 0.75rem 0.875rem;
+                border-radius: 16px;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 flex: 1;
-                min-height: 52px;
+                min-height: 56px;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Hover gradient background */
+            .bottom-nav-item::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg,
+                        rgba(14, 165, 233, 0.1),
+                        rgba(168, 85, 247, 0.1));
+                opacity: 0;
+                transition: opacity 0.3s;
+                border-radius: 16px;
+            }
+
+            .bottom-nav-item:hover::before {
+                opacity: 1;
             }
 
             /* Hide labels for inactive tabs */
@@ -641,14 +884,19 @@
             }
 
             .bottom-nav-item:active {
-                transform: scale(0.95);
-                background: rgba(249, 115, 22, 0.1);
+                transform: scale(0.92);
             }
 
             .bottom-nav-item.active {
-                color: var(--accent);
-                background: rgba(249, 115, 22, 0.2);
-                transform: scale(1.05);
+                color: white;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                transform: scale(1.08);
+                box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4),
+                    0 0 24px rgba(168, 85, 247, 0.3);
+            }
+
+            .bottom-nav-item.active::before {
+                opacity: 0;
             }
 
             /* Show label only for active tab */
@@ -658,13 +906,15 @@
             }
 
             .bottom-nav-icon {
-                font-size: 1.375rem;
-                margin-bottom: 0.125rem;
-                transition: transform 0.3s;
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                filter: grayscale(0.3);
             }
 
             .bottom-nav-item.active .bottom-nav-icon {
-                transform: scale(1.1);
+                transform: scale(1.15);
+                filter: grayscale(0) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
             }
 
             /* Add bottom padding to body for floating nav */
@@ -855,19 +1105,50 @@
     <nav class="bottom-nav" aria-label="Mobile bottom navigation">
         <div class="bottom-nav-container">
             <a href="index.html" class="bottom-nav-item active" aria-label="Home">
-                <span class="bottom-nav-icon">🏠</span>
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </span>
                 <span>Home</span>
             </a>
             <a href="products.html" class="bottom-nav-item" aria-label="Products">
-                <span class="bottom-nav-icon">📱</span>
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
+                        <line x1="7" y1="2" x2="7" y2="22"></line>
+                        <line x1="17" y1="2" x2="17" y2="22"></line>
+                        <line x1="2" y1="12" x2="22" y2="12"></line>
+                        <line x1="2" y1="7" x2="7" y2="7"></line>
+                        <line x1="2" y1="17" x2="7" y2="17"></line>
+                        <line x1="17" y1="17" x2="22" y2="17"></line>
+                        <line x1="17" y1="7" x2="22" y2="7"></line>
+                    </svg>
+                </span>
                 <span>Products</span>
             </a>
             <a href="about.html" class="bottom-nav-item" aria-label="About">
-                <span class="bottom-nav-icon">🧪</span>
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </span>
                 <span>About</span>
             </a>
             <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
-                <span class="bottom-nav-icon">💬</span>
+                <span class="bottom-nav-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
+                    </svg>
+                </span>
                 <span>Contact</span>
             </a>
         </div>
