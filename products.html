@@ -314,16 +314,16 @@
                 bottom: 1rem;
                 left: 1rem;
                 right: 1rem;
-                background: linear-gradient(135deg, 
-                    rgba(23, 23, 23, 0.7) 0%, 
-                    rgba(38, 38, 38, 0.6) 100%);
+                background: linear-gradient(135deg,
+                        rgba(23, 23, 23, 0.7) 0%,
+                        rgba(38, 38, 38, 0.6) 100%);
                 backdrop-filter: blur(40px) saturate(180%);
                 -webkit-backdrop-filter: blur(40px) saturate(180%);
                 border: 1px solid rgba(255, 255, 255, 0.18);
                 border-radius: 24px;
-                padding: 0.75rem;
+                padding: 0.5rem;
                 z-index: 100;
-                box-shadow: 
+                box-shadow:
                     0 8px 32px rgba(0, 0, 0, 0.6),
                     0 0 0 1px rgba(255, 255, 255, 0.1) inset,
                     0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
@@ -337,10 +337,10 @@
                 inset: -2px;
                 border-radius: 24px;
                 padding: 2px;
-                background: linear-gradient(135deg, 
-                    rgba(14, 165, 233, 0.4) 0%, 
-                    rgba(168, 85, 247, 0.4) 50%, 
-                    rgba(249, 115, 22, 0.4) 100%);
+                background: linear-gradient(135deg,
+                        rgba(14, 165, 233, 0.4) 0%,
+                        rgba(168, 85, 247, 0.4) 50%,
+                        rgba(249, 115, 22, 0.4) 100%);
                 -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
                 -webkit-mask-composite: xor;
                 mask-composite: exclude;
@@ -364,11 +364,11 @@
                 color: var(--text-secondary);
                 font-size: 0.688rem;
                 font-weight: 600;
-                padding: 0.75rem 0.875rem;
+                padding: 0.625rem 0.75rem;
                 border-radius: 16px;
                 transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 flex: 1;
-                min-height: 56px;
+                min-height: 48px;
                 position: relative;
                 overflow: hidden;
             }
@@ -377,9 +377,9 @@
                 content: '';
                 position: absolute;
                 inset: 0;
-                background: linear-gradient(135deg, 
-                    rgba(14, 165, 233, 0.1), 
-                    rgba(168, 85, 247, 0.1));
+                background: linear-gradient(135deg,
+                        rgba(14, 165, 233, 0.1),
+                        rgba(168, 85, 247, 0.1));
                 opacity: 0;
                 transition: opacity 0.3s;
                 border-radius: 16px;
@@ -405,7 +405,7 @@
                 background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
                 transform: scale(1.08);
                 box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4),
-                            0 0 24px rgba(168, 85, 247, 0.3);
+                    0 0 24px rgba(168, 85, 247, 0.3);
             }
 
             .bottom-nav-item.active::before {
@@ -513,7 +513,8 @@
         <div class="bottom-nav-container">
             <a href="index.html" class="bottom-nav-item">
                 <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                         <polyline points="9 22 9 12 15 12 15 22"></polyline>
                     </svg>
@@ -522,7 +523,8 @@
             </a>
             <a href="products.html" class="bottom-nav-item active">
                 <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"></rect>
                         <line x1="7" y1="2" x2="7" y2="22"></line>
                         <line x1="17" y1="2" x2="17" y2="22"></line>
@@ -537,7 +539,8 @@
             </a>
             <a href="about.html" class="bottom-nav-item">
                 <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                         <circle cx="12" cy="7" r="4"></circle>
                     </svg>
@@ -546,8 +549,11 @@
             </a>
             <a href="contact.html" class="bottom-nav-item">
                 <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                        </path>
                     </svg>
                 </span>
                 <span>Contact</span>
