@@ -63,6 +63,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
 }
 
 body {
@@ -264,6 +265,18 @@ ul {
     background: var(--gray-700);
     border-radius: 2px;
     transition: var(--transition-base);
+}
+
+.mobile-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ===== HERO SECTION ===== */
@@ -929,9 +942,12 @@ section {
 }
 
 .contact-card p {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: var(--gray-700);
     font-weight: 500;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.5;
 }
 
 .contact-card a {
@@ -1058,7 +1074,7 @@ section {
     }
 
     .facilities-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1140,6 +1156,15 @@ section {
 
     .facilities-grid {
         grid-template-columns: 1fr;
+    }
+
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+
+    section {
+        max-width: 100%;
+        overflow-x: hidden;
     }
 }
 
