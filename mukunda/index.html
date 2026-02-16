@@ -4,418 +4,393 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Meta Tags -->
-    <title>SHREE MUKUNDA VIDYAPEETH - Empowering Students with Quality Education</title>
+    <title>Shree Mukunda Vidyapeeth - Empowering Students with Quality Education</title>
     <meta name="description"
-        content="SHREE MUKUNDA VIDYAPEETH is a premier educational institution dedicated to empowering students with quality education and holistic development.">
-    <meta name="keywords" content="SHREE MUKUNDA VIDYAPEETH, education, school, quality education, academic excellence">
-
-    <!-- Stylesheet -->
+        content="Shree Mukunda Vidyapeeth - A Smart School with Smart Classrooms, Experienced Faculty, Modern Facilities in Deesa. Admissions Open for 2026-27.">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
-    <!-- Top Bar with Contact -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-info">
-                <span>📞 Contact: +91 92748 29387</span>
-                <span>✉️ Email: info@shreemukunda.edu</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header with School Name and Emblem -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="school-emblem">
-                    <div class="emblem-circle">
-                        <div class="emblem-text">SMV</div>
-                    </div>
-                </div>
-                <div class="school-info">
-                    <h1>SHREE MUKUNDA VIDYAPEETH</h1>
-                    <p class="tagline">Empowering Students with Quality Education</p>
-                    <p class="affiliation">Affiliated to [State Board/CBSE]</p>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <ul class="nav-menu" id="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Us</a></li>
-                <li><a href="#admissions">Admissions</a></li>
-                <li><a href="#academics">Academics</a></li>
-                <li><a href="#facilities">Facilities</a></li>
-                <li><a href="#contact">Contact</a></li>
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <img src="images/logo1.jpeg" alt="Shree Mukunda Vidyapeeth Logo">
+                <span class="logo-text">SHREE MUKUNDA<br>VIDYAPEETH</span>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#facilities" class="nav-link">Facilities</a></li>
+                <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="mobile-toggle" id="mobile-toggle">☰</button>
         </div>
     </nav>
 
-    <!-- Admissions Notice -->
-    <section class="notice-banner" id="home">
-        <div class="container">
-            <div class="notice-content">
-                <h2>🎓 ADMISSION OPEN FOR ACADEMIC YEAR 2026-27</h2>
-                <p>Limited seats available. Enroll today and take the first step towards a brighter, smarter tomorrow
-                    with world-class education and endless opportunities.</p>
-                <a href="tel:+919274829387" class="notice-btn">Contact for Admission: +91 92748 29387</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-animation"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title animate-fade-in">
+                    <span class="gradient-text">Admissions Open</span>
+                    <span class="year-badge">2026-27</span>
+                </h1>
+                <p class="hero-subtitle animate-fade-in delay-1">Empowering Students with Quality Education</p>
+                <p class="hero-description animate-fade-in delay-2">
+                    A Smart School with Smart Classrooms •
+                    Experienced Faculty •
+                    Modern Facilities
+                </p>
+                <div class="hero-buttons animate-fade-in delay-3">
+                    <a href="#admissions" class="btn btn-primary">Apply Now</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-visual animate-fade-in delay-2">
+                <div class="hero-card">
+                    <div class="card-icon">🏫</div>
+                    <h3>Modern Campus</h3>
+                    <p>State-of-the-art facilities</p>
+                </div>
+                <div class="hero-card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Quality Education</h3>
+                    <p>Experienced faculty</p>
+                </div>
+                <div class="hero-card">
+                    <div class="card-icon">🌟</div>
+                    <h3>Smart Learning</h3>
+                    <p>Technology-enabled</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Main Content Area -->
-    <main>
-        <!-- About Section -->
-        <section class="section about-section" id="about">
-            <div class="container">
-                <h2 class="section-heading">About the Institution</h2>
-
-                <div class="about-grid">
-                    <div class="about-main">
-                        <div class="about-image-container">
-                            <img src="assets/school-building.jpg" alt="SHREE MUKUNDA VIDYAPEETH Campus"
-                                class="about-main-image">
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Us</h2>
+                <p class="section-subtitle">Your Future Begins Here</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text glass-card">
+                    <h3>Welcome to Shree Mukunda Vidyapeeth</h3>
+                    <p>
+                        At Shree Mukunda Vidyapeeth, we are committed to empowering students with quality education
+                        that prepares them for a brighter, smarter tomorrow. Our institution combines traditional values
+                        with modern teaching methodologies to create an exceptional learning environment.
+                    </p>
+                    <p>
+                        With world-class education and endless opportunities, we nurture young minds to become
+                        confident, compassionate, and capable individuals ready to excel in an ever-changing world.
+                    </p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">100+</span>
+                            <span class="stat-label">Happy Students</span>
                         </div>
-                        <h3>Welcome to SHREE MUKUNDA VIDYAPEETH</h3>
-                        <p>
-                            SHREE MUKUNDA VIDYAPEETH is a premier educational institution committed to providing
-                            exceptional education that nurtures both academic excellence and character development.
-                            Established with a vision to create future leaders, we provide a comprehensive learning
-                            environment where students can thrive intellectually, socially, and emotionally.
-                        </p>
-
-                        <h3>Our Mission</h3>
-                        <p>
-                            To empower every student to reach their full potential and become responsible global
-                            citizens
-                            through quality education, modern facilities, and experienced faculty. We believe in
-                            holistic
-                            education that prepares students for the challenges of tomorrow.
-                        </p>
-
-                        <h3>Our Vision</h3>
-                        <p>
-                            To be a center of educational excellence that inspires students to become lifelong learners,
-                            critical thinkers, and compassionate leaders who contribute positively to society.
-                        </p>
+                        <div class="stat-item">
+                            <span class="stat-number">20+</span>
+                            <span class="stat-label">Experienced Teachers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Modern Facilities</span>
+                        </div>
                     </div>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Our Vision</h4>
+                        <p>To be a leading educational institution that shapes future leaders through innovative
+                            learning and holistic development.</p>
+                    </div>
+                    <div class="feature-card glass-card">
+                        <div class="feature-icon">💡</div>
+                        <h4>Our Mission</h4>
+                        <p>Providing exceptional curriculum with qualified educators and modern facilities to unlock
+                            every student's potential.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <div class="about-sidebar">
-                        <div class="info-box">
-                            <h4>Quick Facts</h4>
-                            <ul class="facts-list">
-                                <li><strong>Established:</strong> [Year]</li>
-                                <li><strong>Board:</strong> [State/CBSE]</li>
-                                <li><strong>Classes:</strong> Nursery to 12th</li>
-                                <li><strong>Students:</strong> [Number]+</li>
-                                <li><strong>Faculty:</strong> Experienced & Qualified</li>
-                                <li><strong>Campus:</strong> Modern Infrastructure</li>
-                            </ul>
+    <!-- Facilities Section -->
+    <section class="facilities" id="facilities">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Our Facilities</h2>
+                <p class="section-subtitle">State-of-the-Art Infrastructure</p>
+            </div>
+            <div class="facilities-grid">
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">💻</div>
+                    <h3>Smart Classrooms</h3>
+                    <p>Technology-enabled learning spaces with interactive displays and digital resources for enhanced
+                        education.</p>
+                </div>
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">👨‍🏫</div>
+                    <h3>Qualified Teachers</h3>
+                    <p>Experienced and dedicated educators committed to nurturing each student's academic and personal
+                        growth.</p>
+                </div>
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">🏃‍♂️</div>
+                    <h3>Big Playground</h3>
+                    <p>Spacious outdoor areas for sports, physical education, and recreational activities promoting
+                        healthy development.</p>
+                </div>
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">🏨</div>
+                    <h3>Hostel Facility</h3>
+                    <p>Safe and comfortable residential accommodation with proper supervision for outstation students.
+                    </p>
+                </div>
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">📚</div>
+                    <h3>Library</h3>
+                    <p>Well-stocked library with diverse collection of books, journals, and digital resources for
+                        comprehensive learning.</p>
+                </div>
+                <div class="facility-card glass-card">
+                    <div class="facility-icon">🌞</div>
+                    <h3>Day Care School</h3>
+                    <p>Extended care services ensuring a safe, nurturing environment for younger students beyond school
+                        hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Section -->
+    <section class="admissions" id="admissions">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Admissions 2026-27</h2>
+                <p class="section-subtitle">Enroll Today and Take the First Step</p>
+            </div>
+            <div class="admissions-content">
+                <div class="admission-cta glass-card">
+                    <div class="cta-badge">Now Open!</div>
+                    <h3>Join Our School and Start Your Path to Excellence</h3>
+                    <p>
+                        Take the first step toward a brighter, smarter tomorrow with world-class education and endless
+                        opportunities.
+                    </p>
+                    <div class="admission-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Exceptional Curriculum</span>
                         </div>
-
-                        <div class="info-box highlights-box">
-                            <h4>Why Choose Us</h4>
-                            <ul class="highlights-list">
-                                <li>✓ Smart Classrooms with Digital Boards</li>
-                                <li>✓ Qualified & Experienced Teachers</li>
-                                <li>✓ Modern Facilities & Labs</li>
-                                <li>✓ Big Playground for Sports</li>
-                                <li>✓ Hostel Facility Available</li>
-                                <li>✓ Safe & Secure Environment</li>
-                            </ul>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Modern Facilities</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Qualified Educators</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>Holistic Development</span>
+                        </div>
+                    </div>
+                    <a href="tel:+919274829387" class="btn btn-primary btn-large">Call Now: +91-92748-29387</a>
+                </div>
+                <div class="admission-visual">
+                    <div class="admission-badge-large">2026-27</div>
+                    <div class="admission-stats">
+                        <div class="stat-box">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-content">
+                                <h4>Comprehensive</h4>
+                                <p>Curriculum</p>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">🏆</div>
+                            <div class="stat-content">
+                                <h4>Excellence</h4>
+                                <p>in Education</p>
+                            </div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-icon">💼</div>
+                            <div class="stat-content">
+                                <h4>Future</h4>
+                                <p>Ready Skills</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Admissions Section -->
-        <section class="section admissions-section" id="admissions">
-            <div class="container">
-                <h2 class="section-heading">Admissions 2026-27</h2>
-
-                <div class="admission-info">
-                    <div class="admission-notice">
-                        <h3>📢 Admissions Now Open!</h3>
-                        <p class="admission-highlight">
-                            Your Future Begins Here. Enroll today and take the first step towards a brighter,
-                            smarter tomorrow with world-class education and endless opportunities.
-                        </p>
-                    </div>
-
-                    <div class="admission-benefits">
-                        <h4>Why Enroll at SHREE MUKUNDA VIDYAPEETH</h4>
-                        <div class="benefits-grid">
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🎓</div>
-                                <h5>Limited Seats</h5>
-                                <p>Exclusive admission opportunities</p>
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <p class="section-subtitle">Glimpses of Our Campus Life</p>
+            </div>
+            <div class="gallery-carousel">
+                <button class="carousel-btn prev" id="prevBtn">‹</button>
+                <div class="carousel-track-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <div class="carousel-slide active">
+                            <div class="gallery-placeholder campus">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🏫</div>
+                                    <h3>Modern Campus</h3>
+                                    <p>State-of-the-art Infrastructure</p>
+                                </div>
                             </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">✅</div>
-                                <h5>Easy Process</h5>
-                                <p>Simple admission procedures</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🏆</div>
-                                <h5>Scholarships</h5>
-                                <p>For meritorious students</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🛡️</div>
-                                <h5>Safe Environment</h5>
-                                <p>Secure & nurturing campus</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">🚌</div>
-                                <h5>Transport</h5>
-                                <p>Safe bus facility available</p>
-                            </div>
-                            <div class="benefit-card">
-                                <div class="benefit-icon">⚡</div>
-                                <h5>Activities</h5>
-                                <p>Rich extracurricular programs</p>
-                            </div>
+                            <div class="slide-caption">Our Modern Campus</div>
                         </div>
-                    </div>
-                    <div class="admission-contact">
-                        <h4>For Admissions, Contact:</h4>
-                        <p class="contact-large">📞 +91 92748 29387</p>
-                        <p>Visit the school office during working hours or call for more information about the admission
-                            process, fee structure, and required documents.</p>
+                        <div class="carousel-slide">
+                            <div class="gallery-placeholder achievement">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">🎓</div>
+                                    <h3>Student Achievement</h3>
+                                    <p>Excellence in Education</p>
+                                </div>
+                            </div>
+                            <div class="slide-caption">Student Achievements</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-placeholder classroom">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">💻</div>
+                                    <h3>Smart Classrooms</h3>
+                                    <p>Technology-Enabled Learning</p>
+                                </div>
+                            </div>
+                            <div class="slide-caption">Smart Learning Environment</div>
+                        </div>
+                        <div class="carousel-slide">
+                            <div class="gallery-placeholder students">
+                                <div class="placeholder-content">
+                                    <div class="placeholder-icon">👨‍👩‍👧‍👦</div>
+                                    <h3>Happy Students</h3>
+                                    <p>Learning Together</p>
+                                </div>
+                            </div>
+                            <div class="slide-caption">Happy Learning Together</div>
+                        </div>
                     </div>
                 </div>
+                <button class="carousel-btn next" id="nextBtn">›</button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Academics Section -->
-        <section class="section academics-section" id="academics">
-            <div class="container">
-                <h2 class="section-heading">Academic Programs</h2>
-
-                <div class="academics-content">
-                    <div class="program-list">
-                        <div class="program-item">
-                            <h3>📚 Primary Education (Classes 1-5)</h3>
-                            <p>Strong foundation in core subjects with focus on interactive learning, critical thinking,
-                                and character building for young minds.</p>
-                        </div>
-
-                        <div class="program-item">
-                            <h3>📖 Middle School (Classes 6-8)</h3>
-                            <p>Comprehensive curriculum with emphasis on conceptual understanding, practical
-                                application, and skill development.</p>
-                        </div>
-
-                        <div class="program-item">
-                            <h3>🎓 Secondary & Senior Secondary (Classes 9-12)</h3>
-                            <p>Specialized streams in Science, Commerce, and Arts with focus on board exam preparation
-                                and career guidance.</p>
-                        </div>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Contact Us</h2>
+                <p class="section-subtitle">Get in Touch for Admissions & Queries</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon">📍</div>
+                        <h4>Address</h4>
+                        <p>Behind Shivdhan Temple, Rasana Mota,<br>Deesa - Palanpur Highway, Deesa</p>
                     </div>
-
-                    <div class="subjects-info">
-                        <h3>Key Focus Areas</h3>
-                        <ul class="subjects-list">
-                            <li><strong>Science & Mathematics:</strong> Advanced labs and practical sessions</li>
-                            <li><strong>Languages:</strong> English, Hindi, and Regional Language</li>
-                            <li><strong>Computer Science:</strong> Modern computer labs and coding programs</li>
-                            <li><strong>Arts & Humanities:</strong> Music, Dance, Art, and Cultural Studies</li>
-                            <li><strong>Physical Education:</strong> Sports, Yoga, and Fitness Programs</li>
-                            <li><strong>Life Skills:</strong> Personality development and value education</li>
-                        </ul>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon">📞</div>
+                        <h4>Phone</h4>
+                        <p><a href="tel:+919274829387">+91-92748-29387</a></p>
+                    </div>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon">✉️</div>
+                        <h4>Email</h4>
+                        <p><a href="mailto:info.mukundavidyapeeth@gmail.com">info.mukundavidyapeeth@gmail.com</a></p>
+                    </div>
+                    <div class="contact-card glass-card">
+                        <div class="contact-icon">🌐</div>
+                        <h4>Website</h4>
+                        <p><a href="http://www.shreemukundavidyapeeth.com"
+                                target="_blank">www.shreemukundavidyapeeth.com</a></p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Facilities Section -->
-        <section class="section facilities-section" id="facilities">
-            <div class="container">
-                <h2 class="section-heading">School Facilities</h2>
-
-                <div class="facilities-list">
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">💻</span>
-                            <h3>Smart Classrooms</h3>
+                <div class="contact-form-container">
+                    <form class="contact-form glass-card" id="contactForm">
+                        <h3>Send Us a Message</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
                         </div>
-                        <p>All classrooms equipped with interactive digital boards, projectors, and modern technology
-                            for enhanced learning experience.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">🔬</span>
-                            <h3>Science Laboratories</h3>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
-                        <p>Well-equipped physics, chemistry, biology, and computer science labs with modern equipment
-                            for practical learning.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">📚</span>
-                            <h3>Library</h3>
+                        <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="Your Phone" required>
                         </div>
-                        <p>Extensive collection of books, periodicals, newspapers, and digital resources. Quiet study
-                            areas for students.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">⚽</span>
-                            <h3>Big Playground</h3>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" placeholder="Your Message"
+                                required></textarea>
                         </div>
-                        <p>Spacious outdoor playground for various sports activities including cricket, football,
-                            basketball, and athletics.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">🏠</span>
-                            <h3>Hostel Facility</h3>
-                        </div>
-                        <p>Safe and comfortable hostel accommodation with proper supervision, nutritious food, and all
-                            modern amenities.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">🎭</span>
-                            <h3>Auditorium</h3>
-                        </div>
-                        <p>Modern auditorium for cultural events, annual functions, seminars, and student performances
-                            with audio-visual systems.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">🚌</span>
-                            <h3>Transport Facility</h3>
-                        </div>
-                        <p>School buses with GPS tracking covering major routes in the city for safe and convenient
-                            student transportation.</p>
-                    </div>
-
-                    <div class="facility-item">
-                        <div class="facility-header">
-                            <span class="facility-icon">🏥</span>
-                            <h3>Medical Room</h3>
-                        </div>
-                        <p>First-aid facility with trained staff to handle medical emergencies and regular health
-                            check-ups for students.</p>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
                 </div>
             </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="section contact-section" id="contact">
-            <div class="container">
-                <h2 class="section-heading">Contact Information</h2>
-
-                <div class="contact-grid">
-                    <div class="contact-details">
-                        <h3>Get in Touch</h3>
-
-                        <div class="contact-info-item">
-                            <h4>📍 Address</h4>
-                            <p>
-                                SHREE MUKUNDA VIDYAPEETH<br>
-                                [Your Complete Address]<br>
-                                [City, State - PIN Code]
-                            </p>
-                        </div>
-
-                        <div class="contact-info-item">
-                            <h4>📞 Phone</h4>
-                            <p><a href="tel:+919274829387">+91 92748 29387</a></p>
-                            <p>For Admissions & General Inquiries</p>
-                        </div>
-
-                        <div class="contact-info-item">
-                            <h4>✉️ Email</h4>
-                            <p>info@shreemukunda.edu</p>
-                            <p>admissions@shreemukunda.edu</p>
-                        </div>
-
-                        <div class="contact-info-item">
-                            <h4>⏰ Office Hours</h4>
-                            <p>Monday - Friday: 8:00 AM - 4:00 PM</p>
-                            <p>Saturday: 8:00 AM - 1:00 PM</p>
-                            <p>Sunday: Closed</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-form-area">
-                        <h3>Send us a Message</h3>
-                        <form id="contact-form" class="contact-form">
-                            <div class="form-row">
-                                <label for="name">Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="email">Email *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            <div class="form-row">
-                                <label for="phone">Phone</label>
-                                <input type="tel" id="phone" name="phone">
-                            </div>
-                            <div class="form-row">
-                                <label for="message">Message *</label>
-                                <textarea id="message" name="message" required rows="5"></textarea>
-                            </div>
-                            <button type="submit" class="btn-submit">Send Message</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>SHREE MUKUNDA VIDYAPEETH</h3>
-                    <p>Empowering Students with Quality Education</p>
-                    <p>Committed to excellence in education and the holistic development of every student.</p>
+                    <div class="footer-logo">
+                        <img src="images/logo1.jpeg" alt="Shree Mukunda Vidyapeeth Logo">
+                        <h3>SHREE MUKUNDA VIDYAPEETH</h3>
+                    </div>
+                    <p>Empowering students with quality education for a brighter tomorrow.</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#admissions">Admissions</a></li>
-                        <li><a href="#academics">Academics</a></li>
                         <li><a href="#facilities">Facilities</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#admissions">Admissions</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>📞 +91 92748 29387</p>
-                    <p>✉️ info@shreemukunda.edu</p>
-                    <p>📍 [Your City, State]</p>
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li>📍 Behind Shivdhan Temple, Deesa</li>
+                        <li>📞 +91-92748-29387</li>
+                        <li>✉️ info.mukundavidyapeeth@gmail.com</li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 SHREE MUKUNDA VIDYAPEETH. All Rights Reserved.</p>
+                <p>&copy; 2026 Shree Mukunda Vidyapeeth. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script src="script.js"></script>
 </body>
 
