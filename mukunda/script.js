@@ -299,3 +299,39 @@ const optimizedScroll = debounce(() => {
 window.addEventListener('scroll', optimizedScroll);
 
 console.log('Shree Mukunda Vidyapeeth website loaded successfully! 🎓');
+
+// ===== DYNAMIC TEXT ANIMATION =====
+const dynamicText = document.querySelector('.dynamic-text');
+if (dynamicText) {
+    const phrases = ['Smart Classrooms', 'Experienced Faculty', 'Modern Facilities'];
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+        const currentPhrase = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            charIndex--;
+        } else {
+            charIndex++;
+        }
+
+        dynamicText.textContent = currentPhrase.substring(0, charIndex);
+
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentPhrase.length) {
+            typeSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typeSpeed = 500;
+        }
+
+        setTimeout(typeEffect, typeSpeed);
+    }
+    
+    typeEffect();
+}

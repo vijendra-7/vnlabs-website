@@ -349,6 +349,46 @@ ul {
     margin-bottom: var(--spacing-lg);
 }
 
+.dynamic-text {
+    font-weight: 700;
+    background: var(--gradient-warm);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-flex;
+    /* Changed from inline-block to inline-flex for better alignment */
+    align-items: center;
+    min-height: 1.5em;
+    /* Ensure height is maintained */
+    vertical-align: bottom;
+    /* Align with baseline */
+}
+
+.dynamic-text::after {
+    content: "|";
+    margin-left: 4px;
+    /* Use margin instead of absolute positioning */
+    color: var(--primary-orange);
+    -webkit-text-fill-color: var(--primary-orange);
+    /* Override transparent fill */
+    animation: blink 0.75s step-end infinite;
+    font-weight: 400;
+    /* Thinner cursor */
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
 .hero-buttons {
     display: flex;
     gap: var(--spacing-md);
