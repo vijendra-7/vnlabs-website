@@ -1092,15 +1092,19 @@ section {
         transform: translateY(-100%);
         opacity: 0;
         transition: var(--transition-base);
+        z-index: 999;
+        display: none;
     }
 
     .nav-menu.active {
         transform: translateY(0);
         opacity: 1;
+        display: flex;
     }
 
     .mobile-toggle {
         display: flex;
+        z-index: 1001;
     }
 
     .hero-title {
