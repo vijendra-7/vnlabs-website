@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="g5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4F46E5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#g5)"/>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="60" fill="white" text-anchor="middle">📖</text>
+  <text x="200" y="240" font-family="Arial, sans-serif" font-size="18" fill="white" text-anchor="middle" font-weight="bold">Library Study</text>
+</svg>
