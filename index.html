@@ -13,1186 +13,179 @@
     <meta name="author" content="VN Labs">
     <link rel="canonical" href="https://vnlabs.in/">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://vnlabs.in/">
-    <meta property="og:title" content="VN Labs - Student tools that actually work">
-    <meta property="og:description" content="Simple, practical tools for students. Built by students.">
-    <meta property="og:image" content="https://vnlabs.in/images/Screenshots/1.png">
-    <meta property="og:site_name" content="VN Labs">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://vnlabs.in/">
-    <meta name="twitter:title" content="VN Labs">
-    <meta name="twitter:description" content="Student tools that actually work.">
-    <meta property="og:image" content="https://vnlabs.in/favicon.png">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "VN Labs",
-      "url": "https://vnlabs.in",
-      "logo": "https://vnlabs.in/images/vn_labs.png",
-      "description": "Student tools that actually work",
-      "email": "vnlabs.in@gmail.com",
-      "foundingDate": "2024"
-    }
-    </script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary: #a855f7;
-            --accent: #f97316;
-            --highlight: #ec4899;
-            --background: #0a0a0a;
-            --surface: #171717;
-            --border: #262626;
-            --text-primary: #fafafa;
-            --text-secondary: #a3a3a3;
-            --text-muted: #525252;
-            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
-            --gradient-accent: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
-            --gradient-full: linear-gradient(135deg, #0ea5e9 0%, #a855f7 50%, #f97316 100%);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        @keyframes gradient-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes glow-pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
-            /* App-like features for mobile */
-            -webkit-tap-highlight-color: rgba(249, 115, 22, 0.2);
-            -webkit-touch-callout: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Animated background effects */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        /* Header */
-        .header {
-            border-bottom: 1px solid var(--border);
-            padding: 1.25rem 0;
-            position: sticky;
-            top: 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-
-        .nav {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-            letter-spacing: -0.02em;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.938rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
+        /* Specific page styles can go here, but mostly we use styles.css */
+        .product-image {
             width: 100%;
-        }
-
-        /* Mobile Menu Toggle - Hidden on mobile, using bottom nav instead */
-        .mobile-menu-toggle {
-            display: none;
-        }
-
-        /* Hero */
-        .hero {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 150%;
-            height: 150%;
-            background: linear-gradient(135deg,
-                    rgba(14, 165, 233, 0.2) 0%,
-                    rgba(168, 85, 247, 0.2) 50%,
-                    rgba(249, 115, 22, 0.2) 100%);
-            background-size: 200% 200%;
-            animation: gradient-shift 15s ease infinite;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 640px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.375rem 0.875rem;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(168, 85, 247, 0.2));
-            border: 1px solid rgba(14, 165, 233, 0.4);
-            border-radius: 20px;
-            font-size: 0.813rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
-        }
-
-        .badge::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(255, 255, 255, 0.3),
-                    transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-full);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradient-shift 8s ease infinite;
-            filter: drop-shadow(0 0 30px rgba(14, 165, 233, 0.5));
-        }
-
-        .hero h1 .highlight {
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradient-shift 6s ease infinite;
-        }
-
-        .hero p {
-            font-size: 1.375rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 2.5rem;
-            max-width: 580px;
-            font-weight: 500;
-        }
-
-        .cta-group {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .btn {
-            padding: 1rem 2rem;
             border-radius: 12px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: -1;
-        }
-
-        .btn:active::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            box-shadow: 0 8px 24px rgba(14, 165, 233, 0.4),
-                0 0 40px rgba(168, 85, 247, 0.2);
-            border: 2px solid transparent;
-            background-size: 200% auto;
-            animation: glow-pulse 3s ease-in-out infinite;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 12px 32px rgba(14, 165, 233, 0.6),
-                0 0 60px rgba(168, 85, 247, 0.4);
-            background-position: right center;
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 2px solid var(--primary);
-            position: relative;
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(168, 85, 247, 0.1));
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--secondary);
-            color: var(--text-primary);
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 24px rgba(168, 85, 247, 0.4);
-            background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(168, 85, 247, 0.2));
-        }
-
-        /* Product Showcase */
-        .product-showcase {
-            max-width: 1280px;
-            margin: 8rem auto 6rem;
-            padding: 0 2rem;
-        }
-
-        .product-header {
-            margin-bottom: 4rem;
-        }
-
-        .product-header h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -0.02em;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .product-header p {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-        }
-
-        .product-grid {
+        .large-bento-content {
             display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .product-info h3 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .product-info p {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.7;
-        }
-
-        .features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features li {
-            padding: 0.75rem 0;
-            color: var(--text-secondary);
-            display: flex;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
             align-items: center;
-            gap: 0.75rem;
-            border-bottom: 1px solid var(--border);
         }
 
-        .features li:last-child {
-            border-bottom: none;
+        @media(max-width: 900px) {
+            .large-bento-content {
+                grid-template-columns: 1fr;
+            }
         }
 
-        .features li::before {
-            content: '→';
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .product-card {
-            background: linear-gradient(var(--surface), var(--surface)) padding-box,
-                linear-gradient(135deg, var(--primary), var(--secondary), var(--accent)) border-box;
-            border: 2px solid transparent;
-            border-radius: 16px;
-            padding: 2rem;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        }
-
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 16px;
-            background: linear-gradient(135deg,
-                    rgba(14, 165, 233, 0.15),
-                    rgba(168, 85, 247, 0.15),
-                    rgba(249, 115, 22, 0.15));
-            opacity: 0;
-            transition: opacity 0.5s;
-            z-index: -1;
-        }
-
-        .product-card:hover {
-            transform: translateY(-12px) scale(1.03) rotateX(2deg);
-            box-shadow: 0 24px 48px rgba(14, 165, 233, 0.3),
-                0 0 60px rgba(168, 85, 247, 0.2),
-                0 0 100px rgba(249, 115, 22, 0.1);
-            border-color: var(--primary);
-        }
-
-        .product-card:hover::before {
-            opacity: 1;
-        }
-
-        .product-visual {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .product-visual img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Stats */
-        .stats {
-            max-width: 1280px;
-            margin: 6rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-        }
-
-        .stat {
-            text-align: center;
-            padding: 3rem 2rem;
-            border: 2px solid transparent;
-            border-radius: 16px;
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            background: radial-gradient(circle at center, rgba(14, 165, 233, 0.1) 0%, transparent 70%),
-                var(--surface);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        .stat::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg,
-                    transparent,
-                    rgba(14, 165, 233, 0.3),
-                    rgba(168, 85, 247, 0.3),
-                    transparent);
-            transition: left 0.8s;
-        }
-
-        .stat:hover {
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 16px 32px rgba(14, 165, 233, 0.4),
-                0 0 60px rgba(168, 85, 247, 0.3);
-            border-color: var(--primary);
-        }
-
-        .stat:hover::before {
-            left: 100%;
-        }
-
-        .stat-value {
+        .bento-card.small .stat-value {
             font-size: 3rem;
-            font-weight: 900;
-            color: var(--accent);
-            letter-spacing: -0.03em;
+            font-weight: 800;
             margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            background: linear-gradient(135deg, var(--text-main), var(--text-muted));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.938rem;
-        }
-
-        /* Footer */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 4rem 2rem 2rem;
-            margin-top: 8rem;
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-section p {
+        .bento-card.small .stat-label {
             color: var(--text-muted);
-            font-size: 0.938rem;
-            line-height: 1.6;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.75rem;
-            font-size: 0.938rem;
-            transition: color 0.2s;
-        }
-
-        .footer-section a:hover {
-            color: var(--text-primary);
-        }
-
-        .copyright {
-            text-align: center;
-            color: var(--text-muted);
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.875rem;
-        }
-
-        /* Focus States */
-        *:focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        /* Tablet / iPad (769px - 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            .product-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .product-large {
-                grid-column: 1;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr 1fr;
-                gap: 2.5rem;
-            }
-        }
-
-        /* Hide bottom nav on desktop - only show on mobile */
-        .bottom-nav {
-            display: none;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-
-            /* App-like touch targets */
-            .btn {
-                min-height: 48px;
-                padding: 1rem 2rem;
-                font-size: 1rem;
-                -webkit-tap-highlight-color: transparent;
-            }
-
-            /* Active/pressed states for app-like feedback */
-            .btn:active {
-                transform: scale(0.98);
-                opacity: 0.9;
-            }
-
-            .product-card:active {
-                transform: scale(0.98);
-                transition: transform 0.1s;
-            }
-
-            .stat:active {
-                transform: scale(0.98);
-            }
-
-            /* Larger touch-friendly navigation */
-            .nav-links a {
-                min-height: 48px;
-                display: flex;
-                align-items: center;
-                padding: 1rem 0;
-                font-size: 1.125rem;
-            }
-
-            /* Mobile-optimized spacing */
-            .hero {
-                padding: 4rem 1.5rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.25rem;
-                line-height: 1.1;
-            }
-
-            .hero p {
-                font-size: 1.063rem;
-            }
-
-            /* Bottom CTA for app-like feel */
-            .cta-group {
-                position: sticky;
-                bottom: 0;
-                background: linear-gradient(to top, var(--background) 80%, transparent);
-                padding: 1.5rem 0 2rem;
-                margin-top: 2rem;
-                z-index: 10;
-            }
-
-            .product-showcase,
-            .stats {
-                padding: 0 1.5rem;
-            }
-
-            /* Hide desktop nav links on mobile */
-            .nav .nav-links {
-                display: none;
-            }
-
-            /* Bottom Navigation Bar - Enhanced Glassmorphism */
-            .bottom-nav {
-                display: block;
-                position: fixed;
-                bottom: 1rem;
-                left: 1rem;
-                right: 1rem;
-                background: linear-gradient(135deg,
-                        rgba(23, 23, 23, 0.7) 0%,
-                        rgba(38, 38, 38, 0.6) 100%);
-                backdrop-filter: blur(40px) saturate(180%);
-                -webkit-backdrop-filter: blur(40px) saturate(180%);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                border-radius: 24px;
-                padding: 0.375rem;
-                z-index: 100;
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.6),
-                    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-                    0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            /* Add gradient glow effect */
-            .bottom-nav::before {
-                content: '';
-                position: absolute;
-                inset: -2px;
-                border-radius: 24px;
-                padding: 2px;
-                background: linear-gradient(135deg,
-                        rgba(14, 165, 233, 0.4) 0%,
-                        rgba(168, 85, 247, 0.4) 50%,
-                        rgba(249, 115, 22, 0.4) 100%);
-                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                opacity: 0.6;
-            }
-
-            .bottom-nav-container {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 0.25rem;
-            }
-
-            .bottom-nav-item {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: var(--text-secondary);
-                font-size: 0.688rem;
-                font-weight: 600;
-                padding: 0.5rem 0.625rem;
-                border-radius: 16px;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                flex: 1;
-                min-height: 44px;
-                position: relative;
-                overflow: hidden;
-                gap: 0.5rem;
-            }
-
-            /* Hover gradient background */
-            .bottom-nav-item::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(135deg,
-                        rgba(14, 165, 233, 0.1),
-                        rgba(168, 85, 247, 0.1));
-                opacity: 0;
-                transition: opacity 0.3s;
-                border-radius: 16px;
-            }
-
-            .bottom-nav-item:hover::before {
-                opacity: 1;
-            }
-
-            /* Hide labels for inactive tabs */
-            .bottom-nav-item span:not(.bottom-nav-icon) {
-                opacity: 0;
-                max-height: 0;
-                max-width: 0;
-                overflow: hidden;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                white-space: nowrap;
-            }
-
-            .bottom-nav-item:active {
-                transform: scale(0.90);
-            }
-
-            .bottom-nav-item.active {
-                color: white;
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-                transform: scale(1.05);
-                box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4),
-                    0 0 24px rgba(168, 85, 247, 0.3);
-                flex: 1.5;
-            }
-
-            .bottom-nav-item.active::before {
-                opacity: 0;
-            }
-
-            /* Show label only for active tab */
-            .bottom-nav-item.active span:not(.bottom-nav-icon) {
-                opacity: 1;
-                max-height: 20px;
-                max-width: 100px;
-            }
-
-            .bottom-nav-icon {
-                font-size: 1.25rem;
-                margin-bottom: 0;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                filter: grayscale(0.3);
-                flex-shrink: 0;
-            }
-
-            .bottom-nav-item.active .bottom-nav-icon {
-                transform: scale(1.1);
-                filter: grayscale(0) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
-            }
-
-            /* Add bottom padding to body for floating nav */
-            body {
-                padding-bottom: 100px;
-            }
-
-            .mobile-menu-toggle {
-                display: none;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem 3rem;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.125rem;
-            }
-
-            .cta-group {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .btn {
-                text-align: center;
-            }
-
-            .product-showcase {
-                margin: 4rem auto 3rem;
-                padding: 0 1.5rem;
-            }
-
-            .product-header h2 {
-                font-size: 2rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .product-header h2 {
-                font-size: 1.75rem;
-            }
-
-            .stat-number {
-                font-size: 2.5rem;
-            }
+            font-size: 1rem;
+            font-weight: 400;
         }
     </style>
 </head>
 
 <body>
-    <header class="header" role="banner">
-        <nav class="nav" aria-label="Main navigation">
-            <a href="index.html" class="logo" aria-label="VN Labs Home">vn<span>labs</span></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="bg-pattern"></div>
+    <div class="bg-grid"></div>
+
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="VN Labs Home">vn<span>labs</span></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <main>
         <!-- Hero -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="badge">🧪 Experimental • Student-built</div>
-                <h1>Student tools that <span class="highlight">actually work</span></h1>
-                <p>We're building simple, practical apps for students. No fluff, just tools that help you stay organized
-                    and focused.</p>
-                <div class="cta-group">
-                    <a href="products.html" class="btn btn-primary">See what we're building</a>
-                    <a href="about.html" class="btn btn-secondary">About the lab</a>
-                </div>
+        <header class="hero">
+            <div class="pill">🧪 Experimental • Student-built</div>
+            <h1>Student tools that <br><span class="gradient-text">actually work</span></h1>
+            <p class="subtitle">We're building simple, practical apps for students. No fluff, just tools that help you
+                stay organized and focused.</p>
+            <div class="cta-group">
+                <a href="products.html" class="btn btn-primary">See what we're building</a>
+                <a href="about.html" class="btn btn-secondary">About the lab</a>
             </div>
-        </section>
+        </header>
 
         <!-- Product Showcase -->
-        <section class="product-showcase">
-            <div class="product-header">
-                <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1rem;">
-                    <img src="images/farmer_accounting_logo.png" alt="KhetiBook Logo"
-                        style="width: 80px; height: 80px; border-radius: 16px; flex-shrink: 0; box-shadow: 0 8px 16px rgba(0,0,0,0.4);">
-                    <h2 style="margin-bottom: 0;">KhetiBook</h2>
-                </div>
-                <p>Khata book designed exclusively for Farmers to log medicine inputs, track harvests, and maintain
-                    helper accounts clearly.</p>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-info">
-                    <h3>Simple Agricultural Accounting, Locally</h3>
-                    <p>Log all harvest earnings, manage helper payments, and store daily investment entries directly on
-                        your device. Zero internet needed.</p>
-
-                    <ul class="features">
-                        <li>Separate modules for Earnings & Expenses</li>
-                        <li>Automated monthly balances per Helper</li>
-                        <li>Offline PDF statement generations</li>
-                        <li>Daily Panchang built-in</li>
-                        <li>100% Gujarati Language support</li>
-                    </ul>
-
-                    <div class="cta-group">
-                        <a href="khetibook.html" class="btn btn-primary">Learn more</a>
-                        <a href="downloads/KhetiBook.apk" class="btn btn-secondary" download>Download APK</a>
+        <div class="bento-grid">
+            <div class="bento-card large">
+                <div class="large-bento-content">
+                    <div>
+                        <div class="icon-box" style="color: var(--accent-1); display: inline-flex;">
+                            <img src="images/farmer_accounting_logo.png" alt="KhetiBook Logo"
+                                style="width: 32px; height: 32px; border-radius: 8px;">
+                        </div>
+                        <h2 class="card-title" style="font-size: 2rem; margin-top: 0.5rem;">KhetiBook</h2>
+                        <p class="card-text">Khata book designed exclusively for Farmers to log medicine inputs, track
+                            harvests, and maintain helper accounts clearly.</p>
+                        <ul class="list-items">
+                            <li>Separate modules for Earnings & Expenses</li>
+                            <li>Automated monthly balances per Helper</li>
+                            <li>Offline PDF statement generations</li>
+                            <li>100% Gujarati Language support</li>
+                        </ul>
+                        <div class="cta-group" style="justify-content: flex-start;">
+                            <a href="khetibook.html" class="btn btn-primary">Learn more</a>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="images/Screenshots/4.png"
+                            alt="KhetiBook app showing simple localized investment logging fields"
+                            class="product-image">
                     </div>
                 </div>
+            </div>
 
-                <div class="product-visual">
-                    <img src="images/Screenshots/4.png"
-                        alt="KhetiBook app showing simple localized investment logging fields and monthly summary views">
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: var(--accent-2);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                </div>
+                <h2 class="card-title">GATE Tracker</h2>
+                <p class="card-text">A straightforward way to track your GATE prep without the bloat. Mark chapters as
+                    done, set reminders, and sync to the cloud.</p>
+                <div class="cta-group" style="justify-content: flex-start; margin-top: 2rem;">
+                    <a href="gate-tracker.html" class="btn btn-secondary">Explore GATE Tracker</a>
                 </div>
             </div>
 
-            <div style="margin-top: 6rem;"></div>
-
-            <div class="product-header">
-                <h2>GATE Tracker</h2>
-                <p>Our first experiment. A straightforward way to track your GATE prep without the bloat.</p>
-            </div>
-
-            <div class="product-grid">
-                <div class="product-info">
-                    <h3>Track your prep, simply</h3>
-                    <p>Mark chapters as done. Set reminders for yourself. Sync your progress to the cloud. That's it.
-                    </p>
-
-                    <ul class="features">
-                        <li>Chapter-by-chapter tracking</li>
-                        <li>Study reminders & notifications</li>
-                        <li>Cloud backup with Google Drive</li>
-                        <li>Works offline</li>
-                        <li>Clean, minimal interface</li>
-                    </ul>
-
-                    <div class="cta-group">
-                        <a href="gate-tracker.html" class="btn btn-primary">Learn more</a>
-                        <a href="https://github.com/vijendra-7/GATE_TRACKER/raw/master/GATE-Tracker.apk"
-                            class="btn btn-secondary">Download APK</a>
-                    </div>
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: #a855f7;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v20" />
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
                 </div>
-
-                <div class="product-visual">
-                    <img src="images/Screenshots/1.png"
-                        alt="GATE Tracker app interface showing dashboard and progress tracking">
+                <h2 class="card-title">More Products</h2>
+                <p class="card-text">From Master Attendance to Habit Tracker to FreshTrack, we build a variety of niche
+                    tools designed to solve specific daily friction points.</p>
+                <div class="cta-group" style="justify-content: flex-start; margin-top: 2rem;">
+                    <a href="products.html" class="btn btn-secondary">View our lineup</a>
                 </div>
             </div>
-        </section>
 
-        <!-- Stats -->
-        <section class="stats">
-            <div class="stat">
-                <div class="stat-number">Free</div>
+            <!-- Stats -->
+            <div class="bento-card small">
+                <div class="stat-value">Free</div>
                 <div class="stat-label">Forever. No catches.</div>
             </div>
-            <div class="stat">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Branches supported<br>(CS, CE, DA)</div>
+
+            <div class="bento-card small">
+                <div class="stat-value">Local</div>
+                <div class="stat-label">Data stored on your device.</div>
             </div>
-            <div class="stat">
-                <div class="stat-number">120+</div>
-                <div class="stat-label">Chapters to track</div>
+
+            <div class="bento-card small">
+                <div class="stat-value">No Ads</div>
+                <div class="stat-label">Clean, focused interfaces.</div>
             </div>
-        </section>
+        </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>VN Labs</h4>
-                <p>A small team building practical tools for students. One experiment at a time.</p>
+    <footer>
+        <div class="footer-content"
+            style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 1.25rem;">vn<span>labs</span></a>
             </div>
-
-            <div class="footer-section">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="gate-tracker.html">GATE Tracker</a></li>
-                    <li><a href="products.html">All Products</a></li>
-                </ul>
+            <div class="footer-links" style="display: flex; gap: 1.5rem;">
+                <a href="gate-tracker.html" style="color: var(--text-muted); text-decoration: none;">GATE Tracker</a>
+                <a href="products.html" style="color: var(--text-muted); text-decoration: none;">Products</a>
+                <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About</a>
+                <a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact</a>
             </div>
-
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="mailto:vnlabs.in@gmail.com">vnlabs.in@gmail.com</a></li>
-                </ul>
+            <div>
+                <a href="mailto:vnlabs.in@gmail.com"
+                    style="color: var(--text-muted); text-decoration: none;">vnlabs.in@gmail.com</a>
             </div>
         </div>
-
-        <div class="copyright">
-            <p>&copy; 2025 VN Labs. Built with curiosity.</p>
-        </div>
+        <p>&copy; 2026 VN Labs. Built with curiosity.</p>
     </footer>
-
-    <!-- Bottom Navigation for Mobile -->
-    <nav class="bottom-nav" aria-label="Mobile bottom navigation">
-        <div class="bottom-nav-container">
-            <a href="index.html" class="bottom-nav-item active" aria-label="Home">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </span>
-                <span>Home</span>
-            </a>
-            <a href="products.html" class="bottom-nav-item" aria-label="Products">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                </span>
-                <span>Products</span>
-            </a>
-            <a href="about.html" class="bottom-nav-item" aria-label="About">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </span>
-                <span>About</span>
-            </a>
-            <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                        </path>
-                    </svg>
-                </span>
-                <span>Contact</span>
-            </a>
-        </div>
-    </nav>
 
     <script defer>
         // Mobile menu
@@ -1214,7 +207,7 @@
 
         // Close on outside click
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav')) {
+            if (!e.target.closest('nav')) {
                 toggle.classList.remove('active');
                 nav.classList.remove('active');
             }

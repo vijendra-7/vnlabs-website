@@ -14,606 +14,212 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        .values-grid {
+            margin-top: 1rem;
         }
 
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary: #a855f7;
-            --accent: #f97316;
-            --highlight: #ec4899;
-            --background: #0a0a0a;
-            --surface: #171717;
-            --border: #262626;
-            --text-primary: #fafafa;
-            --text-secondary: #a3a3a3;
-            --text-muted: #525252;
-            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
-            --gradient-accent: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
-            --gradient-full: linear-gradient(135deg, #0ea5e9 0%, #a855f7 50%, #f97316 100%);
-        }
-
-        @keyframes gradient-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes glow-pulse {
-
-            0%,
-            100% {
-                opacity: 0.5;
-            }
-
-            50% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -1000px 0;
-            }
-
-            100% {
-                background-position: 1000px 0;
-            }
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
-            -webkit-tap-highlight-color: rgba(249, 115, 22, 0.2);
-            -webkit-touch-callout: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        /* Animated background effects */
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .header {
-            border-bottom: 1px solid var(--border);
-            padding: 1.25rem 0;
-            position: sticky;
-            top: 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-
-        .nav {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.938rem;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent);
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .hero {
-            max-width: 800px;
-            margin: 6rem auto 4rem;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -0.03em;
-            margin-bottom: 1.5rem;
-            background: var(--gradient-full);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradient-shift 8s ease infinite;
-            filter: drop-shadow(0 0 30px rgba(14, 165, 233, 0.5));
-        }
-
-        .hero p {
-            font-size: 1.375rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
-
-        .content h2 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 3rem 0 1.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .content h2:first-child {
-            margin-top: 0;
-        }
-
-        .content p {
-            color: var(--text-secondary);
-            font-size: 1.063rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .values {
-            display: grid;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .value {
-            padding: 2rem;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-        }
-
-        .value h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .value p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 4rem 2rem 2rem;
-            margin-top: 8rem;
-        }
-
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-section h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .footer-section p {
-            color: var(--text-muted);
-            font-size: 0.938rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.75rem;
-            font-size: 0.938rem;
-        }
-
-        .footer-section a:hover {
-            color: var(--text-primary);
-        }
-
-        .copyright {
-            text-align: center;
-            color: var(--text-muted);
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            font-size: 0.875rem;
-        }
-
-        /* Hide bottom nav on desktop - only show on mobile */
-        .bottom-nav {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-
-            /* Hide desktop nav on mobile */
-            .nav .nav-links {
-                display: none;
-            }
-
-            /* Floating Bottom Navigation - Enhanced Glassmorphism */
-            .bottom-nav {
-                display: block;
-                position: fixed;
-                bottom: 1rem;
-                left: 1rem;
-                right: 1rem;
-                background: linear-gradient(135deg,
-                        rgba(23, 23, 23, 0.7) 0%,
-                        rgba(38, 38, 38, 0.6) 100%);
-                backdrop-filter: blur(40px) saturate(180%);
-                -webkit-backdrop-filter: blur(40px) saturate(180%);
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                border-radius: 24px;
-                padding: 0.375rem;
-                z-index: 100;
-                box-shadow:
-                    0 8px 32px rgba(0, 0, 0, 0.6),
-                    0 0 0 1px rgba(255, 255, 255, 0.1) inset,
-                    0 1px 0 0 rgba(255, 255, 255, 0.2) inset;
-                max-width: 500px;
-                margin: 0 auto;
-            }
-
-            .bottom-nav::before {
-                content: '';
-                position: absolute;
-                inset: -2px;
-                border-radius: 24px;
-                padding: 2px;
-                background: linear-gradient(135deg,
-                        rgba(14, 165, 233, 0.4) 0%,
-                        rgba(168, 85, 247, 0.4) 50%,
-                        rgba(249, 115, 22, 0.4) 100%);
-                -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-                -webkit-mask-composite: xor;
-                mask-composite: exclude;
-                pointer-events: none;
-                opacity: 0.6;
-            }
-
-            .bottom-nav-container {
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                gap: 0.25rem;
-            }
-
-            .bottom-nav-item {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                color: var(--text-secondary);
-                font-size: 0.688rem;
-                font-weight: 600;
-                padding: 0.5rem 0.625rem;
-                border-radius: 16px;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                flex: 1;
-                min-height: 44px;
-                position: relative;
-                overflow: hidden;
-                gap: 0.5rem;
-            }
-
-            .bottom-nav-item::before {
-                content: '';
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(135deg,
-                        rgba(14, 165, 233, 0.1),
-                        rgba(168, 85, 247, 0.1));
-                opacity: 0;
-                transition: opacity 0.3s;
-                border-radius: 16px;
-            }
-
-            .bottom-nav-item:hover::before {
-                opacity: 1;
-            }
-
-            .bottom-nav-item span:not(.bottom-nav-icon) {
-                opacity: 0;
-                max-height: 0;
-                max-width: 0;
-                overflow: hidden;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                white-space: nowrap;
-            }
-
-            .bottom-nav-item:active {
-                transform: scale(0.90);
-            }
-
-            .bottom-nav-item.active {
-                color: white;
-                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-                transform: scale(1.08);
-                box-shadow: 0 4px 16px rgba(14, 165, 233, 0.4),
-                    0 0 24px rgba(168, 85, 247, 0.3);
-            }
-
-            .bottom-nav-item.active::before {
-                opacity: 0;
-            }
-
-            .bottom-nav-item.active span:not(.bottom-nav-icon) {
-                opacity: 1;
-                max-height: 20px;
-                max-width: 100px;
-            }
-
-            .bottom-nav-icon {
-                font-size: 1.25rem;
-                margin-bottom: 0;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                filter: grayscale(0.3);
-                flex-shrink: 0;
-            }
-
-            .bottom-nav-item.active .bottom-nav-icon {
-                transform: scale(1.1);
-                filter: grayscale(0) drop-shadow(0 2px 8px rgba(255, 255, 255, 0.3));
-            }
-
-            body {
-                padding-bottom: 100px;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
+        .highlight-accent {
+            color: var(--accent-1);
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">vn<span>labs</span></a>
-            <ul class="nav-links">
-                <li><a href="products.html">Products</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="bg-pattern"></div>
+    <div class="bg-grid"></div>
+
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="VN Labs Home">vn<span>labs</span></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <main>
-        <section class="hero">
-            <h1>We're building tools we wish existed</h1>
-            <p>VN Labs is a small team making practical tools for students. No big vision statements or grand plans —
-                just building stuff that solves real problems.</p>
-        </section>
+        <!-- Hero -->
+        <header class="hero">
+            <div class="pill">Who We Are</div>
+            <h1>Building tools we <br><span class="gradient-text">wish existed</span></h1>
+            <p class="subtitle">No big vision statements or grand plans — just building stuff that solves real problems
+                for students.</p>
+        </header>
 
-        <section class="content">
-            <h2>Why we started</h2>
-            <p>During GATE prep, we couldn't find a simple way to track our progress. Everything was either too
-                complicated or tried to do too much.</p>
-            <p>So we built GATE Tracker. Just chapter tracking, reminders, and cloud sync. Nothing fancy, but it worked.
-            </p>
-            <p>That's what we do now. Find problems students face, build simple solutions, share them for free.</p>
-
-            <h2>How we work</h2>
-            <p>We're students building for students. We experiment, test, and iterate based on what actually helps.</p>
-            <p>Each product starts as an experiment. If it's useful, we polish it and release it. If not, we learn and
-                move on.</p>
-
-            <div class="values">
-                <div class="value">
-                    <h3>Keep it simple</h3>
-                    <p>Good tools don't need complex features. They just need to work well at what they're meant to do.
-                    </p>
+        <!-- Content Setup in Bento Grid -->
+        <div class="bento-grid">
+            <div class="bento-card large">
+                <div class="icon-box" style="color: var(--accent-2); margin-bottom: 2rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4" />
+                        <path d="M12 8h.01" />
+                    </svg>
                 </div>
-                <div class="value">
-                    <h3>Stay curious</h3>
-                    <p>We're always learning. Every project is a chance to experiment and try new things.</p>
-                </div>
-                <div class="value">
-                    <h3>Make it free</h3>
-                    <p>We believe good tools should be accessible. Everything we build is free, no strings attached.</p>
+                <h2 class="card-title">Why we started</h2>
+                <div
+                    style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 800px; font-weight: 300;">
+                    <p style="margin-bottom: 1.5rem;">During our GATE prep, we couldn't find a simple way to track our
+                        progress. Everything was either too complicated or tried to do too much.</p>
+                    <p style="margin-bottom: 1.5rem;">So we built <strong style="color: var(--text-main);">GATE
+                            Tracker</strong>. Just chapter tracking, reminders, and cloud sync. Nothing fancy, but it
+                        worked perfectly for our specific use case.</p>
+                    <p>That essentially became our model. Find problems students face, build simple solutions, and share
+                        them for free.</p>
                 </div>
             </div>
 
-            <h2>What's next</h2>
-            <p>We're working on more tools for students. Some will work out, some won't. That's the nature of
-                experiments.</p>
-            <p>Want to follow along? Check our products page to see what we're building.</p>
-        </section>
+            <div class="bento-card large">
+                <div class="icon-box" style="color: #f59e0b; margin-bottom: 2rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                </div>
+                <h2 class="card-title">How we work</h2>
+                <div
+                    style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 800px; font-weight: 300;">
+                    <p style="margin-bottom: 1.5rem;">We're students building for students. We experiment, test, and
+                        iterate based on what actually helps.</p>
+                    <p>Each product starts as an experiment. If it's useful, we polish it and release it. If not, we
+                        learn from it and move on.</p>
+                </div>
+
+                <div class="bento-grid values-grid" style="margin-bottom: 0;">
+                    <div class="bento-card small"
+                        style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="icon-box" style="color: #10b981;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <h2 class="card-title" style="font-size: 1.25rem;">Keep it simple</h2>
+                        <p class="card-text">Good tools don't need complex features. They just need to work well at what
+                            they're meant to do.</p>
+                    </div>
+                    <div class="bento-card small"
+                        style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="icon-box" style="color: #3b82f6;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <line x1="12" y1="17" x2="12.01" y2="17" />
+                            </svg>
+                        </div>
+                        <h2 class="card-title" style="font-size: 1.25rem;">Stay curious</h2>
+                        <p class="card-text">We're always learning. Every project is a chance to experiment and try
+                            completely new things.</p>
+                    </div>
+                    <div class="bento-card small"
+                        style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);">
+                        <div class="icon-box" style="color: #a855f7;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 2v20" />
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                            </svg>
+                        </div>
+                        <h2 class="card-title" style="font-size: 1.25rem;">Make it free</h2>
+                        <p class="card-text">We believe good tools should be accessible. Everything we build is free, no
+                            strings attached.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: #14b8a6;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                </div>
+                <h2 class="card-title">What's next?</h2>
+                <p class="card-text">We're working on more tools for students. Some will work out perfectly, some won't.
+                    That's the nature of experiments. Want to follow along?</p>
+                <div class="cta-group" style="justify-content: flex-start; margin-top: 1.5rem;">
+                    <a href="products.html" class="btn btn-primary">See our products</a>
+                </div>
+            </div>
+
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: #ef4444;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Get in touch</h2>
+                <p class="card-text">Have an idea for a simple tool? Or just want to say hi? We'd love to hear from you.
+                    We read every email.</p>
+                <div class="cta-group" style="justify-content: flex-start; margin-top: 1.5rem;">
+                    <a href="contact.html" class="btn btn-secondary">Contact us</a>
+                </div>
+            </div>
+
+        </div>
     </main>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>VN Labs</h4>
-                <p>Student tools, built by students.</p>
+    <footer>
+        <div class="footer-content"
+            style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 1.25rem;">vn<span>labs</span></a>
             </div>
-            <div class="footer-section">
-                <h4>Products</h4>
-                <ul>
-                    <li><a href="gate-tracker.html">GATE Tracker</a></li>
-                    <li><a href="products.html">All Products</a></li>
-                </ul>
+            <div class="footer-links" style="display: flex; gap: 1.5rem;">
+                <a href="gate-tracker.html" style="color: var(--text-muted); text-decoration: none;">GATE Tracker</a>
+                <a href="products.html" style="color: var(--text-muted); text-decoration: none;">Products</a>
+                <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About</a>
+                <a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact</a>
             </div>
-            <div class="footer-section">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Connect</h4>
-                <ul>
-                    <li><a href="mailto:vnlabs.in@gmail.com">vnlabs.in@gmail.com</a></li>
-                </ul>
+            <div>
+                <a href="mailto:vnlabs.in@gmail.com"
+                    style="color: var(--text-muted); text-decoration: none;">vnlabs.in@gmail.com</a>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2025 VN Labs. Built with curiosity.</p>
-        </div>
+        <p>&copy; 2026 VN Labs. Built with curiosity.</p>
     </footer>
 
-    <!-- Bottom Navigation for Mobile -->
-    <nav class="bottom-nav" aria-label="Mobile bottom navigation">
-        <div class="bottom-nav-container">
-            <a href="index.html" class="bottom-nav-item" aria-label="Home">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </span>
-                <span>Home</span>
-            </a>
-            <a href="products.html" class="bottom-nav-item" aria-label="Products">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="3" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="3" width="7" height="7"></rect>
-                        <rect x="14" y="14" width="7" height="7"></rect>
-                        <rect x="3" y="14" width="7" height="7"></rect>
-                    </svg>
-                </span>
-                <span>Products</span>
-            </a>
-            <a href="about.html" class="bottom-nav-item active" aria-label="About">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                </span>
-                <span>About</span>
-            </a>
-            <a href="contact.html" class="bottom-nav-item" aria-label="Contact">
-                <span class="bottom-nav-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path
-                            d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-                        </path>
-                    </svg>
-                </span>
-                <span>Contact</span>
-            </a>
-        </div>
-    </nav>
+    <script defer>
+        // Mobile menu
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav-links');
+
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            nav.classList.toggle('active');
+        });
+
+        // Close on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('nav')) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 
 </html>

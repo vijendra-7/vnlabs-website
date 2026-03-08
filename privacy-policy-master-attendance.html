@@ -9,439 +9,193 @@
         content="Privacy Policy for Master Attendance App - Learn how we collect, use, and protect your data.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0ea5e9;
-            --primary-dark: #0284c7;
-            --secondary: #a855f7;
-            --accent: #f97316;
-            --highlight: #ec4899;
-            --background: #0a0a0a;
-            --surface: #171717;
-            --border: #262626;
-            --text-primary: #fafafa;
-            --text-secondary: #a3a3a3;
-            --text-muted: #525252;
-            --gradient-primary: linear-gradient(135deg, #0ea5e9 0%, #a855f7 100%);
-            --gradient-accent: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
-            --gradient-full: linear-gradient(135deg, #0ea5e9 0%, #a855f7 50%, #f97316 100%);
-        }
-
-        @keyframes gradient-shift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        html {
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--background);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 20% 30%, rgba(14, 165, 233, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.1) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                linear-gradient(90deg, rgba(14, 165, 233, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(14, 165, 233, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.5;
-        }
-
-        .header {
-            border-bottom: 1px solid var(--border);
-            padding: 1.25rem 0;
-            position: sticky;
-            top: 0;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: -0.02em;
-            text-decoration: none;
-        }
-
-        .logo span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .page-title {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            letter-spacing: -0.03em;
-            background: var(--gradient-full);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            background-size: 200% auto;
-            animation: gradient-shift 8s ease infinite;
-            filter: drop-shadow(0 0 30px rgba(14, 165, 233, 0.5));
-        }
-
-        .last-updated {
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-            font-size: 0.9rem;
-        }
-
-        .content-section {
-            background: transparent;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .content-section h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .content-section h3 {
-            font-size: 1.25rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--text-secondary);
-        }
-
-        .content-section p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.8;
-        }
-
-        .content-section ul {
-            color: var(--text-secondary);
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .content-section li {
-            margin-bottom: 0.5rem;
-            line-height: 1.8;
-        }
-
-        .highlight {
-            background: var(--surface);
-            border-left: 3px solid var(--accent);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-
-        .footer {
-            background: var(--surface);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-muted);
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 101;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        @media (max-width: 768px) {
-            .page-title {
-                font-size: 2rem;
-            }
-
-            .content-section {
-                padding: 1.5rem;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                height: 100vh;
-                width: 70%;
-                max-width: 300px;
-                background: var(--surface);
-                flex-direction: column;
-                gap: 0;
-                padding: 5rem 2rem 2rem;
-                border-left: 1px solid rgba(255, 255, 255, 0.1);
-                transition: right 0.3s ease;
-                z-index: 100;
-                box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
-            }
-
-            .nav-links.active {
-                right: 0;
-            }
-
-            .nav-links li {
-                width: 100%;
-                margin: 0;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-                font-size: 1.1rem;
-            }
-
-            .nav-links a:hover {
-                padding-left: 1rem;
-                transition: padding-left 0.3s ease;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">vn<span>labs</span></a>
-            <button class="mobile-menu-toggle" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="privacy-policy-master-attendance.html">Privacy Policy</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="bg-pattern"></div>
+    <div class="bg-grid"></div>
 
-    <main class="container">
-        <h1 class="page-title">Privacy Policy</h1>
-        <p class="last-updated">Last updated: March 8, 2026</p>
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="logo" aria-label="VN Labs Home">vn<span>labs</span></a>
+        <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
-        <div class="content-section">
-            <h2>📋 Introduction</h2>
-            <p>Welcome to Master Attendance. We are committed to protecting your privacy and ensuring the security of your
-                personal information. This Privacy Policy explains how we handle your data when you
-                use our application.</p>
-        </div>
+    <main>
+        <header class="hero" style="text-align: left; margin-bottom: 3rem; padding-top: 3rem;">
+            <div class="pill">Privacy Policy</div>
+            <h1 style="font-size: 3.5rem;">Master Attendance</h1>
+            <p class="subtitle" style="margin: 0; max-width: 100%;">Last updated: March 8, 2026</p>
+        </header>
 
-        <div class="content-section">
-            <h2>📊 Information We Collect</h2>
+        <div class="bento-grid">
 
-            <h3>Information You Provide</h3>
-            <ul>
-                <li><strong>Local Data:</strong> All attendance records, subjects, schedules, and analytics are created and stored <strong>locally</strong> on your device.</li>
-            </ul>
-
-            <h3>Automatically Collected Information</h3>
-            <ul>
-                <li><strong>Usage Data:</strong> Basic app interactions and performance metrics (if you opt-in to system analytics provided by Google/Apple).</li>
-            </ul>
-        </div>
-
-        <div class="content-section">
-            <h2>🔒 How We Use Your Information</h2>
-            <p>Our app focuses on data privacy by storing your attendance records ONLY on your device. We use this data strictly for:</p>
-            <ul>
-                <li>Allowing you to track your lecture attendance and manage your classes within the app.</li>
-                <li>Generating attendance analytics and reports summarizing your activity locally.</li>
-            </ul>
-        </div>
-
-        <div class="content-section">
-            <h2>☁️ Local Storage</h2>
-            <div class="highlight">
-                <p><strong>Important:</strong> Master Attendance does NOT transmit, store, or back up your attendance data to any external cloud servers.</p>
+            <div class="bento-card large">
+                <div class="icon-box" style="color: var(--accent-1); margin-bottom: 1.5rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Introduction</h2>
+                <p class="card-text">Welcome to Master Attendance. We are committed to protecting your privacy and
+                    ensuring the security of your personal information. This Privacy Policy explains how we handle your
+                    data when you use our application.</p>
             </div>
-            <p>When you use the app:</p>
-            <ul>
-                <li>All data is stored directly on your phone's memory.</li>
-                <li>You are solely responsible for keeping a backup of the data if you change devices. Uninstalling the app may result in permanent data loss.</li>
-            </ul>
-        </div>
 
-        <div class="content-section">
-            <h2>🛡️ Data Security</h2>
-            <p>We respect your privacy by keeping your data localized on your device. To ensure safety:</p>
-            <ul>
-                <li>All data is stored inside the app’s secure private sandbox directory by the OS.</li>
-                <li>We do not collect or sell any personal data.</li>
-            </ul>
-        </div>
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: var(--accent-2);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path
+                            d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Information We Collect</h2>
+                <p class="card-text">
+                    <strong>Local Data:</strong> All attendance records, subjects, schedules, and analytics are created
+                    and stored <strong>locally</strong> on your device.<br><br>
+                    <strong>Automatically Collected:</strong> Basic app interactions and performance metrics (if you
+                    opt-in to system analytics provided by Google/Apple).
+                </p>
+            </div>
 
-        <div class="content-section">
-            <h2>👥 Data Sharing</h2>
-            <p>We do not collect, sell, trade, or rent your personal information to third parties. We do not have servers to access your data.</p>
-        </div>
+            <div class="bento-card medium">
+                <div class="icon-box" style="color: #f59e0b;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    </svg>
+                </div>
+                <h2 class="card-title">How We Use Your Info</h2>
+                <p class="card-text">Our app focuses on data privacy by storing your attendance records ONLY on your
+                    device. We use this data strictly for:</p>
+                <ul class="list-items" style="margin-top: 0;">
+                    <li>Allowing you to track your lecture attendance and manage your classes within the app.</li>
+                    <li>Generating attendance analytics and reports summarizing your activity locally.</li>
+                </ul>
+            </div>
 
-        <div class="content-section">
-            <h2>👶 Children's Privacy</h2>
-            <p>Master Attendance is intended for students tracking their classes. While people of all ages can use the tool, we do not knowingly collect personal information from children under 13 since no data is sent to our servers.</p>
-        </div>
+            <div class="bento-card large"
+                style="border-color: rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.05);">
+                <div class="icon-box"
+                    style="color: #3b82f6; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.2);">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Local Storage</h2>
+                <p class="card-text"><strong>Important:</strong> Master Attendance does NOT transmit, store, or back up
+                    your attendance data to any external cloud servers.</p>
+                <ul class="list-items" style="margin-top: 1rem;">
+                    <li>All data is stored directly on your phone's memory.</li>
+                    <li>You are solely responsible for keeping a backup of the data if you change devices. Uninstalling
+                        the app may result in permanent data loss.</li>
+                </ul>
+            </div>
 
-        <div class="content-section">
-            <h2>🔔 Changes to This Policy</h2>
-            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new
-                Privacy Policy on our website and updating the "Last updated" date.</p>
-        </div>
+            <div class="bento-card small">
+                <div class="icon-box" style="color: #10b981;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Data Security</h2>
+                <p class="card-text">All data is stored inside the app’s secure private sandbox directory. We do not
+                    collect or sell personal data.</p>
+            </div>
 
-        <div class="content-section">
-            <h2>📧 Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-            <p><strong>Email:</strong> vnlabs.in@gmail.com</p>
+            <div class="bento-card small">
+                <div class="icon-box" style="color: #ec4899;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4" />
+                        <path d="M12 16h.01" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Data Sharing</h2>
+                <p class="card-text">We do not collect, sell, trade, or rent your personal information to third parties.
+                    We have no servers to access your data.</p>
+            </div>
+
+            <div class="bento-card small">
+                <div class="icon-box" style="color: #8b5cf6;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <h2 class="card-title">Children's Privacy</h2>
+                <p class="card-text">While people of all ages can use the tool to track classes, we do not knowingly
+                    collect personal information from children under 13.</p>
+            </div>
+
+            <div class="bento-card large">
+                <h2 class="card-title">Contact Us</h2>
+                <p class="card-text">If you have any questions about this Privacy Policy, please contact us at <a
+                        href="mailto:vnlabs.in@gmail.com"
+                        style="color: var(--accent-2); text-decoration: none;">vnlabs.in@gmail.com</a>.</p>
+            </div>
+
         </div>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 Master Attendance. All rights reserved.</p>
+    <footer>
+        <div class="footer-content"
+            style="display: flex; justify-content: space-between; align-items: center; max-width: 1400px; margin: 0 auto; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+            <div>
+                <a href="index.html" class="logo" style="font-size: 1.25rem;">vn<span>labs</span></a>
+            </div>
+            <div class="footer-links" style="display: flex; gap: 1.5rem;">
+                <a href="products.html" style="color: var(--text-muted); text-decoration: none;">Products</a>
+                <a href="about.html" style="color: var(--text-muted); text-decoration: none;">About</a>
+                <a href="contact.html" style="color: var(--text-muted); text-decoration: none;">Contact</a>
+            </div>
+            <div>
+                <a href="mailto:vnlabs.in@gmail.com"
+                    style="color: var(--text-muted); text-decoration: none;">vnlabs.in@gmail.com</a>
+            </div>
+        </div>
+        <p>&copy; 2026 Master Attendance. Built with curiosity.</p>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
+    <script defer>
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        const nav = document.querySelector('.nav-links');
 
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileMenuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            nav.classList.toggle('active');
         });
 
-        // Close mobile menu when clicking a link
-        const navLinkItems = document.querySelectorAll('.nav-links a');
-        navLinkItems.forEach(link => {
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
             });
         });
 
-        // Close mobile menu when clicking outside
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.nav')) {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
+            if (!e.target.closest('nav')) {
+                toggle.classList.remove('active');
+                nav.classList.remove('active');
             }
         });
     </script>
