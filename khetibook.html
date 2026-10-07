@@ -241,32 +241,7 @@
         <p>&copy; 2026 VN Labs. Built with curiosity.</p>
     </footer>
 
-    <script defer>
-        // Mobile menu
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        const nav = document.querySelector('.nav-links');
-
-        toggle.addEventListener('click', () => {
-            toggle.classList.toggle('active');
-            nav.classList.toggle('active');
-        });
-
-        // Close on link click
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                toggle.classList.remove('active');
-                nav.classList.remove('active');
-            });
-        });
-
-        // Close on outside click
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('nav')) {
-                toggle.classList.remove('active');
-                nav.classList.remove('active');
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
