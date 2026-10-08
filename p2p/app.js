@@ -1,4 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Global error handler to catch issues
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    console.error("App Error: " + msg + "\nLine: " + lineNo);
+    return false;
+};
     // UI Elements
     const myIdDisplay = document.getElementById('my-id');
     const copyIdBtn = document.getElementById('copy-id-btn');
@@ -497,4 +501,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initPeer();
-});
+
