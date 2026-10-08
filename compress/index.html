@@ -30,6 +30,19 @@
             <input type="file" id="debug-file-input" style="display: block; margin-bottom: 10px; background: white; color: black; padding: 5px;">
             <img id="debug-img-preview" style="max-width: 200px; display: block; border: 1px solid white; min-height: 50px;">
         </div>
+        <script>
+            document.getElementById('debug-file-input').addEventListener('change', function(e) {
+                var file = e.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(ev) {
+                        document.getElementById('debug-img-preview').src = ev.target.result;
+                        alert("INLINE DEBUG SUCCESS: Image rendered!");
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        </script>
 
         <div class="compress-header">
             <h1>VN Compress</h1>
