@@ -10,6 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxWidthInput = document.getElementById('max-width');
     const maxHeightInput = document.getElementById('max-height');
     const outputFormatSelect = document.getElementById('output-format');
+    const resizeModeSelect = document.getElementById('resize-mode');
+    const padColorContainer = document.getElementById('pad-color-container');
+    const padColorPicker = document.getElementById('pad-color-picker');
+    const quickColors = document.querySelectorAll('.quick-color');
     
     const btnCompress = document.getElementById('btn-compress');
     const resultArea = document.getElementById('result-area');
@@ -22,6 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let finalBlob = null;
 
     // --- Drag & Drop ---
+    
+    resizeModeSelect.addEventListener('change', () => {
+        if (resizeModeSelect.value === 'pad') {
+            padColorContainer.style.display = 'block';
+        } else {
+            padColorContainer.style.display = 'none';
+        }
+    });
+
+    quickColors.forEach(qc => {
+        qc.addEventListener('click', () => {
+            padColorPicker.value = qc.getAttribute('data-color');
+        });
+    });
+
     dropzone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropzone.classList.add('dragover');
@@ -110,27 +129,74 @@ document.addEventListener('DOMContentLoaded', () => {
         let maxHeight = parseInt(maxHeightInput.value) || originalImageObj.height;
         const targetKb = parseFloat(targetSizeInput.value) || 0;
         const mimeType = outputFormatSelect.value;
+        const resizeMode = resizeModeSelect.value;
+        const padColor = padColorPicker.value;
         
-        // Calculate aspect-ratio preserving dimensions
-        let width = originalImageObj.width;
-        let height = originalImageObj.height;
+        let canvasWidth = maxWidth;
+        let canvasHeight = maxHeight;
+        let drawX = 0, drawY = 0, drawW = maxWidth, drawH = maxHeight;
 
-        if (width > maxWidth) {
-            height = Math.round(height * (maxWidth / width));
-            width = maxWidth;
-        }
-        if (height > maxHeight) {
-            width = Math.round(width * (maxHeight / height));
-            height = maxHeight;
+        const imgW = originalImageObj.width;
+        const imgH = originalImageObj.height;
+        const imgRatio = imgW / imgH;
+        const canvasRatio = maxWidth / maxHeight;
+
+        if (resizeMode === 'fit') {
+            // Standard fit (shrinks canvas to fit image exactly without padding or cropping)
+            if (imgW > maxWidth || imgH > maxHeight) {
+                if (imgRatio > canvasRatio) {
+                    canvasHeight = Math.round(maxWidth / imgRatio);
+                } else {
+                    canvasWidth = Math.round(maxHeight * imgRatio);
+                }
+            } else {
+                canvasWidth = imgW;
+                canvasHeight = imgH;
+            }
+            drawW = canvasWidth;
+            drawH = canvasHeight;
+        } 
+        else if (resizeMode === 'crop') {
+            // Fill exact dimensions, crop excess
+            if (imgRatio > canvasRatio) {
+                // Image is wider than canvas
+                drawH = maxHeight;
+                drawW = Math.round(maxHeight * imgRatio);
+                drawX = Math.round((maxWidth - drawW) / 2);
+            } else {
+                // Image is taller than canvas
+                drawW = maxWidth;
+                drawH = Math.round(maxWidth / imgRatio);
+                drawY = Math.round((maxHeight - drawH) / 2);
+            }
+        } 
+        else if (resizeMode === 'pad') {
+            // Canvas stays exactly maxWidth x maxHeight, image shrinks to fit inside
+            if (imgRatio > canvasRatio) {
+                // Image is wider
+                drawW = maxWidth;
+                drawH = Math.round(maxWidth / imgRatio);
+                drawY = Math.round((maxHeight - drawH) / 2);
+            } else {
+                // Image is taller
+                drawH = maxHeight;
+                drawW = Math.round(maxHeight * imgRatio);
+                drawX = Math.round((maxWidth - drawW) / 2);
+            }
         }
 
         const canvas = document.createElement('canvas');
-        canvas.width = width;
-        canvas.height = height;
+        canvas.width = canvasWidth;
+        canvas.height = canvasHeight;
         const ctx = canvas.getContext('2d');
         
+        if (resizeMode === 'pad') {
+            ctx.fillStyle = padColor;
+            ctx.fillRect(0, 0, canvasWidth, canvasHeight);
+        }
+
         // Drawing to canvas automatically strips EXIF data for privacy!
-        ctx.drawImage(originalImageObj, 0, 0, width, height);
+        ctx.drawImage(originalImageObj, drawX, drawY, drawW, drawH);
 
         let resultBlob = null;
 
