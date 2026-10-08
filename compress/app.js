@@ -87,7 +87,6 @@ alert("APP.JS HAS STARTED EXECUTION!");
     btnRemove.addEventListener('click', resetUI);
 
     function handleFile(file) {
-        alert("1. handleFile started. File: " + file.name + " (" + file.type + ")");
         if (file.type && !file.type.startsWith('image/')) {
             alert('Please select an image file (JPEG, PNG, WebP).');
             return;
@@ -95,36 +94,42 @@ alert("APP.JS HAS STARTED EXECUTION!");
 
         currentFile = file;
         
-        // Auto-select best output format based on input
+        // Auto-select best output format
         if (file.type === 'image/png') outputFormatSelect.value = 'image/png';
         else outputFormatSelect.value = 'image/jpeg';
 
-        const sizeKb = (file.size / 1024).toFixed(1);
-        alert("2. Starting FileReader...");
         const reader = new FileReader();
         reader.onload = (e) => {
-            alert("3. FileReader finished. Result length: " + (e.target.result ? e.target.result.length : 0));
             const img = new Image();
             img.onload = () => {
-                alert("4. Image loaded successfully! Updating UI...");
                 originalImageObj = img;
-                originalMeta.innerHTML = `Original: <strong>${sizeKb} KB</strong> <br> ${img.width}x${img.height} px`;
                 
-                // Pre-fill max dimensions
-                maxWidthInput.value = img.width;
-                maxHeightInput.value = img.height;
+                // Pre-fill dimensions
+                const maxW = document.getElementById('max-width');
+                const maxH = document.getElementById('max-height');
+                if (maxW) maxW.value = img.width;
+                if (maxH) maxH.value = img.height;
                 
-                imagePreview.src = e.target.result;
-                dropzone.style.display = 'none';
-                previewContainer.style.display = 'flex';
+                // Show inline preview
+                const inlinePreview = document.getElementById('inline-preview');
+                if (inlinePreview) {
+                    inlinePreview.src = e.target.result;
+                    inlinePreview.style.display = 'block';
+                }
+                
+                // Hide default elements
+                const dropIcon = document.getElementById('drop-icon');
+                const dropTitle = document.getElementById('drop-title');
+                if (dropIcon) dropIcon.style.display = 'none';
+                if (dropTitle) dropTitle.style.display = 'none';
+                
+                // Show remove button
+                const btnRemoveInline = document.getElementById('btn-remove-inline');
+                if (btnRemoveInline) btnRemoveInline.style.display = 'block';
+                
+                // Enable compress button
                 btnCompress.disabled = false;
                 resultArea.style.display = 'none';
-                fileInput.value = ''; // Safely reset so same file can be selected again
-                alert("5. UI update complete.");
-            };
-            img.onerror = () => {
-                fileInput.value = ''; // Safely reset on error
-                alert("4. img.onerror fired! Browser failed to decode image.");
             };
             img.src = e.target.result;
         };
@@ -136,12 +141,35 @@ alert("APP.JS HAS STARTED EXECUTION!");
         originalImageObj = null;
         finalBlob = null;
         fileInput.value = '';
+        
         const dropTxt = document.getElementById('dropzone-text');
         if (dropTxt) dropTxt.innerText = "or choose a file below";
-        dropzone.style.display = 'flex';
-        previewContainer.style.display = 'none';
+        
+        const inlinePreview = document.getElementById('inline-preview');
+        if (inlinePreview) {
+            inlinePreview.src = '';
+            inlinePreview.style.display = 'none';
+        }
+        
+        const dropIcon = document.getElementById('drop-icon');
+        const dropTitle = document.getElementById('drop-title');
+        const btnRemoveInline = document.getElementById('btn-remove-inline');
+        
+        if (dropIcon) dropIcon.style.display = 'block';
+        if (dropTitle) dropTitle.style.display = 'block';
+        if (btnRemoveInline) btnRemoveInline.style.display = 'none';
+        
         btnCompress.disabled = true;
         resultArea.style.display = 'none';
+    }
+
+    // Attach inline remove button
+    const btnRemoveInline = document.getElementById('btn-remove-inline');
+    if (btnRemoveInline) {
+        btnRemoveInline.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent opening file picker again
+            resetUI();
+        });
     }
 
     // --- Compression Logic ---
