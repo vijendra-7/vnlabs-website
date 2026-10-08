@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VN Cipher | Secure Client-Side Encryption</title>
+    <meta name="description" content="Military-grade AES-256 client-side encryption. Securely share passwords, API keys, and private notes.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    <div class="glow-orb purple" style="top: -10%; left: -5%;"></div>
+    <div class="glow-orb cyan" style="bottom: -10%; right: -5%;"></div>
+    
+    <nav class="standard-nav fade-in visible desktop-nav">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+    </nav>
+
+    <main class="cipher-container fade-in visible">
+        <div class="cipher-header">
+            <h1>VN Cipher</h1>
+            <p>Military-grade AES-256 text encryption. 100% Client-side. Zero server logs.</p>
+        </div>
+
+        <div class="glass-panel main-panel">
+            <div class="tabs">
+                <button class="tab-btn active" id="tab-encrypt">Encrypt</button>
+                <button class="tab-btn" id="tab-decrypt">Decrypt</button>
+            </div>
+
+            <div class="tab-content" id="content-encrypt">
+                <div class="input-group">
+                    <label>Secret Message</label>
+                    <textarea id="encrypt-text" placeholder="Paste your API key, password, or private note here..."></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Master Password</label>
+                    <input type="password" id="encrypt-password" placeholder="Create a strong password...">
+                </div>
+
+                <button id="btn-encrypt" class="btn btn-primary full-width">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                    Encrypt Message
+                </button>
+            </div>
+
+            <div class="tab-content" id="content-decrypt" style="display: none;">
+                <div class="input-group">
+                    <label>Encrypted Ciphertext</label>
+                    <textarea id="decrypt-text" placeholder="Paste the encrypted block here..." style="font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;"></textarea>
+                </div>
+                
+                <div class="input-group">
+                    <label>Master Password</label>
+                    <input type="password" id="decrypt-password" placeholder="Enter the password to unlock...">
+                </div>
+
+                <button id="btn-decrypt" class="btn btn-secondary full-width">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 9.9-1"></path></svg>
+                    Decrypt Message
+                </button>
+            </div>
+
+            <!-- Result Box -->
+            <div id="result-box" class="result-box" style="display: none;">
+                <div class="result-header">
+                    <span id="result-label" style="font-weight: 600; color: var(--cyan);">Result</span>
+                    <button id="btn-copy" class="btn small-btn copy-btn">Copy</button>
+                </div>
+                <div id="result-content" class="result-content"></div>
+            </div>
+            
+            <!-- Error Box -->
+            <div id="error-box" class="error-box" style="display: none;"></div>
+        </div>
+        
+        <div class="security-notice">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            This runs entirely in your browser. VN Labs cannot read or recover your passwords.
+        </div>
+    </main>
+
+    <footer class="mobile-footer">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+    </footer>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
