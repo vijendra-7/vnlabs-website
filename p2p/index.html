@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VN Labs | Secure P2P Transfer</title>
+    
+    <!-- SEO and Meta -->
+    <meta name="description" content="Serverless, lightning-fast peer-to-peer file transfer. Completely secure and private with end-to-end encryption.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- External Libraries -->
+    <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Atmospheric Background -->
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+    
+    <!-- Navigation -->
+    <nav class="standard-nav fade-in visible">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+    </nav>
+
+    <main class="p2p-container fade-in visible delay-1">
+        
+        <!-- Header -->
+        <div class="p2p-header">
+            <h1 class="gradient-text">Zero-Server Transfer</h1>
+            <p>End-to-end encrypted file sharing directly between devices.</p>
+        </div>
+
+        <div class="glass-panel main-panel">
+            
+            <!-- Connection State -->
+            <div id="connection-screen" class="screen active">
+                <div class="split-layout">
+                    
+                    <!-- Left: Your ID -->
+                    <div class="identity-section">
+                        <h3>Your Device ID</h3>
+                        <div class="id-display-wrapper">
+                            <h2 id="my-id" class="id-text">Loading...</h2>
+                            <button id="copy-id-btn" class="icon-btn" title="Copy ID">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            </button>
+                        </div>
+                        <div id="qrcode" class="qr-container"></div>
+                        <p class="hint">Scan QR to connect from mobile</p>
+                    </div>
+
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!-- Right: Connect to Peer -->
+                    <div class="connect-section">
+                        <h3>Connect to Device</h3>
+                        <div class="input-group">
+                            <input type="text" id="peer-id-input" placeholder="Enter remote Device ID" autocomplete="off" spellcheck="false">
+                            <button id="connect-btn" class="btn btn-primary">Connect</button>
+                        </div>
+                        <p id="connection-status" class="status-text text-muted">Ready to pair.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Transfer State -->
+            <div id="transfer-screen" class="screen">
+                <div class="transfer-header">
+                    <div class="status-indicator online"></div>
+                    <h3>Connected to: <span id="connected-peer-id" class="highlight">---</span></h3>
+                    <button id="disconnect-btn" class="icon-btn danger">Disconnect</button>
+                </div>
+
+                <!-- Dropzone -->
+                <div id="dropzone" class="dropzone">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    <h3>Drag & Drop files here</h3>
+                    <p>or click to browse</p>
+                    <input type="file" id="file-input" multiple style="display: none;">
+                </div>
+
+                <!-- Transfer Progress -->
+                <div id="transfer-list" class="transfer-list">
+                    <!-- Dynamic transfer items will appear here -->
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Script -->
+    <script src="app.js" defer></script>
+</body>
+</html>
