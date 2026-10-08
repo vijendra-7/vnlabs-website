@@ -1,0 +1,16 @@
+{
+  "name": "GATE CS Syllabus Tracker",
+  "short_name": "Syllabus",
+  "description": "Interactive GATE Computer Science Syllabus Tracker & Weightage Insights",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07090E",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
