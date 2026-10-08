@@ -1,0 +1,16 @@
+{
+  "name": "Focus Matrix",
+  "short_name": "FocusMatrix",
+  "description": "Ambient Pomodoro Timer with Procedural Sound Synthesizer",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0C10",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
