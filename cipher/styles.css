@@ -1,3 +1,4 @@
+.mobile-footer { display: none; }
 .cipher-container {
     max-width: 650px;
     margin: 40px auto;
@@ -205,3 +206,4 @@
     .cipher-header h1 { font-size: 2.2rem; }
     .glass-panel { padding: 24px 16px; }
 }
+
