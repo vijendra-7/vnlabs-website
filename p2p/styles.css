@@ -23,12 +23,11 @@
     padding: 20px 0 40px 0;
 }
 .mobile-footer .logo {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: 800;
     color: white;
     text-decoration: none;
-    letter-spacing: 2px;
+    letter-spacing: -1px;
 }
 .mobile-footer .logo span {
     color: var(--cyan);
