@@ -151,6 +151,11 @@ function renderSubjectsNav() {
             // Exit search view if open
             closeSearch();
             renderAll();
+            // On mobile ribbon, scroll active subject into center view
+            setTimeout(() => {
+                const activeBtn = container.querySelector(`.subject-item-btn[data-id="${subject.id}"]`);
+                activeBtn?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            }, 40);
         });
 
         container.appendChild(btn);
