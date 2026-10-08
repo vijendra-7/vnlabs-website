@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Swiss Knife — 100% Private Offline PDF Tools | VN Labs</title>
+    <meta name="description" content="Merge, split, sign, and convert images to PDF completely inside your browser. Zero file uploads, 100% private and confidential.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- PDF-Lib -->
+    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <nav class="standard-nav">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+        <div class="privacy-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span>100% Local • Zero Uploads</span>
+        </div>
+    </nav>
+
+    <main class="pdf-container">
+        <header class="section-header">
+            <h1 class="gradient-text">PDF Swiss Knife</h1>
+            <p>Confidential PDF tools that never upload your documents to foreign servers.</p>
+        </header>
+
+        <!-- Mode Navigation Tabs -->
+        <div class="tab-bar">
+            <button class="tab-btn active" data-tab="merge">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+                Merge PDFs
+            </button>
+            <button class="tab-btn" data-tab="split">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line><line x1="14.47" y1="14.48" x2="20" y2="20"></line><line x1="8.12" y1="8.12" x2="12" y2="12"></line></svg>
+                Split / Extract
+            </button>
+            <button class="tab-btn" data-tab="img2pdf">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                Images to PDF
+            </button>
+            <button class="tab-btn" data-tab="sign">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                Sign Document
+            </button>
+        </div>
+
+        <!-- TAB 1: MERGE -->
+        <div class="tool-view active" id="view-merge">
+            <div class="drop-zone" id="merge-dropzone">
+                <input type="file" id="merge-file-input" multiple accept="application/pdf" style="display: none;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                <h3>Choose PDF files to merge</h3>
+                <p>Drag & drop 2 or more PDFs here, or click to browse</p>
+                <button class="btn btn-secondary" onclick="document.getElementById('merge-file-input').click()">Select PDFs</button>
+            </div>
+
+            <div class="file-queue" id="merge-queue" style="display: none;">
+                <div class="queue-header">
+                    <h4>Files to Merge (Order matters)</h4>
+                    <button class="btn-ghost" id="btn-clear-merge">Clear all</button>
+                </div>
+                <div class="queue-list" id="merge-list"></div>
+                <button class="btn btn-primary btn-block" id="btn-run-merge">Merge & Download PDF</button>
+            </div>
+        </div>
+
+        <!-- TAB 2: SPLIT -->
+        <div class="tool-view" id="view-split">
+            <div class="drop-zone" id="split-dropzone">
+                <input type="file" id="split-file-input" accept="application/pdf" style="display: none;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><line x1="20" y1="4" x2="8.12" y2="15.88"></line></svg>
+                <h3>Select PDF to Split</h3>
+                <p>Extract specific pages or page ranges</p>
+                <button class="btn btn-secondary" onclick="document.getElementById('split-file-input').click()">Choose PDF</button>
+            </div>
+
+            <div class="options-card" id="split-options" style="display: none;">
+                <div class="selected-file-info">
+                    <span id="split-filename">document.pdf</span>
+                    <span class="badge" id="split-page-count">0 pages</span>
+                </div>
+                <div class="form-group">
+                    <label>Page Range to Extract:</label>
+                    <input type="text" id="split-range-input" placeholder="e.g. 1-3, 5, 8" class="text-input">
+                    <small>Specify single pages or ranges separated by commas.</small>
+                </div>
+                <button class="btn btn-primary btn-block" id="btn-run-split">Extract & Download</button>
+            </div>
+        </div>
+
+        <!-- TAB 3: IMAGES TO PDF -->
+        <div class="tool-view" id="view-img2pdf">
+            <div class="drop-zone" id="img-dropzone">
+                <input type="file" id="img-file-input" multiple accept="image/*" style="display: none;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                <h3>Select Photos or Images</h3>
+                <p>Convert JPG/PNG receipts, notes, or IDs into a single clean PDF</p>
+                <button class="btn btn-secondary" onclick="document.getElementById('img-file-input').click()">Choose Images</button>
+            </div>
+
+            <div class="file-queue" id="img-queue" style="display: none;">
+                <div class="queue-header">
+                    <h4>Selected Images</h4>
+                    <button class="btn-ghost" id="btn-clear-img">Clear all</button>
+                </div>
+                <div class="image-previews" id="img-preview-grid"></div>
+                <button class="btn btn-primary btn-block" id="btn-run-img2pdf">Convert to PDF</button>
+            </div>
+        </div>
+
+        <!-- TAB 4: SIGN DOCUMENT -->
+        <div class="tool-view" id="view-sign">
+            <div class="drop-zone" id="sign-dropzone">
+                <input type="file" id="sign-file-input" accept="application/pdf" style="display: none;">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path></svg>
+                <h3>Select PDF Document to Sign</h3>
+                <p>Stamp your signature onto application forms or contracts</p>
+                <button class="btn btn-secondary" onclick="document.getElementById('sign-file-input').click()">Choose PDF</button>
+            </div>
+
+            <div class="options-card" id="sign-options" style="display: none;">
+                <div class="selected-file-info">
+                    <span id="sign-filename">document.pdf</span>
+                </div>
+                
+                <div class="signature-section">
+                    <label>Draw Signature:</label>
+                    <div class="canvas-box">
+                        <canvas id="signature-canvas" width="400" height="160"></canvas>
+                    </div>
+                    <div class="sig-tools">
+                        <button class="btn-ghost" id="btn-clear-sig">Clear Signature</button>
+                        <label class="btn-ghost" style="cursor: pointer;">
+                            Upload Sig Image
+                            <input type="file" id="sig-upload-input" accept="image/png,image/jpeg" style="display: none;">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 16px;">
+                    <label>Signature Position:</label>
+                    <select id="sig-position" class="text-input">
+                        <option value="bottom-right">Bottom Right (Page 1)</option>
+                        <option value="bottom-left">Bottom Left (Page 1)</option>
+                        <option value="bottom-right-last">Bottom Right (Last Page)</option>
+                        <option value="bottom-left-last">Bottom Left (Last Page)</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-primary btn-block" id="btn-run-sign">Stamp Signature & Download</button>
+            </div>
+        </div>
+
+        <div id="status-toast" class="toast" style="display: none;"></div>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
