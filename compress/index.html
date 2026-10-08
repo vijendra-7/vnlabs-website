@@ -23,6 +23,14 @@
     </nav>
 
     <main class="compress-container fade-in visible">
+        <!-- ISOLATION TEST: Barebones File Input -->
+        <div style="background: rgba(255,0,0,0.2); border: 2px solid red; padding: 20px; margin-bottom: 20px; border-radius: 12px;">
+            <h3 style="color: white; margin-bottom: 10px;">DEBUG TEST: Raw File Input</h3>
+            <p style="font-size: 14px; margin-bottom: 10px;">Please try selecting an image here. This bypasses all complex app logic.</p>
+            <input type="file" id="debug-file-input" style="display: block; margin-bottom: 10px; background: white; color: black; padding: 5px;">
+            <img id="debug-img-preview" style="max-width: 200px; display: block; border: 1px solid white; min-height: 50px;">
+        </div>
+
         <div class="compress-header">
             <h1>VN Compress</h1>
             <p>Smart, 100% private, client-side image optimization.</p>
