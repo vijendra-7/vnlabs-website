@@ -69,7 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
-            handleFile(fileInput.files[0]);
+            const f = fileInput.files[0];
+            const dropTxt = document.getElementById('dropzone-text');
+            if(dropTxt) dropTxt.innerText = "Selected: " + f.name;
+            handleFile(f);
         }
     });
 
