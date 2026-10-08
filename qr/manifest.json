@@ -1,0 +1,16 @@
+{
+  "name": "QR Studio & Lens",
+  "short_name": "QRStudio",
+  "description": "Generator & Camera QR Scanner",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0C10",
+  "theme_color": "#B388FF",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
