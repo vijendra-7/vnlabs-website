@@ -34,6 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let originalImageObj = null;
     let finalBlob = null;
 
+    // Prevent browser from opening dragged files in a new tab if missed dropzone
+    window.addEventListener('dragover', e => e.preventDefault());
+    window.addEventListener('drop', e => e.preventDefault());
+
     // --- Drag & Drop ---
     
     resizeModeSelect.addEventListener('change', () => {
@@ -61,11 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.dataTransfer.files.length > 0) {
             handleFile(e.dataTransfer.files[0]);
         }
-    });
-
-    fileInput.addEventListener('click', (e) => {
-        // Clear value before selection so the same file can trigger 'change'
-        e.target.value = '';
     });
 
     fileInput.addEventListener('change', () => {
