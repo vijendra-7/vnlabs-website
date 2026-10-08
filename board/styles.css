@@ -99,14 +99,16 @@
 
 .join-group {
     display: flex;
-    flex-direction: row;
-    gap: 12px;
+    flex-direction: column;
+    gap: 16px;
 }
 .join-group input {
-    flex: 1;
+    width: 100%;
 }
 .join-group button {
-    padding: 12px 24px;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
 }
 
 .icon-btn {
@@ -308,15 +310,6 @@
     .split-layout {
         flex-direction: column;
         gap: 24px;
-    }
-    .join-group {
-        flex-direction: column;
-    }
-    .join-group button {
-        width: 100%;
-        margin-top: 4px;
-        padding: 16px;
-        font-size: 1.1rem;
     }
     .divider {
         flex-direction: row;
