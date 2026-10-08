@@ -1,0 +1,16 @@
+{
+  "name": "PDF Swiss Knife",
+  "short_name": "PDFKnife",
+  "description": "100% Client-Side Private Offline PDF Tools",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0B0C10",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
