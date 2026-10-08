@@ -43,6 +43,10 @@ function persistState() {
 // ─── Initialization ──────────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Request OS to never evict this app's storage
+    if (navigator.storage && navigator.storage.persist) {
+        navigator.storage.persist().catch(() => {});
+    }
     loadSavedState();
     initUI();
     setupEventListeners();
