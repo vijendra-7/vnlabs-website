@@ -7,6 +7,17 @@
     <meta name="description" content="Generate custom branded QR codes for WiFi, WhatsApp, UPI payments, and links. Scan QRs from camera, file, or clipboard paste.">
     <link rel="icon" type="image/png" href="../favicon.png">
     
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#B388FF">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
+            });
+        }
+    </script>
+    
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
