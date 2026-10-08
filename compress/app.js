@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Global Error Handler to display logs to user
+    window.onerror = function(msg, url, lineNo, columnNo, error) {
+        alert("App Error: " + msg + "\nLine: " + lineNo);
+        return false;
+    };
+    window.addEventListener('unhandledrejection', function(event) {
+        alert("Async Error: " + (event.reason && event.reason.message ? event.reason.message : event.reason));
+    });
+
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('file-input');
     const previewContainer = document.getElementById('preview-container');
@@ -94,9 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 imagePreview.src = e.target.result;
                 dropzone.style.display = 'none';
-                previewContainer.style.display = 'block';
+                previewContainer.style.display = 'flex';
                 btnCompress.disabled = false;
                 resultArea.style.display = 'none';
+            };
+            img.onerror = () => {
+                alert("Browser failed to load this image. The file format might not be supported (e.g. HEIC on some browsers) or the file is corrupt.");
             };
             img.src = e.target.result;
         };
