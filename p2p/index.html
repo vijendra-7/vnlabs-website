@@ -83,12 +83,31 @@
                     <button id="disconnect-btn" class="icon-btn danger">Disconnect</button>
                 </div>
 
-                <!-- Dropzone -->
-                <div id="dropzone" class="dropzone">
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                    <h3>Drag & Drop files here</h3>
-                    <p>or click to browse</p>
-                    <input type="file" id="file-input" multiple style="display: none;">
+                <!-- Dropzone & Text Share -->
+                <div class="actions-grid">
+                    <div id="dropzone" class="dropzone">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <h3>Send Files</h3>
+                        <p>Drag & Drop or Click</p>
+                        <input type="file" id="file-input" multiple style="display: none;">
+                    </div>
+                    
+                    <div class="text-share-box">
+                        <textarea id="text-input" placeholder="Type or paste text/links here to share instantly..."></textarea>
+                        <button id="send-text-btn" class="btn btn-secondary">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            Send Text
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Transfer Header -->
+                <div class="transfer-list-header" id="transfer-list-header" style="display: none;">
+                    <h3>Transfers</h3>
+                    <button id="download-all-btn" class="btn btn-primary small-btn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Save All
+                    </button>
                 </div>
 
                 <!-- Transfer Progress -->
