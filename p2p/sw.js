@@ -1,9 +1,9 @@
-const CACHE_NAME = 'vnlabs-p2p-v1';
+const CACHE_NAME = 'vnlabs-p2p-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './styles.css',
-  './app.js',
+  './app.js?v=2',
   '../styles.css',
   '../favicon.png',
   'https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js',
@@ -37,14 +37,23 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Network first for app scripts and HTML, cache fallback
   event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        if (response) {
-          return response; // Return cached version
+    fetch(event.request)
+      .then((networkResponse) => {
+        if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
+          const responseToCache = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
+          });
         }
-        return fetch(event.request).catch(() => {
-          // If offline and request fails, try to return index.html for navigation requests
+        return networkResponse;
+      })
+      .catch(() => {
+        return caches.match(event.request).then((cachedResponse) => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
           if (event.request.mode === 'navigate') {
             return caches.match('./index.html');
           }
