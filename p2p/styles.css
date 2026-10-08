@@ -17,6 +17,23 @@
     margin-bottom: 10px;
 }
 
+.mobile-footer {
+    display: none;
+    text-align: center;
+    padding: 20px 0 40px 0;
+}
+.mobile-footer .logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+}
+.mobile-footer .logo span {
+    color: var(--cyan);
+}
+
 .glass-panel {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -448,6 +465,12 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .desktop-nav {
+        display: none !important;
+    }
+    .mobile-footer {
+        display: block;
+    }
     .p2p-container {
         margin: 20px auto;
         padding: 0 16px;
@@ -479,9 +502,13 @@
         height: 180px;
     }
     .id-display-wrapper {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
+        flex-direction: row;
+        gap: 12px;
+        width: auto;
+        justify-content: center;
+    }
+    .id-text {
+        font-size: 1.4rem;
     }
     .input-group input {
         padding: 12px;
