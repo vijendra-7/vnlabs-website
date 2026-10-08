@@ -1,3 +1,4 @@
+.mobile-footer { display: none; }
 .compress-container {
     max-width: 900px;
     margin: 40px auto;
@@ -330,3 +331,4 @@ input[type=number] {
         gap: 12px;
     }
 }
+
