@@ -7,22 +7,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusText = document.getElementById('connection-status');
     const connectionScreen = document.getElementById('connection-screen');
     const transferScreen = document.getElementById('transfer-screen');
-    const connectedPeerIdDisplay = document.getElementById('connected-peer-id');
+    const connectedPeersContainer = document.getElementById('connected-peers-container');
     const disconnectBtn = document.getElementById('disconnect-btn');
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('file-input');
+    const folderInput = document.getElementById('folder-input');
     const transferList = document.getElementById('transfer-list');
     const transferListHeader = document.getElementById('transfer-list-header');
     const downloadAllBtn = document.getElementById('download-all-btn');
     const textInput = document.getElementById('text-input');
     const sendTextBtn = document.getElementById('send-text-btn');
+    const shareScreenBtn = document.getElementById('share-screen-btn');
+    const videoContainer = document.getElementById('video-container');
+    const remoteVideo = document.getElementById('remote-video');
 
     let peer = null;
-    let conn = null;
+    let connections = {}; // Multi-device support: peerId -> DataConnection
+    let calls = {};       // Media connections
     let myId = '';
+    let myStream = null;
 
-    const CHUNK_SIZE = 16384; // 16KB chunks for WebRTC
-    const completedFiles = {}; // Hold Blobs for manual download
+    const CHUNK_SIZE = 16384; 
+    const completedFiles = {}; 
 
     function generateId() {
         return Math.floor(10000 + Math.random() * 90000).toString();
@@ -30,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function initPeer() {
         myId = generateId();
-        
         const urlParams = new URLSearchParams(window.location.search);
         const autoConnectId = urlParams.get('peer');
 
@@ -38,16 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         peer.on('open', (id) => {
             myIdDisplay.textContent = id;
-            
             document.getElementById('qrcode').innerHTML = '';
             const connectUrl = window.location.href.split('?')[0] + '?peer=' + id;
             new QRCode(document.getElementById('qrcode'), {
-                text: connectUrl,
-                width: 160,
-                height: 160,
-                colorDark : "#0B0C10",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
+                text: connectUrl, width: 160, height: 160,
+                colorDark : "#0B0C10", colorLight : "#ffffff", correctLevel : QRCode.CorrectLevel.H
             });
 
             if (autoConnectId) {
@@ -56,12 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Handle incoming data connections
         peer.on('connection', (connection) => {
-            if (conn && conn.open) {
-                connection.close(); 
-                return;
-            }
             setupConnection(connection);
+        });
+
+        // Handle incoming media calls (Screen share)
+        peer.on('call', (call) => {
+            call.answer(); // Answer without sending stream back automatically
+            calls[call.peer] = call;
+            call.on('stream', (remoteStream) => {
+                videoContainer.style.display = 'block';
+                remoteVideo.srcObject = remoteStream;
+            });
+            call.on('close', () => {
+                videoContainer.style.display = 'none';
+                remoteVideo.srcObject = null;
+                delete calls[call.peer];
+            });
         });
 
         peer.on('error', (err) => {
@@ -73,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function connectToPeer(id) {
-        if (!id) return;
+        if (!id || id === myId || connections[id]) return;
         statusText.textContent = "Connecting...";
         statusText.className = 'status-text text-muted';
         const connection = peer.connect(id, { reliable: true });
@@ -81,32 +93,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function setupConnection(connection) {
-        conn = connection;
-        conn.on('open', () => {
-            statusText.textContent = "Connected!";
-            statusText.className = 'status-text text-success';
+        connection.on('open', () => {
+            connections[connection.peer] = connection;
+            updatePeersUI();
+            
             setTimeout(() => {
                 connectionScreen.classList.remove('active');
                 transferScreen.classList.add('active');
-                connectedPeerIdDisplay.textContent = conn.peer;
             }, 500);
         });
 
-        conn.on('data', handleIncomingData);
-        conn.on('close', resetUI);
+        connection.on('data', handleIncomingData);
+        connection.on('close', () => {
+            delete connections[connection.peer];
+            updatePeersUI();
+            if (Object.keys(connections).length === 0) resetUI();
+        });
     }
 
-    function resetUI() {
-        conn = null;
-        transferScreen.classList.remove('active');
-        connectionScreen.classList.add('active');
+    function updatePeersUI() {
+        const peerIds = Object.keys(connections);
+        connectedPeersContainer.innerHTML = '';
+        peerIds.forEach(id => {
+            const badge = document.createElement('span');
+            badge.className = 'highlight';
+            badge.textContent = id;
+            badge.style.marginRight = '8px';
+            connectedPeersContainer.appendChild(badge);
+        });
+        
         statusText.textContent = "Ready to pair.";
         statusText.className = 'status-text text-muted';
         peerIdInput.value = '';
+    }
+
+    function resetUI() {
+        if (myStream) {
+            myStream.getTracks().forEach(t => t.stop());
+            myStream = null;
+        }
+        Object.values(calls).forEach(c => c.close());
+        calls = {};
+        
+        transferScreen.classList.remove('active');
+        connectionScreen.classList.add('active');
         transferList.innerHTML = '';
         transferListHeader.style.display = 'none';
+        videoContainer.style.display = 'none';
+        remoteVideo.srcObject = null;
         
-        // Clear RAM
         Object.keys(completedFiles).forEach(id => {
             if (completedFiles[id].url) URL.revokeObjectURL(completedFiles[id].url);
             delete completedFiles[id];
@@ -120,27 +155,68 @@ document.addEventListener('DOMContentLoaded', () => {
     // UI Events
     copyIdBtn.addEventListener('click', () => {
         navigator.clipboard.writeText(myId);
-        copyIdBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-        setTimeout(() => {
-            copyIdBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
-        }, 2000);
+        copyIdBtn.innerHTML = '✔';
+        setTimeout(() => copyIdBtn.innerHTML = '📋', 2000);
     });
 
     connectBtn.addEventListener('click', () => connectToPeer(peerIdInput.value.trim()));
     peerIdInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') connectToPeer(peerIdInput.value.trim()); });
-    disconnectBtn.addEventListener('click', () => { if (conn) conn.close(); resetUI(); });
+    
+    disconnectBtn.addEventListener('click', () => {
+        Object.values(connections).forEach(c => c.close());
+        connections = {};
+        resetUI();
+    });
+
+    // Share Screen
+    shareScreenBtn.addEventListener('click', async () => {
+        try {
+            if (myStream) {
+                myStream.getTracks().forEach(t => t.stop());
+                myStream = null;
+                shareScreenBtn.classList.remove('active-cast');
+                Object.values(calls).forEach(c => c.close());
+                calls = {};
+                return;
+            }
+
+            myStream = await navigator.mediaDevices.getDisplayMedia({ video: true });
+            shareScreenBtn.classList.add('active-cast');
+            
+            myStream.getVideoTracks()[0].onended = () => {
+                myStream = null;
+                shareScreenBtn.classList.remove('active-cast');
+                Object.values(calls).forEach(c => c.close());
+                calls = {};
+            };
+
+            // Call all peers
+            Object.keys(connections).forEach(peerId => {
+                const call = peer.call(peerId, myStream);
+                calls[peerId] = call;
+            });
+            
+        } catch (err) {
+            console.error("Screen share error", err);
+        }
+    });
 
     // Text Sharing
     sendTextBtn.addEventListener('click', () => {
         const text = textInput.value.trim();
-        if (!text || !conn || !conn.open) return;
+        if (!text || Object.keys(connections).length === 0) return;
         
         const textId = Math.random().toString(36).substring(7);
-        conn.send({ type: 'text', id: textId, data: text });
-        
+        broadcast({ type: 'text', id: textId, data: text });
         createTextUI(textId, text, true);
         textInput.value = '';
     });
+
+    function broadcast(payload) {
+        Object.values(connections).forEach(conn => {
+            if (conn.open) conn.send(payload);
+        });
+    }
 
     // File Drag & Drop
     dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
@@ -148,29 +224,58 @@ document.addEventListener('DOMContentLoaded', () => {
     dropzone.addEventListener('drop', (e) => {
         e.preventDefault();
         dropzone.classList.remove('dragover');
-        if (e.dataTransfer.files.length > 0) handleFiles(e.dataTransfer.files);
+        
+        // Handle files and folders
+        const items = e.dataTransfer.items;
+        if (items) {
+            for (let i=0; i<items.length; i++) {
+                const item = items[i].webkitGetAsEntry();
+                if (item) traverseFileTree(item);
+            }
+        }
     });
-    dropzone.addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', () => {
-        if (fileInput.files.length > 0) handleFiles(fileInput.files);
-    });
-
-    function handleFiles(files) {
-        for (let i = 0; i < files.length; i++) {
-            sendFile(files[i]);
+    
+    function traverseFileTree(item, path = '') {
+        if (item.isFile) {
+            item.file(file => {
+                // Attach path for folder structure reconstruction
+                file.fullPath = path + file.name;
+                sendFile(file);
+            });
+        } else if (item.isDirectory) {
+            const dirReader = item.createReader();
+            dirReader.readEntries(entries => {
+                for (let i=0; i<entries.length; i++) {
+                    traverseFileTree(entries[i], path + item.name + "/");
+                }
+            });
         }
     }
 
+    // For manual button clicks
+    document.getElementById('btn-send-file').addEventListener('click', () => fileInput.click());
+    document.getElementById('btn-send-folder').addEventListener('click', () => folderInput.click());
+    
+    fileInput.addEventListener('change', () => Array.from(fileInput.files).forEach(f => sendFile(f)));
+    folderInput.addEventListener('change', () => {
+        Array.from(folderInput.files).forEach(f => {
+            f.fullPath = f.webkitRelativePath; // standard for folder inputs
+            sendFile(f);
+        });
+    });
+
     function sendFile(file) {
-        if (!conn || !conn.open) return;
+        if (Object.keys(connections).length === 0) return;
 
         const fileId = Math.random().toString(36).substring(7);
-        createTransferUI(fileId, file.name, file.size, 'Sending', file.type);
+        const fileName = file.fullPath || file.name; // Use relative path if inside folder
+        
+        createTransferUI(fileId, fileName, file.size, 'Sending', file.type);
 
-        conn.send({
+        broadcast({
             type: 'file-start',
             id: fileId,
-            name: file.name,
+            name: fileName,
             size: file.size,
             filetype: file.type
         });
@@ -180,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let startTime = Date.now();
 
         reader.onload = (e) => {
-            conn.send({
+            broadcast({
                 type: 'file-chunk',
                 id: fileId,
                 data: e.target.result
@@ -188,7 +293,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             offset += e.target.result.byteLength;
             
-            // Calculate Speed
             let elapsed = (Date.now() - startTime) / 1000;
             let speed = elapsed > 0.5 ? (offset / 1024 / 1024 / elapsed).toFixed(1) + ' MB/s' : 'Calculating...';
 
@@ -197,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (offset < file.size) {
                 readSlice(offset);
             } else {
-                conn.send({ type: 'file-end', id: fileId });
+                broadcast({ type: 'file-end', id: fileId });
                 updateTransferUI(fileId, 1, 'Sent');
             }
         };
@@ -248,7 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const blob = new Blob(fileObj.chunks, { type: fileObj.type });
                 
                 let objectUrl = null;
-                if (fileObj.type.startsWith('image/')) {
+                if (fileObj.type && fileObj.type.startsWith('image/')) {
                     objectUrl = URL.createObjectURL(blob);
                 }
                 
@@ -266,9 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Download All
     downloadAllBtn.addEventListener('click', () => {
-        Object.keys(completedFiles).forEach(id => {
-            triggerDownload(id);
-        });
+        Object.keys(completedFiles).forEach(id => triggerDownload(id));
     });
 
     function triggerDownload(id) {
@@ -278,14 +380,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const url = URL.createObjectURL(file.blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = file.name;
+        a.download = file.name; // Includes folder paths! e.g. "myfolder/img.png"
         document.body.appendChild(a);
         a.click();
         
         setTimeout(() => {
             document.body.removeChild(a);
-            URL.revokeObjectURL(url); // Revoke the temporary link
-            
+            URL.revokeObjectURL(url); 
             const statusEl = document.getElementById('status-' + id);
             if(statusEl) {
                 statusEl.textContent = "Saved";
@@ -341,9 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <span><span id="size-${id}">0</span> / ${sizeMb} MB <span id="speed-${id}"></span></span>
                     <span id="percent-${id}">0%</span>
                 </div>
-                <div class="item-actions" id="actions-${id}" style="display: none;">
-                    <!-- Action buttons injected here upon completion -->
-                </div>
+                <div class="item-actions" id="actions-${id}" style="display: none;"></div>
             </div>
         `;
         
@@ -357,62 +456,41 @@ document.addEventListener('DOMContentLoaded', () => {
         const statusEl = document.getElementById('status-' + id);
         const speedEl = document.getElementById('speed-' + id);
         const actionsEl = document.getElementById('actions-' + id);
-        const sizeEl = document.getElementById('size-' + id);
         
         if (progressEl) {
             const percent = Math.floor(progress * 100);
             progressEl.style.width = percent + '%';
             if (percentEl) percentEl.textContent = percent + '%';
-            
-            if (speed && speedEl) {
-                speedEl.textContent = `(${speed})`;
-            }
+            if (speed && speedEl) speedEl.textContent = \`(\${speed})\`;
             
             if (finalStatus && statusEl) {
                 statusEl.textContent = finalStatus;
                 statusEl.style.color = 'var(--emerald)';
                 progressEl.style.background = 'var(--emerald)';
                 if (speedEl) speedEl.textContent = '';
-                if (progressBg) progressBg.style.display = 'none'; // Hide progress bar on complete
+                if (progressBg) progressBg.style.display = 'none'; 
                 if (percentEl) percentEl.style.display = 'none';
             }
 
             if (showActions && actionsEl) {
                 actionsEl.style.display = 'flex';
-                
-                // Inject Thumbnail if image
                 const fileObj = completedFiles[id];
                 if (fileObj && fileObj.url) {
                     const previewEl = document.getElementById('preview-' + id);
-                    if (previewEl) {
-                        previewEl.innerHTML = `<img src="${fileObj.url}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">`;
-                    }
+                    if (previewEl) previewEl.innerHTML = \`<img src="\${fileObj.url}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">\`;
                 }
 
-                // Inject Manual Download / Clear Buttons
-                actionsEl.innerHTML = `
-                    <button class="action-btn save" id="btn-save-${id}">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        Save
-                    </button>
-                    <button class="action-btn clear" id="btn-clear-${id}">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                        Clear
-                    </button>
-                `;
+                actionsEl.innerHTML = \`
+                    <button class="action-btn save" id="btn-save-\${id}">Save</button>
+                    <button class="action-btn clear" id="btn-clear-\${id}">Clear</button>
+                \`;
 
-                document.getElementById('btn-save-' + id).addEventListener('click', () => {
-                    triggerDownload(id);
-                });
-
+                document.getElementById('btn-save-' + id).addEventListener('click', () => triggerDownload(id));
                 document.getElementById('btn-clear-' + id).addEventListener('click', () => {
                     if (fileObj && fileObj.url) URL.revokeObjectURL(fileObj.url);
                     delete completedFiles[id];
                     document.getElementById('transfer-' + id).remove();
-                    
-                    if (transferList.children.length === 0) {
-                        transferListHeader.style.display = 'none';
-                    }
+                    if (transferList.children.length === 0) transferListHeader.style.display = 'none';
                 });
             }
         }
