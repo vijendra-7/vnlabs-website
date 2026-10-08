@@ -144,6 +144,21 @@
     border-color: var(--cyan);
 }
 
+.control-group select option {
+    background-color: #0B0C10;
+    color: white;
+}
+
+/* Hide number spinners */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .input-with-suffix {
     position: relative;
     display: flex;
@@ -198,6 +213,23 @@
     color: #000;
     font-size: 12px;
     font-weight: 900;
+}
+
+.quick-colors {
+    display: flex;
+    gap: 8px;
+}
+
+.quick-color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.quick-color:hover {
+    transform: scale(1.2);
 }
 
 .compress-btn {
