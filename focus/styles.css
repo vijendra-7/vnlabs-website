@@ -1,0 +1,367 @@
+.focus-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 1.5rem 4rem 1.5rem;
+}
+
+.zen-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.zen-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Timer Section */
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3.5rem;
+    position: relative;
+}
+
+.mode-chips {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-light);
+    color: var(--text-muted);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.chip:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.chip.active {
+    background: rgba(0, 229, 255, 0.15);
+    border-color: var(--cyan);
+    color: var(--cyan);
+}
+
+/* Progress Ring & Clock */
+.timer-display-wrap {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.progress-ring {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+}
+
+.ring-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.06);
+    stroke-width: 8;
+}
+
+.ring-progress {
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 880;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.8s linear, stroke 0.3s ease;
+}
+
+.timer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.time-readout {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(3.5rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -2px;
+    line-height: 1;
+}
+
+.timer-mode-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-top: 10px;
+}
+
+/* Controls */
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.btn-large {
+    padding: 14px 36px;
+    font-size: 1.1rem;
+    border-radius: 999px;
+}
+
+.icon-only {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Bottom Grid */
+.focus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+@media (max-width: 850px) {
+    .focus-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 24px;
+    backdrop-filter: blur(14px);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cyan);
+    margin-bottom: 4px;
+}
+
+.card-title h3 {
+    font-size: 1.15rem;
+    color: var(--text-primary);
+}
+
+.card-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Sound Tracks */
+.sound-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.track-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 10px 16px;
+    transition: border-color 0.2s;
+}
+
+.track-toggle {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.track-toggle.active {
+    color: var(--cyan);
+    font-weight: 700;
+}
+
+.vol-slider {
+    width: 100px;
+    accent-color: var(--cyan);
+    cursor: pointer;
+}
+
+/* Tasks */
+.task-input-wrap {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.task-input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: var(--cyan);
+}
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 220px;
+    overflow-y: auto;
+}
+
+.empty-tasks {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 24px 0;
+}
+
+.task-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.task-item.done span {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-check {
+    cursor: pointer;
+    margin-right: 10px;
+    accent-color: var(--emerald);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+.btn-primary {
+    background: var(--cyan);
+    color: var(--bg-dark);
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text-primary);
+    border: 1px solid var(--border-light);
+}
+
+/* Zen Mode Fullscreen */
+body.zen-active .standard-nav,
+body.zen-active .focus-grid {
+    display: none !important;
+}
+
+body.zen-active .focus-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+body.zen-active .timer-section {
+    margin-bottom: 0;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 650px) {
+    .focus-container {
+        padding: 0 1rem 3rem 1rem;
+    }
+    .timer-display-wrap {
+        width: 260px;
+        height: 260px;
+    }
+    .progress-ring {
+        width: 260px;
+        height: 260px;
+    }
+    .ring-progress, .ring-bg {
+        cx: 130; cy: 130; r: 115;
+        stroke-dasharray: 722;
+    }
+    .mode-chips {
+        gap: 6px;
+    }
+    .chip {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+    .time-readout {
+        font-size: 3.2rem;
+    }
+}
