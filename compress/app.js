@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             handleFile(e.dataTransfer.files[0]);
         }
     });
-    dropzone.addEventListener('click', () => fileInput.click());
+
     fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
             handleFile(fileInput.files[0]);
