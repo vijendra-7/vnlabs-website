@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Global Error Handler to display logs to user
     // Global Error Handler to display logs to user
     window.onerror = function(msg, url, lineNo, columnNo, error) {
         alert("App Error: " + msg + "\nLine: " + lineNo);
@@ -335,4 +335,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+
