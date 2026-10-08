@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <title>Products - VN Labs</title>
+    <meta name="description" content="Simple, practical tools for students and professionals.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Atmospheric Background Glows -->
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <nav class="standard-nav fade-in">
+        <a href="index.html" class="logo">vn<span>labs</span></a>
+        <button class="mobile-menu-toggle">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+        <ul class="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Product Showcase (Bento Grid) -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="bento-grid">
+                
+                <!-- ClearChain (Flagship) -->
+                <a href="/clearchain" class="bento-card bento-wide fade-in glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box cyan-glow">
+                            <div class="css-shape shape-cube"></div>
+                        </div>
+                        <h2>ClearChain</h2>
+                        <p>Interactive 3D Blockchain visualizer and simulator. Built on Flutter with buttery smooth 60fps animations.</p>
+                        <span class="btn-text">Explore project <span class="arrow">&rarr;</span></span>
+                    </div>
+                    <div class="card-visual">
+                         <div class="mockup-placeholder clearchain-mockup">
+                             <div class="floating-block"></div>
+                             <div class="glass-platform"></div>
+                         </div>
+                    </div>
+                </a>
+
+                <!-- GATE Tracker -->
+                <a href="gate-tracker.html" class="bento-card bento-tall fade-in delay-1 glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box purple-glow">
+                            <img src="https://play-lh.googleusercontent.com/xL1uLMKeKd9WpNErxIHHXYUpFqaeSGjdpkauWlTeDHScDJxjl-cw59G1_czSN9c22yfs1r-jVa1clUZGv7j61A=w480-h960-rw" alt="GATE Tracker Logo" class="logo-full" onerror="this.style.display='none'">
+                        </div>
+                        <h2>GATE Tracker</h2>
+                        <p>Track your GATE prep without the bloat. Mark chapters, set reminders, and sync to the cloud.</p>
+                        <span class="btn-text">Play Store <span class="arrow">&rarr;</span></span>
+                    </div>
+                    <div class="card-visual-bottom">
+                        <img src="images/Screenshots/1.png" alt="GATE Tracker" class="product-image" onerror="this.style.display='none'">
+                    </div>
+                </a>
+
+                <!-- KhetiBook -->
+                <a href="khetibook.html" class="bento-card bento-wide fade-in delay-2 glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box emerald-glow">
+                            <img src="images/farmer_accounting_logo.png" alt="KhetiBook Logo" class="logo-icon" onerror="this.style.display='none'">
+                        </div>
+                        <h2>KhetiBook</h2>
+                        <p>KhetiBook designed exclusively for Farmers to log inputs, track harvests, and maintain accounts.</p>
+                        <div style="display: flex; gap: 12px; margin-top: 24px;">
+                            <span class="btn-text" style="margin-top:0;">Explore project <span class="arrow">&rarr;</span></span>
+                            <span class="btn-text" style="margin-top:0; background: rgba(255,255,255,0.1);">Download APK</span>
+                        </div>
+                    </div>
+                    <div class="card-visual">
+                        <img src="images/Screenshots/khetibook_marketing.jpeg" alt="KhetiBook" class="product-image" onerror="this.style.display='none'">
+                    </div>
+                </a>
+
+                <!-- QuickVault -->
+                <a href="vault/" class="bento-card bento-small fade-in glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box cyan-glow">
+                            <span style="font-size: 1.5rem;">⚡</span>
+                        </div>
+                        <h2>QuickVault</h2>
+                        <p>Instant phone ↔ PC clipboard & note bridge with 4-digit PIN.</p>
+                        <span class="btn-text">Open Vault <span class="arrow">&rarr;</span></span>
+                    </div>
+                </a>
+
+                <!-- PDF Swiss Knife -->
+                <a href="pdf/" class="bento-card bento-small fade-in glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box emerald-glow">
+                            <span style="font-size: 1.5rem;">📄</span>
+                        </div>
+                        <h2>PDF Swiss Knife</h2>
+                        <p>100% private in-browser merge, split, signature & convert tools.</p>
+                        <span class="btn-text">Open PDF Tools <span class="arrow">&rarr;</span></span>
+                    </div>
+                </a>
+
+                <!-- QR Studio -->
+                <a href="qr/" class="bento-card bento-small fade-in glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box purple-glow">
+                            <span style="font-size: 1.5rem;">📲</span>
+                        </div>
+                        <h2>QR Studio & Lens</h2>
+                        <p>Generate WiFi/UPI/WhatsApp QRs and scan from camera or clipboard.</p>
+                        <span class="btn-text">Open Studio <span class="arrow">&rarr;</span></span>
+                    </div>
+                </a>
+
+                <!-- Focus Matrix -->
+                <a href="focus/" class="bento-card bento-small fade-in glow-hover">
+                    <div class="card-content">
+                        <div class="icon-box cyan-glow">
+                            <span style="font-size: 1.5rem;">🎧</span>
+                        </div>
+                        <h2>Focus Matrix</h2>
+                        <p>Ambient Pomodoro timer with procedural rain and alpha binaural beats.</p>
+                        <span class="btn-text">Start Focus <span class="arrow">&rarr;</span></span>
+                    </div>
+                </a>
+
+                <!-- Suggest a Tool -->
+                <div class="bento-card bento-small fade-in delay-3 glow-hover" style="grid-column: span 3; flex-direction: row; align-items: center; justify-content: space-between; padding: 40px; background: rgba(0,229,255,0.02); border: 1px solid rgba(0,229,255,0.1);">
+                    <div style="flex: 1;">
+                        <h2 style="font-size: 1.8rem; margin-bottom: 8px;">Got a problem to solve?</h2>
+                        <p style="max-width: 600px;">We build tools to eliminate friction. If there's a repetitive task or workflow slowing you down, let us know. We might just build an app for it.</p>
+                    </div>
+                    <div>
+                        <a href="mailto:vnlabs.in@gmail.com" class="btn-text" style="margin-top: 0; padding: 12px 24px; font-size: 1rem; background: var(--text-primary); color: var(--bg-dark);">Pitch an Idea <span class="arrow">&rarr;</span></a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div>
+                <a href="index.html" class="logo">vn<span>labs</span></a>
+            </div>
+            <div class="footer-links">
+                <a href="gate-tracker.html">GATE Tracker</a>
+                <a href="products.html">Products</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div>
+                <a href="mailto:vnlabs.in@gmail.com" class="footer-email">vnlabs.in@gmail.com</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 VN Labs. Built with curiosity.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
