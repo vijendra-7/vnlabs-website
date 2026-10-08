@@ -297,25 +297,64 @@
 
 /* Responsive */
 @media (max-width: 768px) {
+    .p2p-container {
+        margin: 20px auto;
+        padding: 0 16px;
+    }
+    .p2p-header h1 {
+        font-size: 2rem;
+    }
+    .glass-panel {
+        padding: 24px 20px;
+        border-radius: 20px;
+    }
     .split-layout {
         flex-direction: column;
+        gap: 24px;
     }
     .divider {
         height: auto;
         flex-direction: row;
         width: 100%;
+        margin: 8px 0;
     }
     .divider::before, .divider::after {
         width: 100%;
         height: 1px;
         margin: 0 16px;
     }
-    .p2p-header h1 {
-        font-size: 2.5rem;
+    .qr-container {
+        width: 180px;
+        height: 180px;
+    }
+    .id-display-wrapper {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+    }
+    .input-group input {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+    .input-group .btn-primary {
+        padding: 12px;
     }
     .transfer-header {
         flex-direction: column;
         gap: 16px;
-        align-items: flex-start;
+        align-items: center;
+        text-align: center;
+    }
+    .dropzone {
+        padding: 32px 16px;
+        margin-bottom: 24px;
+    }
+    .dropzone h3 {
+        font-size: 1.2rem;
+    }
+    .transfer-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
     }
 }
