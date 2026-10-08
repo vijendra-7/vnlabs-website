@@ -97,6 +97,18 @@
 
 .input-group input:focus { border-color: var(--cyan); }
 
+.join-group {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+.join-group input {
+    flex: 1;
+}
+.join-group button {
+    padding: 12px 24px;
+}
+
 .icon-btn {
     background: transparent;
     border: none;
@@ -296,6 +308,15 @@
     .split-layout {
         flex-direction: column;
         gap: 24px;
+    }
+    .join-group {
+        flex-direction: column;
+    }
+    .join-group button {
+        width: 100%;
+        margin-top: 4px;
+        padding: 16px;
+        font-size: 1.1rem;
     }
     .divider {
         flex-direction: row;
