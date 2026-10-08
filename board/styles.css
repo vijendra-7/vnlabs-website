@@ -95,17 +95,16 @@
     transition: border-color 0.3s;
 }
 
-.input-group input:focus { border-color: var(--cyan); }
-
-.join-group {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-.join-group input {
+.peer-input {
     width: 100%;
+    padding: 16px;
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 4px;
+    background: rgba(11, 12, 16, 0.5);
 }
-.join-group button {
+
+.join-btn-styled {
     width: 100%;
     padding: 16px;
     font-size: 1.1rem;
