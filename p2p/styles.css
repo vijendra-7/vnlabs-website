@@ -100,6 +100,12 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
+.active-cast {
+    background: rgba(0, 229, 255, 0.2) !important;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+    animation: pulse 2s infinite;
+}
+
 .qr-container {
     background: white;
     padding: 16px;
