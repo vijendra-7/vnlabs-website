@@ -1,14 +1,13 @@
-// GATE Virtual Calculator — TCS iON Official Engine Replica
+// Official GATE Virtual Scientific Calculator Engine
 
 const calcDisplay = document.getElementById('calc-display');
-const calcHistory = document.getElementById('calc-history');
+const calcExpr = document.getElementById('calc-expr');
 const modeDeg = document.getElementById('mode-deg');
 const modeRad = document.getElementById('mode-rad');
 const btnThemeToggle = document.getElementById('btn-theme-toggle');
-const themeBtnText = document.getElementById('theme-btn-text');
 
 let currentValue = '0';
-let expressionHistory = '';
+let expressionString = '';
 let memoryValue = 0;
 let isNewNumber = true;
 let pendingOp = null;
@@ -19,11 +18,9 @@ btnThemeToggle.addEventListener('click', () => {
     if (document.body.classList.contains('theme-tcs')) {
         document.body.classList.remove('theme-tcs');
         document.body.classList.add('theme-dark');
-        themeBtnText.textContent = '☀️ Official TCS Theme';
     } else {
         document.body.classList.remove('theme-dark');
         document.body.classList.add('theme-tcs');
-        themeBtnText.textContent = '🌙 Dark Mode';
     }
 });
 
@@ -32,8 +29,8 @@ function isDegreeMode() {
 }
 
 function updateDisplay() {
-    calcDisplay.textContent = currentValue;
-    calcHistory.textContent = expressionHistory || '\u00A0';
+    calcDisplay.value = currentValue;
+    calcExpr.value = expressionString;
 }
 
 function appendDigit(digit) {
@@ -49,15 +46,9 @@ function appendDigit(digit) {
 
 function clearAll() {
     currentValue = '0';
-    expressionHistory = '';
+    expressionString = '';
     pendingOp = null;
     pendingOperand = null;
-    isNewNumber = true;
-    updateDisplay();
-}
-
-function clearEntry() {
-    currentValue = '0';
     isNewNumber = true;
     updateDisplay();
 }
@@ -81,7 +72,6 @@ function toggleSign() {
     }
 }
 
-// Factorial Helper
 function factorial(n) {
     if (n < 0 || n !== Math.floor(n)) return NaN;
     if (n === 0 || n === 1) return 1;
@@ -90,7 +80,7 @@ function factorial(n) {
     return res;
 }
 
-// Scientific Unary Functions (Applies immediately to current operand)
+// Unary Functions
 function applyFunction(func) {
     const val = parseFloat(currentValue);
     if (isNaN(val)) return;
@@ -103,7 +93,6 @@ function applyFunction(func) {
     switch (func) {
         case 'sin':
             res = isDeg ? Math.sin(toRad(val)) : Math.sin(val);
-            // Handle precision artifacts like sin(180) ~ 0
             if (isDeg && val % 180 === 0) res = 0;
             break;
         case 'cos':
@@ -134,6 +123,15 @@ function applyFunction(func) {
         case 'tanh':
             res = Math.tanh(val);
             break;
+        case 'asinh':
+            res = Math.asinh(val);
+            break;
+        case 'acosh':
+            res = Math.acosh(val);
+            break;
+        case 'atanh':
+            res = Math.atanh(val);
+            break;
         case 'log':
             res = Math.log10(val);
             break;
@@ -143,6 +141,7 @@ function applyFunction(func) {
         case 'log2':
             res = Math.log2(val);
             break;
+        case 'ex':
         case 'exp':
             res = Math.exp(val);
             break;
@@ -183,18 +182,16 @@ function applyFunction(func) {
             return;
     }
 
-    // Format output
     if (isNaN(res) || !isFinite(res)) {
         currentValue = "Invalid Input";
     } else {
-        // Round to 10 decimal digits to avoid float weirdness
         currentValue = parseFloat(res.toFixed(10)).toString();
     }
     isNewNumber = true;
     updateDisplay();
 }
 
-// Binary Operations (+, -, *, /, mod, pow, yroot)
+// Binary Operations (+, -, *, /, mod, xy, yroot, logyx)
 function setOperator(op) {
     const val = parseFloat(currentValue);
 
@@ -206,7 +203,7 @@ function setOperator(op) {
 
     pendingOp = op;
     isNewNumber = true;
-    expressionHistory = `${pendingOperand} ${op}`;
+    expressionString = `${pendingOperand} ${op}`;
     updateDisplay();
 }
 
@@ -240,17 +237,20 @@ function computeResult() {
         case 'mod':
             result = pendingOperand % op2;
             break;
-        case 'pow':
+        case 'xy':
             result = Math.pow(pendingOperand, op2);
             break;
         case 'yroot':
             result = Math.pow(pendingOperand, 1 / op2);
             break;
+        case 'logyx':
+            result = Math.log(pendingOperand) / Math.log(op2);
+            break;
         default:
             return;
     }
 
-    expressionHistory = `${pendingOperand} ${pendingOp} ${op2} =`;
+    expressionString = `${pendingOperand} ${pendingOp} ${op2} =`;
     currentValue = parseFloat(result.toFixed(10)).toString();
     pendingOperand = result;
     pendingOp = null;
@@ -285,8 +285,8 @@ function handleMemory(action) {
     }
 }
 
-// Button Click Delegate
-document.querySelectorAll('.key').forEach(button => {
+// Keypad Clicks
+document.querySelectorAll('.btn-calc').forEach(button => {
     button.addEventListener('click', () => {
         const num = button.dataset.num;
         const action = button.dataset.action;
@@ -298,18 +298,17 @@ document.querySelectorAll('.key').forEach(button => {
             setOperator(op);
         } else if (action !== undefined) {
             if (action === 'c') clearAll();
-            else if (action === 'ce') clearEntry();
             else if (action === 'backspace') backspace();
             else if (action === 'sign') toggleSign();
             else if (action === 'equals') computeResult();
             else if (['mc', 'mr', 'ms', 'mplus', 'mminus'].includes(action)) handleMemory(action);
-            else if (['mod', 'pow', 'yroot'].includes(action)) setOperator(action);
+            else if (['mod', 'xy', 'yroot', 'logyx'].includes(action)) setOperator(action);
             else applyFunction(action);
         }
     });
 });
 
-// Keyboard Support (NumPad + Shortcuts)
+// Keyboard Support
 window.addEventListener('keydown', (e) => {
     if (e.key >= '0' && e.key <= '9') {
         appendDigit(e.key);
