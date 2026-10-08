@@ -364,3 +364,98 @@ body.theme-dark .btn-green {
         padding-bottom: 0.5rem;
     }
 }
+
+/* ========================================================
+   PHONE ROTATED / LANDSCAPE: 100% PURE CALCULATOR ONLY
+   Zero margins, zero padding, zero scrolling, fits screen
+   ======================================================== */
+@media (orientation: landscape) and (max-height: 550px) {
+    html, body {
+        height: 100vh !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .glow-orb,
+    .desktop-only,
+    .calc-footer-brand,
+    .floating-theme-btn {
+        display: none !important;
+    }
+
+    .calc-page-container {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        justify-content: stretch !important;
+        overflow: hidden !important;
+    }
+
+    .gate-calc-window {
+        width: 100vw !important;
+        height: 100vh !important;
+        max-width: 100% !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .calc-titlebar {
+        padding: 3px 10px !important;
+        font-size: 0.85rem !important;
+        flex-shrink: 0 !important;
+    }
+
+    .calc-body {
+        padding: 4px 6px 4px 6px !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        overflow: hidden !important;
+    }
+
+    .display-container {
+        gap: 2px !important;
+        margin-bottom: 2px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .calc-box-top {
+        height: 22px !important;
+        font-size: 0.8rem !important;
+        padding: 1px 6px !important;
+    }
+
+    .calc-box-bottom {
+        height: 28px !important;
+        font-size: 1.25rem !important;
+        padding: 1px 6px !important;
+    }
+
+    .calc-row-top {
+        margin-bottom: 3px !important;
+        flex-shrink: 0 !important;
+    }
+
+    .calc-grid {
+        flex: 1 !important;
+        display: grid !important;
+        grid-template-columns: repeat(11, 1fr) !important;
+        grid-template-rows: repeat(5, 1fr) !important;
+        gap: 2px !important;
+    }
+
+    .btn-calc {
+        padding: 0 !important;
+        height: 100% !important;
+        font-size: clamp(0.65rem, 2.3vh, 0.85rem) !important;
+        border-radius: 2px !important;
+    }
+}
+
