@@ -13,6 +13,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
     
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0B0C10">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').then(reg => {
+                    console.log('ServiceWorker registered:', reg.scope);
+                }).catch(err => console.log('ServiceWorker error:', err));
+            });
+        }
+    </script>
+
     <!-- External Libraries -->
     <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
@@ -78,18 +91,36 @@
             <!-- Transfer State -->
             <div id="transfer-screen" class="screen">
                 <div class="transfer-header">
-                    <div class="status-indicator online"></div>
-                    <h3>Connected to: <span id="connected-peer-id" class="highlight">---</span></h3>
-                    <button id="disconnect-btn" class="icon-btn danger">Disconnect</button>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div class="status-indicator online"></div>
+                        <h3>Connected to:</h3>
+                        <div id="connected-peers-container"></div>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button id="share-screen-btn" class="icon-btn" title="Cast Screen" style="color: var(--cyan); border: 1px solid var(--cyan);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                        </button>
+                        <button id="disconnect-btn" class="icon-btn danger">Disconnect</button>
+                    </div>
+                </div>
+                
+                <!-- Video Screen Share Area -->
+                <div id="video-container" style="display: none; margin-bottom: 24px; border-radius: 12px; overflow: hidden; border: 2px solid var(--purple);">
+                    <video id="remote-video" autoplay playsinline style="width: 100%; display: block;"></video>
                 </div>
 
                 <!-- Dropzone & Text Share -->
                 <div class="actions-grid">
                     <div id="dropzone" class="dropzone">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                        <h3>Send Files</h3>
-                        <p>Drag & Drop or Click</p>
+                        <h3>Send Files & Folders</h3>
+                        <p>Drag & Drop here</p>
+                        <div style="display: flex; gap: 8px; margin-top: 12px;">
+                            <button id="btn-send-file" class="small-btn">File</button>
+                            <button id="btn-send-folder" class="small-btn">Folder</button>
+                        </div>
                         <input type="file" id="file-input" multiple style="display: none;">
+                        <input type="file" id="folder-input" webkitdirectory directory multiple style="display: none;">
                     </div>
                     
                     <div class="text-share-box">
