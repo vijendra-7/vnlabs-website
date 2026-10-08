@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Formula Vault & Cheat Sheets | VN Labs</title>
+    <meta name="description" content="Searchable, printable high-yield formulas and cheat sheets for GATE, Engineering Math, CS, and competitive exams.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- KaTeX for high performance math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" defer></script>
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <nav class="standard-nav no-print">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+        <div class="nav-btn-group">
+            <button class="btn btn-secondary small" id="btn-open-add-modal">+ Add Note</button>
+            <button class="btn btn-primary small" id="btn-print-sheet">🖨️ Print Sheet</button>
+        </div>
+    </nav>
+
+    <main class="formulas-container">
+        
+        <header class="vault-hero no-print">
+            <h1 class="gradient-text">Formula & Concept Vault</h1>
+            <p>High-yield equations, theorems, and cheat sheets for rapid pre-exam revision.</p>
+            
+            <!-- Search Bar -->
+            <div class="search-box-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="formula-search-input" placeholder="Search formulas, theorems, topics (Ctrl + K)..." autocomplete="off" spellcheck="false">
+                <span class="search-shortcut">Ctrl K</span>
+            </div>
+        </header>
+
+        <!-- Category Filters -->
+        <div class="categories-bar no-print">
+            <button class="cat-pill active" data-subject="all">All Topics</button>
+            <button class="cat-pill" data-subject="math">📐 Engg Math</button>
+            <button class="cat-pill" data-subject="algo">🌲 Data Structures</button>
+            <button class="cat-pill" data-subject="os">💻 Operating Systems</button>
+            <button class="cat-pill" data-subject="cn">🌐 Networks</button>
+            <button class="cat-pill" data-subject="toc">⚡ TOC & Automata</button>
+            <button class="cat-pill" data-subject="dbms">🗄️ DBMS</button>
+            <button class="cat-pill" data-subject="starred">⭐ Starred</button>
+        </div>
+
+        <!-- Print-only Header -->
+        <div class="print-header">
+            <h2>VN Labs — High-Yield Exam Revision Cheat Sheet</h2>
+            <p>Printed on: <span id="print-date"></span></p>
+        </div>
+
+        <!-- Formula Cards Grid -->
+        <div class="formulas-grid" id="formulas-grid">
+            <!-- Dynamic Cards Injected Here -->
+        </div>
+
+        <!-- Add Custom Formula Modal -->
+        <div class="modal-overlay no-print" id="add-modal" style="display: none;">
+            <div class="modal-card">
+                <h3>Add Custom Formula</h3>
+                <p>Personal notes are saved locally to your device.</p>
+                
+                <div class="form-group">
+                    <label>Formula Title:</label>
+                    <input type="text" id="new-formula-title" placeholder="e.g. Shannon Channel Capacity" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Subject / Category:</label>
+                    <select id="new-formula-subject" class="text-input">
+                        <option value="math">Engineering Math</option>
+                        <option value="algo">Algorithms & DS</option>
+                        <option value="os">Operating Systems</option>
+                        <option value="cn">Computer Networks</option>
+                        <option value="toc">TOC</option>
+                        <option value="dbms">DBMS</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Formula (LaTeX or Plain Text):</label>
+                    <input type="text" id="new-formula-latex" placeholder="C = B \log_2(1 + S/N)" class="text-input">
+                </div>
+                <div class="form-group">
+                    <label>Key Revision Notes:</label>
+                    <textarea id="new-formula-notes" placeholder="Where B is bandwidth, S/N is signal-to-noise ratio..." class="text-input" rows="3"></textarea>
+                </div>
+
+                <div class="modal-actions">
+                    <button class="btn btn-secondary" id="btn-close-modal">Cancel</button>
+                    <button class="btn btn-primary" id="btn-save-custom">Save Formula</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="formulas-data.js"></script>
+    <script src="app.js" defer></script>
+</body>
+</html>
