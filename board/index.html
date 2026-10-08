@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VN Board | Real-Time Collaborative Canvas</title>
+    <meta name="description" content="Instant, serverless collaborative whiteboard. Connect and draw with anyone instantly.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-theme">
+    
+    <nav class="standard-nav fade-in visible desktop-nav">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+    </nav>
+
+    <!-- Connection Screen -->
+    <main id="connection-screen" class="board-container screen active fade-in visible">
+        <div class="board-header">
+            <h1>VN Board</h1>
+            <p>Serverless real-time collaborative canvas.</p>
+        </div>
+
+        <div class="glass-panel main-panel">
+            <div class="split-layout">
+                <div class="left-panel">
+                    <h3>Your Room Code</h3>
+                    <div class="id-display-wrapper">
+                        <span class="id-text" id="my-id">...</span>
+                        <button class="icon-btn" id="copy-id-btn" title="Copy ID">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="divider">
+                    <span class="divider-text">OR</span>
+                </div>
+
+                <div class="right-panel">
+                    <h3>Join a Room</h3>
+                    <div class="input-group" style="flex-direction: row; gap: 8px;">
+                        <input type="text" id="peer-id-input" placeholder="Enter 5-digit code..." style="flex: 1;" maxlength="5">
+                        <button id="connect-btn" class="btn btn-primary" style="padding: 12px 24px;">Join</button>
+                    </div>
+                    <div id="connection-status" class="status-text text-muted">Ready to join.</div>
+                </div>
+            </div>
+            
+            <div class="security-notice" style="margin-top: 40px; justify-content: center;">
+                <button id="btn-solo" class="btn btn-secondary">Draw Solo (No connection needed)</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Canvas Screen -->
+    <main id="canvas-screen" class="screen" style="width: 100vw; height: 100vh; max-width: none; margin: 0; padding: 0;">
+        <div class="canvas-toolbar">
+            <div class="tool-group">
+                <div class="color-picker">
+                    <button class="color-btn active" style="background: #00E5FF;" data-color="#00E5FF"></button>
+                    <button class="color-btn" style="background: #B388FF;" data-color="#B388FF"></button>
+                    <button class="color-btn" style="background: #FF5252;" data-color="#FF5252"></button>
+                    <button class="color-btn" style="background: #FFF;" data-color="#FFFFFF"></button>
+                </div>
+                <input type="range" id="brush-size" min="2" max="20" value="4">
+            </div>
+            
+            <div class="tool-group">
+                <div class="connected-badges" id="connected-peers-container">
+                    <!-- Peers injected here -->
+                </div>
+                <button id="btn-clear" class="btn small-btn" style="background: rgba(255,82,82,0.1); color: #ff5252; border-color: rgba(255,82,82,0.3);">Clear Board</button>
+                <button id="disconnect-btn" class="icon-btn danger">Exit</button>
+            </div>
+        </div>
+        
+        <canvas id="drawing-board"></canvas>
+    </main>
+
+    <footer class="mobile-footer" id="mobile-footer">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+    </footer>
+
+    <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js"></script>
+    <script src="app.js" defer></script>
+</body>
+</html>
