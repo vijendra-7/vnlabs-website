@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btnRemove.addEventListener('click', resetUI);
 
     function handleFile(file) {
+        alert("1. handleFile started. File: " + file.name + " (" + file.type + ")");
         if (file.type && !file.type.startsWith('image/')) {
             alert('Please select an image file (JPEG, PNG, WebP).');
             return;
@@ -88,11 +89,13 @@ document.addEventListener('DOMContentLoaded', () => {
         else outputFormatSelect.value = 'image/jpeg';
 
         const sizeKb = (file.size / 1024).toFixed(1);
-        
+        alert("2. Starting FileReader...");
         const reader = new FileReader();
         reader.onload = (e) => {
+            alert("3. FileReader finished. Result length: " + (e.target.result ? e.target.result.length : 0));
             const img = new Image();
             img.onload = () => {
+                alert("4. Image loaded successfully! Updating UI...");
                 originalImageObj = img;
                 originalMeta.innerHTML = `Original: <strong>${sizeKb} KB</strong> <br> ${img.width}x${img.height} px`;
                 
@@ -105,9 +108,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 previewContainer.style.display = 'flex';
                 btnCompress.disabled = false;
                 resultArea.style.display = 'none';
+                fileInput.value = ''; // Safely reset so same file can be selected again
+                alert("5. UI update complete.");
             };
             img.onerror = () => {
-                alert("Browser failed to load this image. The file format might not be supported (e.g. HEIC on some browsers) or the file is corrupt.");
+                fileInput.value = ''; // Safely reset on error
+                alert("4. img.onerror fired! Browser failed to decode image.");
             };
             img.src = e.target.result;
         };
