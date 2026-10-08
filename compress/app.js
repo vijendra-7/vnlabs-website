@@ -57,13 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
     fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
             handleFile(fileInput.files[0]);
+            fileInput.value = ''; // Reset so the same file can be chosen again
         }
     });
 
     btnRemove.addEventListener('click', resetUI);
 
     function handleFile(file) {
-        if (!file.type.startsWith('image/')) {
+        if (file.type && !file.type.startsWith('image/')) {
             alert('Please select an image file (JPEG, PNG, WebP).');
             return;
         }
