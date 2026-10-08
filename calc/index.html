@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE Virtual Calculator — Official Exam Replica | VN Labs</title>
+    <meta name="description" content="Exact 1:1 replica of the official TCS iON GATE Virtual Scientific Calculator. Practice calculation speed, keyboard shortcuts, and scientific functions.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="theme-tcs">
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <nav class="standard-nav">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+        <div class="nav-controls">
+            <button class="theme-toggle-btn" id="btn-theme-toggle">
+                <span id="theme-btn-text">🌙 Dark Mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="calc-page-container">
+        <div class="calc-header-meta">
+            <h1 class="gradient-text">GATE Virtual Calculator</h1>
+            <p>Official TCS iON interface & function logic for authentic exam day practice.</p>
+        </div>
+
+        <!-- The GATE Calculator Unit -->
+        <div class="gate-calc-window" id="calc-window">
+            <!-- Title Bar -->
+            <div class="calc-titlebar">
+                <div class="title-left">
+                    <span class="exam-logo">GATE</span>
+                    <span class="calc-name">Virtual Scientific Calculator</span>
+                </div>
+                <div class="angle-mode-selector">
+                    <label class="radio-label">
+                        <input type="radio" name="angle-mode" value="deg" checked id="mode-deg">
+                        <span>Deg</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="angle-mode" value="rad" id="mode-rad">
+                        <span>Rad</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Dual-Line Display -->
+            <div class="calc-display-panel">
+                <div class="expression-line" id="calc-history">&nbsp;</div>
+                <div class="current-value-line" id="calc-display">0</div>
+            </div>
+
+            <!-- Keypad Matrix -->
+            <div class="calc-keypad">
+                
+                <!-- Row 1: Memory & Helpers -->
+                <button class="key func-key" data-action="mod">mod</button>
+                <button class="key func-key" data-action="fact">n!</button>
+                <button class="key mem-key" data-action="mc">MC</button>
+                <button class="key mem-key" data-action="mr">MR</button>
+                <button class="key mem-key" data-action="ms">MS</button>
+                <button class="key mem-key" data-action="mplus">M+</button>
+                <button class="key mem-key" data-action="mminus">M-</button>
+
+                <!-- Row 2: Trig Row -->
+                <button class="key func-key" data-action="sin">sin</button>
+                <button class="key func-key" data-action="cos">cos</button>
+                <button class="key func-key" data-action="tan">tan</button>
+                <button class="key func-key" data-action="asin">sin⁻¹</button>
+                <button class="key func-key" data-action="acos">cos⁻¹</button>
+                <button class="key func-key" data-action="atan">tan⁻¹</button>
+                <button class="key clear-key" data-action="backspace">←</button>
+
+                <!-- Row 3: Hyperbolic & Logs -->
+                <button class="key func-key" data-action="sinh">sinh</button>
+                <button class="key func-key" data-action="cosh">cosh</button>
+                <button class="key func-key" data-action="tanh">tanh</button>
+                <button class="key func-key" data-action="log">log₁₀</button>
+                <button class="key func-key" data-action="ln">ln</button>
+                <button class="key func-key" data-action="log2">log₂</button>
+                <button class="key clear-key" data-action="ce">CE</button>
+
+                <!-- Row 4: Powers & Clear -->
+                <button class="key func-key" data-action="pow">xʸ</button>
+                <button class="key func-key" data-action="sqr">x²</button>
+                <button class="key func-key" data-action="cube">x³</button>
+                <button class="key num-key" data-num="7">7</button>
+                <button class="key num-key" data-num="8">8</button>
+                <button class="key num-key" data-num="9">9</button>
+                <button class="key clear-key" data-action="c">C</button>
+
+                <!-- Row 5: Roots & Digits -->
+                <button class="key func-key" data-action="sqrt">√x</button>
+                <button class="key func-key" data-action="cbrt">∛x</button>
+                <button class="key func-key" data-action="yroot">ʸ√x</button>
+                <button class="key num-key" data-num="4">4</button>
+                <button class="key num-key" data-num="5">5</button>
+                <button class="key num-key" data-num="6">6</button>
+                <button class="key op-key" data-op="/">/</button>
+
+                <!-- Row 6: Exponentials & Operators -->
+                <button class="key func-key" data-action="exp10">10ˣ</button>
+                <button class="key func-key" data-action="exp">eˣ</button>
+                <button class="key func-key" data-action="inv">1/x</button>
+                <button class="key num-key" data-num="1">1</button>
+                <button class="key num-key" data-num="2">2</button>
+                <button class="key num-key" data-num="3">3</button>
+                <button class="key op-key" data-op="*">×</button>
+
+                <!-- Row 7: Constants, Brackets & Bottom -->
+                <button class="key func-key" data-action="pi">π</button>
+                <button class="key func-key" data-action="e">e</button>
+                <button class="key func-key" data-action="abs">|x|</button>
+                <button class="key num-key" data-num="0">0</button>
+                <button class="key num-key" data-num=".">.</button>
+                <button class="key func-key" data-action="sign">±</button>
+                <button class="key op-key" data-op="-">-</button>
+
+                <!-- Row 8: Brackets & Equal -->
+                <button class="key func-key" data-action="open-paren">(</button>
+                <button class="key func-key" data-action="close-paren">)</button>
+                <button class="key func-key" data-action="percent">%</button>
+                <button class="key op-key" data-op="+">+</button>
+                <button class="key equal-key" data-action="equals" style="grid-column: span 3;">=</button>
+
+            </div>
+            
+            <div class="calc-footer-tips">
+                <span>Tip: You can use your physical Keyboard NumPad to enter numbers and operators!</span>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
