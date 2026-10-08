@@ -39,11 +39,12 @@
         <div class="nav-btn-group">
             <button class="btn btn-secondary small" id="btn-open-weightage">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-                Weightage Insights
+                <span class="btn-label-full">Weightage Insights</span>
+                <span class="btn-label-short">Weightage</span>
             </button>
             <button class="btn btn-secondary small" id="btn-backup-data" title="Backup or Restore Progress">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-                Backup
+                <span class="btn-label-text">Backup</span>
             </button>
             <button class="btn btn-danger small" id="btn-reset-progress" title="Reset syllabus progress">
                 Reset
@@ -91,18 +92,24 @@
             <div class="stats-row">
                 <div class="stat-pill">
                     <span class="stat-icon">📚</span>
-                    <span class="stat-val" id="stat-completed-subjects">0 / 13</span>
-                    <span class="stat-lbl">Subjects Done</span>
+                    <div class="stat-info-stack">
+                        <span class="stat-val" id="stat-completed-subjects">0 / 13</span>
+                        <span class="stat-lbl">Subjects Done</span>
+                    </div>
                 </div>
                 <div class="stat-pill">
                     <span class="stat-icon">⭐</span>
-                    <span class="stat-val" id="stat-imp-completed">0 / 41</span>
-                    <span class="stat-lbl">High-Yield Topics</span>
+                    <div class="stat-info-stack">
+                        <span class="stat-val" id="stat-imp-completed">0 / 41</span>
+                        <span class="stat-lbl">High-Yield</span>
+                    </div>
                 </div>
                 <div class="stat-pill">
                     <span class="stat-icon">⏳</span>
-                    <span class="stat-val" id="stat-remaining-chapters">78</span>
-                    <span class="stat-lbl">Chapters Left</span>
+                    <div class="stat-info-stack">
+                        <span class="stat-val" id="stat-remaining-chapters">78</span>
+                        <span class="stat-lbl">Left</span>
+                    </div>
                 </div>
             </div>
 
