@@ -1,6 +1,5 @@
-// Global error handler to catch issues
 window.onerror = function(msg, url, lineNo, columnNo, error) {
-    console.error("App Error: " + msg + "\nLine: " + lineNo);
+    alert("App Error: " + msg + "\nLine: " + lineNo);
     return false;
 };
     // UI Elements
