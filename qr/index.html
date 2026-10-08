@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Studio & Lens — Generator & Instant Scanner | VN Labs</title>
+    <meta name="description" content="Generate custom branded QR codes for WiFi, WhatsApp, UPI payments, and links. Scan QRs from camera, file, or clipboard paste.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js" defer></script>
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <nav class="standard-nav">
+        <a href="../index.html" class="logo">vn<span>labs</span></a>
+        <div class="mode-toggle-pill">
+            <button class="pill-btn active" id="tab-gen-btn">Generate</button>
+            <button class="pill-btn" id="tab-scan-btn">Scan / Lens</button>
+        </div>
+    </nav>
+
+    <main class="qr-container">
+        
+        <!-- SECTION 1: GENERATOR -->
+        <section class="view-panel active" id="view-generate">
+            <header class="section-header">
+                <h1 class="gradient-text">QR Studio</h1>
+                <p>Generate high-definition QR codes for WiFi, WhatsApp, UPI, and links.</p>
+            </header>
+
+            <div class="studio-layout">
+                <!-- Controls Side -->
+                <div class="controls-panel">
+                    <!-- Type Pills -->
+                    <div class="type-pills">
+                        <button class="type-pill active" data-type="url">🔗 Link</button>
+                        <button class="type-pill" data-type="wifi">📶 WiFi</button>
+                        <button class="type-pill" data-type="upi">💳 UPI Pay</button>
+                        <button class="type-pill" data-type="wa">💬 WhatsApp</button>
+                        <button class="type-pill" data-type="text">📝 Text</button>
+                    </div>
+
+                    <!-- Dynamic Fields -->
+                    <div class="fields-container">
+                        <!-- URL Field -->
+                        <div class="field-group type-fields" id="field-url">
+                            <label>Website URL:</label>
+                            <input type="url" id="input-url" placeholder="https://example.com" value="https://vnlabs.in" class="text-input">
+                        </div>
+
+                        <!-- WiFi Fields -->
+                        <div class="field-group type-fields" id="field-wifi" style="display: none;">
+                            <label>Network Name (SSID):</label>
+                            <input type="text" id="wifi-ssid" placeholder="Home_WiFi" class="text-input">
+                            <label style="margin-top: 10px;">WiFi Password:</label>
+                            <input type="text" id="wifi-pass" placeholder="Password" class="text-input">
+                            <label style="margin-top: 10px;">Security:</label>
+                            <select id="wifi-sec" class="text-input">
+                                <option value="WPA">WPA/WPA2</option>
+                                <option value="WEP">WEP</option>
+                                <option value="nopass">Open (No password)</option>
+                            </select>
+                        </div>
+
+                        <!-- UPI Fields -->
+                        <div class="field-group type-fields" id="field-upi" style="display: none;">
+                            <label>UPI ID (VPA):</label>
+                            <input type="text" id="upi-id" placeholder="yourname@okaxis" class="text-input">
+                            <label style="margin-top: 10px;">Payee Name:</label>
+                            <input type="text" id="upi-name" placeholder="John Doe" class="text-input">
+                            <label style="margin-top: 10px;">Amount (Optional ₹):</label>
+                            <input type="number" id="upi-amount" placeholder="500" class="text-input">
+                        </div>
+
+                        <!-- WhatsApp Fields -->
+                        <div class="field-group type-fields" id="field-wa" style="display: none;">
+                            <label>Phone Number (with country code):</label>
+                            <input type="text" id="wa-phone" placeholder="919876543210" class="text-input">
+                            <label style="margin-top: 10px;">Pre-filled Message (Optional):</label>
+                            <input type="text" id="wa-msg" placeholder="Hi! I want to inquire about..." class="text-input">
+                        </div>
+
+                        <!-- Text Field -->
+                        <div class="field-group type-fields" id="field-text" style="display: none;">
+                            <label>Plain Text / Message:</label>
+                            <textarea id="input-text" placeholder="Type any text here..." class="text-input" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Colors Customization -->
+                    <div class="styling-group">
+                        <label>Color Customization:</label>
+                        <div class="color-pickers">
+                            <div class="color-item">
+                                <span>QR Color:</span>
+                                <input type="color" id="qr-dark-color" value="#0B0C10">
+                            </div>
+                            <div class="color-item">
+                                <span>Background:</span>
+                                <input type="color" id="qr-light-color" value="#FFFFFF">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Side -->
+                <div class="preview-panel">
+                    <div class="qr-card">
+                        <div id="qr-preview-box" class="qr-canvas-wrap"></div>
+                        <span class="preview-hint">Live Preview</span>
+                    </div>
+
+                    <div class="download-actions">
+                        <button id="btn-download-qr" class="btn btn-primary">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Download PNG
+                        </button>
+                        <button id="btn-copy-qr" class="btn btn-secondary">Copy Image</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: SCANNER / LENS -->
+        <section class="view-panel" id="view-scan">
+            <header class="section-header">
+                <h1 class="gradient-text">QR Lens & Scanner</h1>
+                <p>Scan with camera or drop screenshots to decode instantly.</p>
+            </header>
+
+            <div class="scanner-layout">
+                <!-- Camera / Upload View -->
+                <div class="scanner-card">
+                    <div id="camera-reader" style="width: 100%; border-radius: 12px; overflow: hidden; display: none;"></div>
+                    
+                    <div class="scan-upload-zone" id="scan-dropzone">
+                        <input type="file" id="scan-file-input" accept="image/*" style="display: none;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                        <h3>Scan or Paste QR Code</h3>
+                        <p>Press <strong>Ctrl+V</strong> to paste from clipboard, drop an image, or use camera</p>
+                        <div class="scanner-buttons">
+                            <button class="btn btn-primary" id="btn-start-camera">Start Camera</button>
+                            <button class="btn btn-secondary" onclick="document.getElementById('scan-file-input').click()">Upload Image</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decoded Result -->
+                <div class="result-card" id="scan-result-card" style="display: none;">
+                    <h3>Decoded Content</h3>
+                    <div class="result-display" id="scan-result-text"></div>
+                    <div class="result-actions">
+                        <button class="btn btn-primary" id="btn-copy-result">Copy Text</button>
+                        <button class="btn btn-secondary" id="btn-open-result" style="display: none;">Open Link</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
