@@ -137,8 +137,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function enterCanvas() {
         connectionScreen.classList.remove('active');
         canvasScreen.classList.add('active');
-        // Hide mobile footer on canvas
+        // Hide mobile footer and standard nav on canvas
         document.getElementById('mobile-footer').style.display = 'none';
+        const standardNav = document.querySelector('.standard-nav');
+        if (standardNav) standardNav.style.display = 'none';
         
         // Ensure canvas fills screen after display:block
         setTimeout(resizeCanvas, 100);
@@ -152,6 +154,9 @@ document.addEventListener('DOMContentLoaded', () => {
         canvasScreen.classList.remove('active');
         connectionScreen.classList.add('active');
         document.getElementById('mobile-footer').style.display = 'block';
+        const standardNav = document.querySelector('.standard-nav');
+        if (standardNav) standardNav.style.display = '';
+        
         resizeCanvas(); // clear board
     }
 
