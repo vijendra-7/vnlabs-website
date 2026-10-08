@@ -1103,65 +1103,364 @@ body {
     display: none !important;
 }
 
+/* ─── Responsive Navigation Labels ────────────────────────────────────────── */
+.btn-label-short {
+    display: none;
+}
+
+.stat-info-stack {
+    display: flex;
+    flex-direction: column;
+}
+
 /* ─── Responsive Media Queries ───────────────────────────────────────────── */
 @media (max-width: 900px) {
-    .workspace-layout {
-        grid-template-columns: 1fr;
+    .syllabus-container {
+        padding: 16px 14px 60px 14px;
     }
 
+    .workspace-layout {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    /* Sticky Horizontal Subjects Ribbon on Mobile/Tablet */
     .subjects-sidebar {
-        position: relative;
-        top: 0;
+        position: sticky;
+        top: 60px;
+        z-index: 50;
+        background: rgba(11, 15, 26, 0.96);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 8px 10px;
         max-height: none;
+        overflow: visible;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .sidebar-header {
+        display: none;
     }
 
     .subjects-nav-list {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 6px;
-    }
-}
-
-@media (max-width: 640px) {
-    .syllabus-hero h1 {
-        font-size: 1.85rem;
+        display: flex;
+        flex-direction: row;
+        gap: 8px;
+        overflow-x: auto;
+        scroll-snap-type: x proximity;
+        -webkit-overflow-scrolling: touch;
+        padding: 2px 2px 4px 2px;
     }
 
-    .progress-hero-card {
+    .subjects-nav-list::-webkit-scrollbar {
+        height: 3px;
+    }
+    .subjects-nav-list::-webkit-scrollbar-thumb {
+        background: rgba(0, 229, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    .subject-item-btn {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+        min-width: 150px;
+        max-width: 200px;
+        padding: 8px 12px;
+        margin-bottom: 0;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .subject-item-btn.active {
+        background: rgba(0, 229, 255, 0.12);
+        border-color: var(--cyan-glow);
+        box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
+    }
+
+    .subject-item-title {
+        font-size: 0.85rem;
+    }
+
+    .subject-item-meta {
+        font-size: 0.72rem;
+    }
+
+    .chapters-panel {
         padding: 18px 16px;
         border-radius: 18px;
     }
 
+    .chapters-panel-header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 14px;
+        margin-bottom: 16px;
+    }
+
+    .chapters-panel-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .subject-icon-large {
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
+        border-radius: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    /* Nav bar on phones */
+    .standard-nav {
+        padding: 10px 14px;
+    }
+
+    .nav-left {
+        gap: 8px;
+    }
+
+    .nav-badge {
+        font-size: 0.68rem;
+        padding: 3px 7px;
+    }
+
+    .btn-label-full {
+        display: none;
+    }
+    .btn-label-short {
+        display: inline;
+    }
+
+    .nav-btn-group {
+        gap: 6px;
+    }
+
+    .nav-btn-group .btn {
+        padding: 6px 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Hero */
+    .syllabus-hero {
+        margin-bottom: 20px;
+    }
+
+    .syllabus-hero h1 {
+        font-size: 1.65rem;
+        letter-spacing: -0.02em;
+    }
+
+    .syllabus-hero p {
+        font-size: 0.9rem;
+        margin-bottom: 18px;
+        padding: 0 4px;
+    }
+
+    .search-kbd {
+        display: none; /* Mobile virtual keyboards don't have Ctrl K */
+    }
+
+    .search-wrap {
+        padding: 0 14px;
+    }
+
+    .search-wrap input {
+        font-size: 0.9rem;
+        padding: 12px 8px;
+    }
+
+    /* Progress Hero Card */
+    .progress-hero-card {
+        padding: 18px 14px;
+        border-radius: 18px;
+        margin-bottom: 18px;
+    }
+
+    .progress-title-block h2 {
+        font-size: 1.05rem;
+    }
+
+    .progress-title-block p {
+        font-size: 0.8rem;
+    }
+
     .progress-percentage {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
+    }
+
+    .progress-track {
+        height: 10px;
+        margin-bottom: 14px;
+    }
+
+    /* 3-column compact stat pills */
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        margin-bottom: 14px;
+    }
+
+    .stat-pill {
+        padding: 8px 6px;
+        border-radius: 10px;
+        gap: 6px;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .stat-icon {
+        font-size: 1.15rem;
+    }
+
+    .stat-val {
+        font-size: 0.95rem;
+    }
+
+    .stat-lbl {
+        font-size: 0.68rem;
+        margin-left: 0;
+        white-space: nowrap;
+    }
+
+    /* Horizontal scroll filter chips */
+    .filter-chips-row {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+        gap: 6px;
+    }
+    .filter-chips-row::-webkit-scrollbar {
+        display: none;
+    }
+
+    .filter-chip {
+        flex-shrink: 0;
+        padding: 5px 12px;
+        font-size: 0.75rem;
+    }
+
+    /* Chapter Items */
+    .chapter-tile {
+        padding: 12px 12px;
+        border-radius: 12px;
+        gap: 8px;
+    }
+
+    .chapter-checkbox-wrap {
+        margin-right: 8px;
+    }
+
+    .chapter-checkbox {
+        width: 22px;
+        height: 22px;
+    }
+
+    .chapter-name {
+        font-size: 0.88rem;
+        line-height: 1.3;
+    }
+
+    .chapter-badges {
+        margin-left: 6px;
+        gap: 4px;
+    }
+
+    .badge-important {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+
+    .badge-done {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+    }
+
+    /* Modals on Phone */
+    .modal-overlay {
+        padding: 10px;
+    }
+
+    .modal-card {
+        padding: 18px 14px;
+        border-radius: 18px;
+        max-height: 90vh;
+    }
+
+    .modal-title-wrap h3 {
+        font-size: 1.1rem;
+    }
+
+    .mode-tab {
+        padding: 7px 6px;
+        font-size: 0.78rem;
+    }
+
+    .weightage-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .subject-weightage-card {
+        padding: 14px 14px;
+        border-radius: 16px;
+    }
+
+    .card-avg-number {
+        font-size: 1.6rem;
+    }
+
+    .graph-popup-card {
+        padding: 18px 14px;
+    }
+
+    .graph-bars-wrap {
+        min-height: 190px;
+        gap: 12px;
+    }
+
+    .popup-bar-pillar {
+        width: 18px;
+    }
+    .popup-bar-pillar.dense {
+        width: 10px;
+    }
+
+    .popup-bar-val {
+        font-size: 11px;
+    }
+
+    .popup-bar-year {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 380px) {
+    .nav-badge {
+        display: none;
+    }
+
+    .syllabus-hero h1 {
+        font-size: 1.45rem;
+    }
+
+    .progress-percentage {
+        font-size: 1.65rem;
     }
 
     .stats-row {
-        grid-template-columns: 1fr;
+        gap: 4px;
     }
 
-    .subjects-nav-list {
-        grid-template-columns: 1fr;
-    }
-
-    .chapters-panel {
-        padding: 16px;
-    }
-
-    .chapters-panel-header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .subject-header-actions {
-        width: 100%;
-    }
-
-    .subject-header-actions button {
-        width: 100%;
-    }
-
-    .chapter-tile {
-        padding: 12px 14px;
+    .stat-pill {
+        padding: 6px 4px;
     }
 }
+
