@@ -102,6 +102,15 @@
     text-align: center;
     letter-spacing: 4px;
     background: rgba(11, 12, 16, 0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    color: white;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+.peer-input:focus {
+    border-color: var(--cyan);
+    outline: none;
 }
 
 .join-btn-styled {
