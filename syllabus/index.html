@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GATE CS Syllabus & Topic Tracker | VN Labs</title>
+    <meta name="description" content="Interactive GATE Computer Science syllabus checklist with 78 micro-topics, chapter completion tracking, and historical mark weightage analytics.">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00E5FF">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
+            });
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="glow-orb cyan"></div>
+    <div class="glow-orb purple"></div>
+
+    <!-- Navigation Bar -->
+    <nav class="standard-nav">
+        <div class="nav-left">
+            <a href="../index.html" class="logo">vn<span>labs</span></a>
+            <span class="nav-badge">GATE CS 2026/27</span>
+        </div>
+        <div class="nav-btn-group">
+            <button class="btn btn-secondary small" id="btn-open-weightage">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                Weightage Insights
+            </button>
+            <button class="btn btn-secondary small" id="btn-backup-data" title="Backup or Restore Progress">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                Backup
+            </button>
+            <button class="btn btn-danger small" id="btn-reset-progress" title="Reset syllabus progress">
+                Reset
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="syllabus-container">
+        
+        <!-- Hero Header -->
+        <header class="syllabus-hero">
+            <div class="hero-top-badge">
+                <span class="pulsing-dot"></span>
+                Official GATE CS & IT Curriculum
+            </div>
+            <h1 class="gradient-text">GATE CS Syllabus & Topic Tracker</h1>
+            <p>Master all 13 subjects and 78 micro-topics with real-time completion tracking and historical exam weightage.</p>
+
+            <!-- Topic Search Bar -->
+            <div class="search-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <input type="text" id="topic-search-input" placeholder="Search any topic (e.g., 'Virtual Memory', 'Dijkstra', 'Paging', 'SQL')..." autocomplete="off" spellcheck="false">
+                <span class="search-kbd">Ctrl K</span>
+                <button id="clear-search-btn" class="clear-search-btn hidden" aria-label="Clear search">&times;</button>
+            </div>
+        </header>
+
+        <!-- Overall Progress Card -->
+        <section class="progress-hero-card">
+            <div class="progress-card-top">
+                <div class="progress-title-block">
+                    <h2>Overall Progress</h2>
+                    <p id="overall-fraction-text">0 of 78 chapters completed</p>
+                </div>
+                <div class="progress-percentage" id="overall-percentage-text">0%</div>
+            </div>
+
+            <!-- Glowing Animated Progress Bar -->
+            <div class="progress-track">
+                <div class="progress-fill" id="overall-progress-bar" style="width: 0%;"></div>
+            </div>
+
+            <!-- Quick Stat Badges -->
+            <div class="stats-row">
+                <div class="stat-pill">
+                    <span class="stat-icon">📚</span>
+                    <span class="stat-val" id="stat-completed-subjects">0 / 13</span>
+                    <span class="stat-lbl">Subjects Done</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-val" id="stat-imp-completed">0 / 41</span>
+                    <span class="stat-lbl">High-Yield Topics</span>
+                </div>
+                <div class="stat-pill">
+                    <span class="stat-icon">⏳</span>
+                    <span class="stat-val" id="stat-remaining-chapters">78</span>
+                    <span class="stat-lbl">Chapters Left</span>
+                </div>
+            </div>
+
+            <!-- Quick Filter Chips -->
+            <div class="filter-chips-row">
+                <button class="filter-chip active" data-filter="all">All Topics (78)</button>
+                <button class="filter-chip" data-filter="remaining">Pending</button>
+                <button class="filter-chip" data-filter="completed">Completed</button>
+                <button class="filter-chip" data-filter="important">⭐ High-Yield Only</button>
+            </div>
+        </section>
+
+        <!-- Search Results Panel (shown when search is active) -->
+        <section id="search-results-panel" class="search-results-panel hidden">
+            <div class="search-results-header">
+                <h3>Search Results (<span id="search-count">0</span>)</h3>
+                <button class="btn btn-secondary small" id="btn-close-search">Close Search</button>
+            </div>
+            <div class="chapters-list" id="search-chapters-container"></div>
+        </section>
+
+        <!-- Main Syllabus Workspace (Split Layout on Desktop, Accordion on Mobile) -->
+        <div class="workspace-layout" id="workspace-layout">
+            
+            <!-- LEFT COLUMN: Subjects Navigation List -->
+            <aside class="subjects-sidebar">
+                <div class="sidebar-header">
+                    <h3>Subjects</h3>
+                    <span class="badge-total">13 Total</span>
+                </div>
+                <div class="subjects-nav-list" id="subjects-nav-list">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </aside>
+
+            <!-- RIGHT COLUMN: Active Subject Chapter Detail -->
+            <section class="chapters-panel">
+                <div class="chapters-panel-header" id="active-subject-header">
+                    <div class="subject-title-wrap">
+                        <span class="subject-icon-large" id="active-subject-icon">💻</span>
+                        <div>
+                            <h2 id="active-subject-name">C Programming</h2>
+                            <p id="active-subject-sub">0 of 7 chapters completed · ~4.6 Marks Weightage</p>
+                        </div>
+                    </div>
+                    <div class="subject-header-actions">
+                        <button class="btn btn-secondary small" id="btn-toggle-subject-all">Mark All Done</button>
+                    </div>
+                </div>
+
+                <!-- Chapters Checklist -->
+                <div class="chapters-list" id="chapters-list-container">
+                    <!-- Populated dynamically by JS -->
+                </div>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- Weightage Insights Modal -->
+    <div class="modal-overlay hidden" id="weightage-modal">
+        <div class="modal-card wide-modal">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h3>Weightage Insights</h3>
+                    <p class="modal-sub-hint">Tap on any graph to view detailed marks.</p>
+                </div>
+                <button class="modal-close" id="btn-close-weightage">&times;</button>
+            </div>
+
+            <!-- Mode Toggle Bar -->
+            <div class="mode-toggle-bar">
+                <button class="mode-tab active" data-tab="recent">Recent</button>
+                <button class="mode-tab" data-tab="historical">Historical</button>
+                <button class="mode-tab" data-tab="alltime">All-Time</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="weightage-cards-grid" id="weightage-cards-container">
+                    <!-- Populated dynamically by JS with _SubjectWeightageCard design -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Graph Popup Modal (_WeightageGraphPopup from Flutter App) -->
+    <div class="modal-overlay hidden" id="graph-popup-modal">
+        <div class="modal-card graph-popup-card">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <h3 id="graph-popup-title">Algorithms</h3>
+                    <p id="graph-popup-subtitle">Mark Trends</p>
+                </div>
+                <button class="modal-close" id="btn-close-graph-popup">&times;</button>
+            </div>
+            <div class="modal-body graph-popup-body">
+                <div class="graph-scroll-container">
+                    <div class="graph-bars-wrap" id="graph-bars-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backup / Export Progress Modal -->
+    <div class="modal-overlay hidden" id="backup-modal">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>💾 Backup & Restore Progress</h3>
+                <button class="modal-close" id="btn-close-backup">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-desc">Save your syllabus completion progress to a JSON file or restore from a previous backup.</p>
+                <div class="backup-actions">
+                    <button class="btn btn-primary" id="btn-export-json">📥 Download Progress Backup</button>
+                    <label class="btn btn-secondary custom-file-upload">
+                        📤 Restore from Backup File
+                        <input type="file" id="import-json-file" accept=".json" style="display: none;">
+                    </label>
+                </div>
+                <div class="backup-tip">
+                    <span>💡 Tip:</span> Your progress is automatically preserved in this browser's local storage. Exporting is recommended if you study across multiple devices.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
