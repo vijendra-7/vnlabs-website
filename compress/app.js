@@ -1,3 +1,4 @@
+alert("APP.JS HAS STARTED EXECUTION!");
 // Global Error Handler to display logs to user
     // Global Error Handler to display logs to user
     window.onerror = function(msg, url, lineNo, columnNo, error) {
@@ -10,6 +11,20 @@
 
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('file-input');
+
+    if (fileInput) {
+        fileInput.addEventListener('change', () => {
+            alert("NATIVE CHANGE EVENT FIRED!");
+            const dropTxt = document.getElementById('dropzone-text');
+            if (fileInput.files.length > 0) {
+                const f = fileInput.files[0];
+                if(dropTxt) dropTxt.innerText = "Selected: " + f.name;
+                handleFile(f);
+            } else {
+                if(dropTxt) dropTxt.innerText = "No image selected";
+            }
+        });
+    }
     const previewContainer = document.getElementById('preview-container');
     const imagePreview = document.getElementById('image-preview');
     const originalMeta = document.getElementById('original-meta');
@@ -67,16 +82,7 @@
         }
     });
 
-    fileInput.addEventListener('change', () => {
-        const dropTxt = document.getElementById('dropzone-text');
-        if (fileInput.files.length > 0) {
-            const f = fileInput.files[0];
-            if(dropTxt) dropTxt.innerText = "Selected: " + f.name;
-            handleFile(f);
-        } else {
-            if(dropTxt) dropTxt.innerText = "No image selected";
-        }
-    });
+
 
     btnRemove.addEventListener('click', resetUI);
 
