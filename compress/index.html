@@ -53,12 +53,12 @@
             <div class="split-layout">
                 <!-- Left: Dropzone & Preview -->
                 <div class="left-panel">
-                    <label id="dropzone" class="dropzone">
+                    <div id="dropzone" class="dropzone">
                         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="drop-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
                         <h3>Drop Image Here</h3>
-                        <p id="dropzone-text">or click to browse</p>
-                        <input type="file" id="file-input" accept="image/*" class="hidden-file-input">
-                    </label>
+                        <p id="dropzone-text">or choose a file below</p>
+                        <input type="file" id="file-input" accept="image/*" style="margin-top: 16px; background: rgba(0, 229, 255, 0.1); color: white; padding: 10px; border-radius: 8px; border: 1px solid rgba(0, 229, 255, 0.3); width: 100%; max-width: 280px; cursor: pointer;">
+                    </div>
                     
                     <div id="preview-container" class="preview-container" style="display: none;">
                         <img id="image-preview" src="" alt="Preview">
