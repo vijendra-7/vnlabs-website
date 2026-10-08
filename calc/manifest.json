@@ -1,0 +1,16 @@
+{
+  "name": "Gate Calculator",
+  "short_name": "GateCalc",
+  "description": "Official GATE Virtual Scientific Calculator Replica",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#d6d6d6",
+  "theme_color": "#3876ea",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
