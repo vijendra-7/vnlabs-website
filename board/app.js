@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const colorBtns = document.querySelectorAll('.color-btn');
     const brushSizeInput = document.getElementById('brush-size');
     const btnClear = document.getElementById('btn-clear');
+    const btnUndo = document.getElementById('btn-undo');
+    const btnRedo = document.getElementById('btn-redo');
 
     let peer = null;
     let connections = {}; 
@@ -28,6 +30,39 @@ document.addEventListener('DOMContentLoaded', () => {
     let lastY = 0;
     let currentColor = '#00E5FF';
     let currentSize = 4;
+    
+    // History State
+    let historyStack = [];
+    let redoStack = [];
+
+    function saveState() {
+        if (historyStack.length > 20) historyStack.shift(); // Limit history
+        historyStack.push(canvas.toDataURL());
+        redoStack = []; // Clear redo on new action
+    }
+
+    function restoreState(dataUrl) {
+        const img = new Image();
+        img.onload = () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
+        };
+        img.src = dataUrl;
+    }
+
+    function undo() {
+        if (historyStack.length > 0) {
+            redoStack.push(canvas.toDataURL());
+            restoreState(historyStack.pop());
+        }
+    }
+
+    function redo() {
+        if (redoStack.length > 0) {
+            historyStack.push(canvas.toDataURL());
+            restoreState(redoStack.pop());
+        }
+    }
 
     function resizeCanvas() {
         canvas.width = window.innerWidth;
@@ -148,9 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleIncomingData(data) {
         if (data.type === 'draw') {
             drawStroke(data.x0, data.y0, data.x1, data.y1, data.color, data.size);
+        } else if (data.type === 'start_stroke') {
+            saveState(); // Save state before peer draws
         } else if (data.type === 'clear') {
+            saveState();
             ctx.fillStyle = '#0B0C10';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
+        } else if (data.type === 'undo') {
+            undo();
+        } else if (data.type === 'redo') {
+            redo();
         }
     }
 
@@ -166,6 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function startDrawing(e) {
         isDrawing = true;
+        saveState();
+        broadcast({ type: 'start_stroke' });
+        
         const pos = getPos(e);
         lastX = pos.x;
         lastY = pos.y;
@@ -218,7 +263,18 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSize = e.target.value;
     });
 
+    btnUndo.addEventListener('click', () => {
+        undo();
+        broadcast({ type: 'undo' });
+    });
+
+    btnRedo.addEventListener('click', () => {
+        redo();
+        broadcast({ type: 'redo' });
+    });
+
     btnClear.addEventListener('click', () => {
+        saveState();
         ctx.fillStyle = '#0B0C10';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         broadcast({ type: 'clear' });
