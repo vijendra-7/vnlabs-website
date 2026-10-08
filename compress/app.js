@@ -54,10 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    fileInput.addEventListener('click', (e) => {
+        // Clear value before selection so the same file can trigger 'change'
+        e.target.value = '';
+    });
+
     fileInput.addEventListener('change', () => {
         if (fileInput.files.length > 0) {
             handleFile(fileInput.files[0]);
-            fileInput.value = ''; // Reset so the same file can be chosen again
         }
     });
 
