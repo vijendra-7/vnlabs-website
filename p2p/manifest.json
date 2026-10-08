@@ -1,0 +1,21 @@
+{
+  "name": "VN Labs P2P Transfer",
+  "short_name": "VN P2P",
+  "description": "Serverless, lightning-fast peer-to-peer file transfer. Completely secure and private with end-to-end encryption.",
+  "start_url": "/vnlabs-website/p2p/index.html",
+  "display": "standalone",
+  "background_color": "#0B0C10",
+  "theme_color": "#00E5FF",
+  "icons": [
+    {
+      "src": "../favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
