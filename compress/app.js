@@ -310,4 +310,22 @@ document.addEventListener('DOMContentLoaded', () => {
             URL.revokeObjectURL(url);
         }, 100);
     });
+
+    // --- DEBUG ISOLATION TEST ---
+    const debugInput = document.getElementById('debug-file-input');
+    const debugImg = document.getElementById('debug-img-preview');
+    if (debugInput && debugImg) {
+        debugInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    debugImg.src = ev.target.result;
+                    alert("DEBUG SUCCESS: The raw image was read and rendered by the browser!");
+                };
+                reader.onerror = () => alert("DEBUG ERROR: FileReader completely failed to read the file!");
+                reader.readAsDataURL(file);
+            }
+        });
+    }
 });
