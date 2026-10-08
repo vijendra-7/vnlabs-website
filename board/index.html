@@ -60,25 +60,39 @@
     </main>
 
     <!-- Canvas Screen -->
-    <main id="canvas-screen" class="screen" style="width: 100vw; height: 100vh; max-width: none; margin: 0; padding: 0;">
-        <div class="canvas-toolbar">
-            <div class="tool-group">
-                <div class="color-picker">
-                    <button class="color-btn active" style="background: #00E5FF;" data-color="#00E5FF"></button>
-                    <button class="color-btn" style="background: #B388FF;" data-color="#B388FF"></button>
-                    <button class="color-btn" style="background: #FF5252;" data-color="#FF5252"></button>
-                    <button class="color-btn" style="background: #FFF;" data-color="#FFFFFF"></button>
-                </div>
-                <input type="range" id="brush-size" min="2" max="20" value="4">
+    <main id="canvas-screen" class="screen" style="width: 100vw; height: 100vh; max-width: none; margin: 0; padding: 0; position: relative;">
+        
+        <div class="floating-top-bar">
+            <a href="../index.html" class="logo">vn<span>labs</span></a>
+            <div class="top-bar-right">
+                <div class="connected-badges" id="connected-peers-container"></div>
+                <button id="disconnect-btn" class="btn btn-exit">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Exit
+                </button>
+            </div>
+        </div>
+
+        <div class="floating-bottom-bar">
+            <div class="color-picker">
+                <button class="color-btn active" style="background: #00E5FF;" data-color="#00E5FF"></button>
+                <button class="color-btn" style="background: #B388FF;" data-color="#B388FF"></button>
+                <button class="color-btn" style="background: #FF5252;" data-color="#FF5252"></button>
+                <button class="color-btn" style="background: #FFFFFF;" data-color="#FFFFFF"></button>
             </div>
             
-            <div class="tool-group">
-                <div class="connected-badges" id="connected-peers-container">
-                    <!-- Peers injected here -->
-                </div>
-                <button id="btn-clear" class="btn small-btn" style="background: rgba(255,82,82,0.1); color: #ff5252; border-color: rgba(255,82,82,0.3);">Clear Board</button>
-                <button id="disconnect-btn" class="icon-btn danger">Exit</button>
-            </div>
+            <input type="range" id="brush-size" min="2" max="20" value="4">
+            
+            <div class="divider-vertical"></div>
+
+            <button id="btn-undo" class="icon-btn action-btn" title="Undo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7v6h6"></path><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"></path></svg>
+            </button>
+            <button id="btn-redo" class="icon-btn action-btn" title="Redo">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 7v6h-6"></path><path d="M3 17a9 9 0 0 1 9-9 9 9 0 0 1 6 2.3l3 2.7"></path></svg>
+            </button>
+
+            <button id="btn-clear" class="btn btn-clear">Clear</button>
         </div>
         
         <canvas id="drawing-board"></canvas>
