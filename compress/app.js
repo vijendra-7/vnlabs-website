@@ -68,11 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     fileInput.addEventListener('change', () => {
+        const dropTxt = document.getElementById('dropzone-text');
         if (fileInput.files.length > 0) {
             const f = fileInput.files[0];
-            const dropTxt = document.getElementById('dropzone-text');
             if(dropTxt) dropTxt.innerText = "Selected: " + f.name;
             handleFile(f);
+        } else {
+            if(dropTxt) dropTxt.innerText = "No image selected";
         }
     });
 
@@ -128,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
         originalImageObj = null;
         finalBlob = null;
         fileInput.value = '';
+        const dropTxt = document.getElementById('dropzone-text');
+        if (dropTxt) dropTxt.innerText = "or click to browse";
         dropzone.style.display = 'flex';
         previewContainer.style.display = 'none';
         btnCompress.disabled = true;
