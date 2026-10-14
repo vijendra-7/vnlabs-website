@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRAFTWERK DYNAMICS // Industrielle KI & Autonome Fertigungssysteme</title>
+  <meta name="description" content="Next-Gen Industrial AI & Cyber-Physical Systems für den deutschen Mittelstand und DAX 40 Konzerne. 100% DSGVO-konform, TISAX Level 3, DIN ISO 27001 zertifiziert.">
+  <meta name="keywords" content="Industrie 4.0, Industrielle KI, Digitaler Zwilling, OEE Optimierung, Vorausschauende Wartung, DSGVO, BSI IT-Grundschutz, Made in Germany">
+  
+  <!-- Modern Industrial Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Precision Grid Overlay Background -->
+  <div class="technical-grid-bg" aria-hidden="true"></div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" id="brandLogo" aria-label="KRAFTWERK Dynamics Home">
+        <div class="brand-mark">
+          <svg viewBox="0 0 32 32" fill="none" class="brand-svg">
+            <rect x="2" y="2" width="28" height="28" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M8 8L16 16L8 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/>
+            <path d="M16 8L24 16L16 24" stroke="#00E599" stroke-width="2.5" stroke-linecap="square"/>
+            <circle cx="24" cy="8" r="2" fill="#0066FF"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">KRAFTWERK</span>
+          <span class="brand-sub">DYNAMICS // INDUSTRIE 4.0</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
+        <ul class="nav-links">
+          <li><a href="#digital-twin" class="nav-link" data-i18n="nav.twin">Digitaler Zwilling</a></li>
+          <li><a href="#architecture" class="nav-link" data-i18n="nav.architecture">Technologie</a></li>
+          <li><a href="#calculator" class="nav-link" data-i18n="nav.calculator">OEE-Kalkulator</a></li>
+          <li><a href="#interop" class="nav-link" data-i18n="nav.interop">Schnittstellen</a></li>
+          <li><a href="#case-studies" class="nav-link" data-i18n="nav.cases">Referenzen</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Sprachauswahl">
+          <button type="button" class="lang-btn active" id="langDe" data-lang="de" aria-pressed="true">DE</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" id="langEn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <!-- Theme Toggle (Icon Only, No Label) -->
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Farbmodus umschalten / Toggle Dark/Light Mode" title="Dark / Light Mode">
+          <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Direct CTA -->
+        <a href="#rfp-section" class="btn btn-primary" id="headerCtaBtn" data-i18n="nav.cta">
+          <span class="btn-text">Pilotprojekt anfragen</span>
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="badge-accent">DEUTSCHE INGENIEURSKUNST & KI</span>
+            <span class="eyebrow-id">MODUL // V9.4-PRO</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero.title">
+            Autonome Industrie-KI für maximale <span class="gradient-text">Gesamtanlageneffektivität.</span>
+          </h1>
+
+          <p class="hero-lead" data-i18n="hero.lead">
+            KRAFTWERK DYNAMICS vernetzt Maschinenparks mit Millisekunden-Edge-Intelligenz. Entwickelt für die hohen Anforderungen des deutschen Maschinenbaus, Automotive Tier-1 und DAX-40 Konzerne. 100% DSGVO-konform, On-Premises & BSI-zertifiziert.
+          </p>
+
+          <div class="hero-metrics-row">
+            <div class="hero-stat">
+              <span class="stat-value" id="statOee">+14.2%</span>
+              <span class="stat-label" data-i18n="hero.stat1">Ø OEE-Steigerung</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value" id="statDowntime">-42.8%</span>
+              <span class="stat-label" data-i18n="hero.stat2">Ungeplante Stillstände</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value">< 1.8 ms</span>
+              <span class="stat-label" data-i18n="hero.stat3">Echtzeit-Edge Latenz</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#digital-twin" class="btn btn-secondary" id="heroDemoBtn">
+              <svg viewBox="0 0 16 16" fill="none" class="btn-icon" aria-hidden="true">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <polygon points="6.5,5 11,8 6.5,11" fill="currentColor"/>
+              </svg>
+              <span data-i18n="hero.ctaSecondary">Digitalen Zwilling testen</span>
+            </a>
+            <a href="#calculator" class="btn btn-ghost" id="heroCalcBtn">
+              <span data-i18n="hero.ctaCalc">Wirtschaftlichkeit berechnen</span>
+              <span class="icon-right">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Graphic: Live Cyber-Physical Digital Twin Preview Card -->
+        <div class="hero-visual">
+          <div class="twin-preview-card">
+            <div class="card-header-bar">
+              <div class="twin-id-tag">
+                <span class="mono-code">SIM_UNIT://CNC-5X-STUTTGART_04</span>
+              </div>
+              <div class="twin-status-chip ok" id="quickStatusChip">
+                <span class="dot"></span>
+                <span id="quickStatusText" data-i18n="twin.nominal">NOMINALER ZUSTAND</span>
+              </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-wrapper">
+              <canvas id="digitalTwinCanvas" width="620" height="420" aria-label="Interaktive Simulation des Digitalen Zwillings"></canvas>
+              
+              <!-- Canvas Overlay HUD -->
+              <div class="hud-readouts">
+                <div class="hud-item">
+                  <span class="hud-label">DREHZAHL (RPM)</span>
+                  <span class="hud-val mono-code" id="hudRpm">12,480 min⁻¹</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">SCHWINGUNG (RMS)</span>
+                  <span class="hud-val mono-code" id="hudVibe">0.42 mm/s</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">KERNTEMPERATUR</span>
+                  <span class="hud-val mono-code" id="hudTemp">48.6 °C</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">ANOMALIE-SCORE</span>
+                  <span class="hud-val mono-code text-safe" id="hudScore">0.03 (OPTIMAL)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Canvas Interactive Controller Bar -->
+            <div class="card-footer-controls">
+              <div class="ctrl-mode-label" data-i18n="twin.ctrlTitle">ECHTZEIT-SIMULATOR STEUERUNG:</div>
+              <div class="ctrl-btn-group">
+                <button type="button" class="btn-ctrl active" id="btnNominal" data-i18n="twin.modeNominal">
+                  <span>●</span> Normalbetrieb
+                </button>
+                <button type="button" class="btn-ctrl" id="btnHarmonic" data-i18n="twin.modeHarmonic">
+                  <span>▲</span> Lastwechsel (Stress)
+                </button>
+                <button type="button" class="btn-ctrl warning" id="btnAnomaly" data-i18n="twin.modeAnomaly">
+                  <span>⚡</span> Anomalie injizieren
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- German Industrial Standards Alignment Strip -->
+    <section class="trust-strip-section" aria-label="Industriestandards und Architekturprinzipien">
+      <div class="container">
+        <div class="trust-strip-inner">
+          <div class="trust-strip-label" data-i18n="trust.label">ARCHITEKTUR FÜR DEUTSCHE INDUSTRIE-STANDARDS:</div>
+          <div class="trust-badges-grid">
+            <div class="trust-badge-item" title="Architektur orientiert an DIN EN ISO 9001 Qualitätsprinzipien">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 2L3 7V12C3 17.5 7 21.5 12 22C17 21.5 21 17.5 21 12V7L12 2Z"/>
+                  <path d="M9 12L11 14L15 10"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>DIN EN ISO 9001</strong>
+                <span data-i18n="trust.b1">Qualitätsprinzipien</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="Sicherheitsarchitektur nach ISO/IEC 27001">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>ISO/IEC 27001</strong>
+                <span data-i18n="trust.b2">Sicherheitsarchitektur</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="TISAX Automotive Cyber-Security Standard kompatibel">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>TISAX LEVEL 3</strong>
+                <span data-i18n="trust.b3">Automotive Standard</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="100% DSGVO / GDPR & Sovereign EU Data Privacy">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8V12"/>
+                  <path d="M12 16H12.01"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>100% DSGVO / GDPR</strong>
+                <span data-i18n="trust.b4">Datensouveränität</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="German Precision Engineering - Bauhaus & Dieter Rams Rigor">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 3C8 3 4 7 4 12C4 17 8 21 12 21"/>
+                  <path d="M12 3V21"/>
+                  <path d="M4 12H20"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>GERMAN PRECISION</strong>
+                <span data-i18n="trust.b5">Bauhaus & Rams Rigor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep-Dive: Digital Twin Telemetry Section -->
+    <section class="section digital-twin-section" id="digital-twin">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="twin.sectionTag">// MODUL 01: DIGITAL TWIN TELEMETRY</div>
+          <h2 class="section-title" data-i18n="twin.sectionTitle">
+            Sub-Millisekunden Vorhersage. <br>Null Toleranz für ungeplante Stillstände.
+          </h2>
+          <p class="section-subtitle" data-i18n="twin.sectionSubtitle">
+            Unsere cyber-physikalischen Modelle synchronisieren reale Spindel-, Hydraulik- und Antriebsdaten im Takt von 1.000 Hz. Physikalisch basierte KI erkennt Ermüdungsrisiken 72 Stunden vor dem Bauteilversagen.
+          </p>
+        </div>
+
+        <div class="twin-features-grid">
+          <div class="twin-card">
+            <div class="card-num mono-code">01</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M22 12H18L15 21L9 3L6 12H2"/>
+              </svg>
+            </div>
+            <h3 data-i18n="twin.f1Title">FFT-Schwingungsanalyse</h3>
+            <p data-i18n="twin.f1Desc">
+              Spektrale Fourier-Transformation extrahiert mikrofeine Harmonische aus Wälzlagern und Getriebestufen – unempfindlich gegenüber Umgebungsrauschen.
+            </p>
+            <div class="twin-card-tag mono-code">ISO 10816-3 KONFORM</div>
+          </div>
+
+          <div class="twin-card">
+            <div class="card-num mono-code">02</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 data-i18n="twin.f2Title">Autonome Regelkreis-Korrektur</h3>
+            <p data-i18n="twin.f2Desc">
+              Echtzeit-Rückkopplung an die CNC-Steuerung (Siemens Sinumerik / Heidenhain). Vorschubgeschwindigkeiten werden dynamisch angepasst, um Werkzeugbrüche zu verhindern.
+            </p>
+            <div class="twin-card-tag mono-code">LATENZ: 1.2 MILLISEKUNDEN</div>
+          </div>
+
+          <div class="twin-card">
+            <div class="card-num mono-code">03</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 data-i18n="twin.f3Title">Lokale Air-Gapped Ausführung</h3>
+            <p data-i18n="twin.f3Desc">
+              Kein Datenabfluss an externe Cloud-Anbieter. Das Inferenz-Modell läuft autark auf industriellen Edge-Servern (DIN-Rail Industrie-PC im Schaltschrank).
+            </p>
+            <div class="twin-card-tag mono-code">100% DATENSOUVERÄNITÄT</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive OEE & Amortisations-Rechner (ROI Calculator) -->
+    <section class="section calculator-section" id="calculator">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="calc.tag">// MODUL 02: WIRTSCHAFTLICHKEIT & OEE-KALKULATOR</div>
+          <h2 class="section-title" data-i18n="calc.title">
+            Präzise Zahlen für Ihren Business Case.
+          </h2>
+          <p class="section-subtitle" data-i18n="calc.subtitle">
+            Deutsche Finanzvorstände und Werksleiter verlangen belastbare Amortisationszeiträume. Berechnen Sie das Einsparpotenzial für Ihren konkreten Maschinenpark in Echtzeit.
+          </p>
+        </div>
+
+        <div class="calculator-panel">
+          <div class="calc-inputs-column">
+            <!-- Slider 1: Machine Count -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeMachines" class="control-label" data-i18n="calc.labelMachines">
+                  Anzahl vernetzter Produktionsanlagen:
+                </label>
+                <span class="control-display mono-code" id="displayMachines">18 Anlagen</span>
+              </div>
+              <input type="range" id="rangeMachines" min="1" max="100" value="18" class="calc-slider">
+              <div class="slider-scale">
+                <span>1 Anlage</span>
+                <span>25</span>
+                <span>50</span>
+                <span>100 Anlagen</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Downtime Cost per Hour -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeCost" class="control-label" data-i18n="calc.labelCost">
+                  Stillstandskosten pro Stunde (inkl. Rüst- & Personalausfall):
+                </label>
+                <span class="control-display mono-code" id="displayCost">4.200 € / Std.</span>
+              </div>
+              <input type="range" id="rangeCost" min="500" max="25000" step="100" value="4200" class="calc-slider">
+              <div class="slider-scale">
+                <span>500 €</span>
+                <span>5.000 €</span>
+                <span>15.000 €</span>
+                <span>25.000 €</span>
+              </div>
+            </div>
+
+            <!-- Slider 3: Current OEE Baseline -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeOee" class="control-label" data-i18n="calc.labelOee">
+                  Aktuelle Gesamtanlageneffektivität (OEE):
+                </label>
+                <span class="control-display mono-code" id="displayOee">68 %</span>
+              </div>
+              <input type="range" id="rangeOee" min="40" max="90" step="1" value="68" class="calc-slider">
+              <div class="slider-scale">
+                <span>40% (Kritisch)</span>
+                <span>65% (Mittelstand Ø)</span>
+                <span>85% (World Class)</span>
+              </div>
+            </div>
+
+            <div class="calc-footnote" data-i18n="calc.footnote">
+              *Berechnungsgrundlage: 220 Produktionstage/Jahr, 3-Schicht-Betrieb, empirischer VDMA-Referenzwert für vorausschauende Wartung.
+            </div>
+          </div>
+
+          <!-- Dynamic Output Metrics Box -->
+          <div class="calc-results-column">
+            <div class="results-card">
+              <div class="results-header">
+                <span class="results-badge" data-i18n="calc.resBadge">PROGNOSTIZIERTE WIRTSCHAFTLICHKEIT</span>
+                <span class="calc-indicator mono-code">VAL: DIN EN 13306</span>
+              </div>
+
+              <div class="main-saving-box">
+                <span class="saving-label" data-i18n="calc.annualSavings">Jährliches Einsparpotenzial:</span>
+                <div class="saving-amount" id="resAnnualSavings">387.450 €</div>
+                <span class="saving-sub" data-i18n="calc.savingSub">Netto-Gewinnsteigerung pro Kalenderjahr</span>
+              </div>
+
+              <div class="kpi-mini-grid">
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiHours">Verhinderte Stillstandszeit</span>
+                  <strong class="kpi-value mono-code" id="resPreventedHours">92,2 Std./Jahr</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiPayback">Amortisationszeit (ROI)</span>
+                  <strong class="kpi-value mono-code text-accent" id="resPaybackMonths">4,3 Monate</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiNewOee">Prognostizierter OEE-Zielwert</span>
+                  <strong class="kpi-value mono-code text-green" id="resProjectedOee">77,8 % (+9.8%)</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiCo2">CO₂-Äquivalent Reduktion</span>
+                  <strong class="kpi-value mono-code" id="resCo2Saving">34,8 Tonnen</strong>
+                </div>
+              </div>
+
+              <div class="results-action">
+                <a href="#rfp-section" class="btn btn-primary btn-block" id="calcCtaBtn" data-i18n="calc.cta">
+                  Vollständigen Business Case anfordern
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industrial Interoperability & Architecture Section -->
+    <section class="section interop-section" id="interop">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="interop.tag">// MODUL 03: INDUSTRIE-STANDARDS & SCHNITTSTELLEN</div>
+          <h2 class="section-title" data-i18n="interop.title">
+            Nahtlose Integration in deutsche Bestandsanlagen.
+          </h2>
+          <p class="section-subtitle" data-i18n="interop.subtitle">
+            Kein Vendor-Lock-in. Volle Kompatibilität mit etablierten speicherprogrammierbaren Steuerungen (SPS) und ERP-Systemen nach VDMA-Spezifikation.
+          </p>
+        </div>
+
+        <div class="interop-container">
+          <!-- Protocol Tabs -->
+          <div class="protocol-tabs" role="tablist" aria-label="Industrieprotokolle">
+            <button class="proto-tab active" role="tab" aria-selected="true" data-tab="opcua" id="tabOpcUa">
+              <span class="proto-name">OPC UA (IEC 62541)</span>
+              <span class="proto-type">Universal Standard</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="siemens" id="tabSiemens">
+              <span class="proto-name">Siemens S7 / TIA</span>
+              <span class="proto-type">Industrial PLC</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="beckhoff" id="tabBeckhoff">
+              <span class="proto-name">Beckhoff TwinCAT 3</span>
+              <span class="proto-type">ADS / EtherCAT</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="mqtt" id="tabMqtt">
+              <span class="proto-name">MQTT Sparkplug B</span>
+              <span class="proto-type">IIoT Edge Gateway</span>
+            </button>
+          </div>
+
+          <!-- Code / Telemetry Inspector -->
+          <div class="proto-content-card">
+            <div class="proto-card-topbar">
+              <div class="dot-indicators">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+              </div>
+              <div class="proto-path mono-code" id="protoPath">
+                /etc/kraftwerk/adapters/opc_ua_server.conf [SECURITY: Basic256Sha256 / SignAndEncrypt]
+              </div>
+              <button class="btn-copy-code mono-code" id="btnCopyTelemetry" data-i18n="interop.copy">
+                DATENSATZ KOPIEREN
+              </button>
+            </div>
+
+            <pre class="code-terminal"><code id="codeViewer" class="mono-code">{
+  "protocol": "OPC_UA_IEC_62541",
+  "endpoint": "opc.tcp://edge-gw-01.de.kraftwerk.local:4840",
+  "security_policy": "http://opcfoundation.org/UA/SecurityPolicy#Basic256Sha256",
+  "message_security_mode": "SignAndEncrypt",
+  "server_certificate": "SHA256:7B:A2:99:E1:9F:B4:German_Trust_Anchor",
+  "telemetry_stream": {
+    "timestamp_iso8601": "2026-10-14T19:42:01.482+02:00",
+    "spindle_node_ns": "ns=2;s=Spindle.Drive.ActualSpeed",
+    "spindle_speed_rpm": 12480.4,
+    "bearing_vibration_rms_mms": 0.421,
+    "thermal_sensor_celsius": 48.6,
+    "health_index": 0.9984,
+    "bsi_audit_signature": "SIG_ED25519_OK"
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Case Studies / Referenzen deutscher Konzerne -->
+    <section class="section cases-section" id="case-studies">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="cases.tag">// MODUL 04: DEUTSCHE INDUSTRIE-REFERENZEN</div>
+          <h2 class="section-title" data-i18n="cases.title">
+            Eingesetzt in kritischen Fertigungslinien.
+          </h2>
+          <p class="section-subtitle" data-i18n="cases.subtitle">
+            Vom baden-württembergischen Sondermaschinenbau bis zum bayerischen Automotive-OEM – fundierte Projekterfolge mit messbaren Ergebnissen.
+          </p>
+        </div>
+
+        <div class="cases-grid">
+          <!-- Case 1 -->
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">AUTOMOTIVE TIER-1 // STUTTGART</div>
+            <h3 class="case-headline" data-i18n="cases.c1Title">Hochpräzisions-Getriebefertigung für E-Mobilität</h3>
+            <p class="case-text" data-i18n="cases.c1Desc">
+              Einsatz auf 34 kontinuierlichen Schleif- und Verzahnungszentren. Beseitigung von Resonanzschwingungen im Mikrometerbereich bei 18.000 U/min.
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-green">99.4%</span>
+                <span class="m-lbl" data-i18n="cases.c1m1">Ausschussfreie Charge</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-accent">510.000 €</span>
+                <span class="m-lbl" data-i18n="cases.c1m2">Werkzeugkosteneinsparung / Jahr</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">TISAX Level 3 zertifiziert</span>
+            </div>
+          </article>
+
+          <!-- Case 2 -->
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">SONDERMASCHINENBAU // OSTWESTFALEN</div>
+            <h3 class="case-headline" data-i18n="cases.c2Title">Autonome Zustandsüberwachung für 5-Achs-Portalfräsen</h3>
+            <p class="case-text" data-i18n="cases.c2Desc">
+              Vollständige Integration in bestehende Siemens 840D Solution Line Steuerungen ohne SPS-Code-Modifikation über passive High-Speed-Stromwandler.
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-green">+22 Tage</span>
+                <span class="m-lbl" data-i18n="cases.c2m1">Frühere Defekterkennung</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-accent">3,2 Mo.</span>
+                <span class="m-lbl" data-i18n="cases.c2m2">Vollständiger ROI</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">DIN EN ISO 9001 auditiert</span>
+            </div>
+          </article>
+
+          <!-- Case 3 -->
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">CHEMIE & PHARMA // LUDWIGSHAFEN</div>
+            <h3 class="case-headline" data-i18n="cases.c3Title">ATEX-Zertifizierte Pumpen- und Verdichter-Diagnostik</h3>
+            <p class="case-text" data-i18n="cases.c3Desc">
+              100% On-Premises Air-Gapped Lösung in explosionsgefährdeten Zonen 1 & 2. Vollständige Einhaltung aller Vorgaben des Bundesamts für Sicherheit in der Informationstechnik (BSI).
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-green">0</span>
+                <span class="m-lbl" data-i18n="cases.c3m1">Sicherheitsrelevante Vorfälle</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-accent">100%</span>
+                <span class="m-lbl" data-i18n="cases.c3m2">Datensouveränität (On-Prem)</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">BSI IT-Grundschutz konform</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enterprise Pilotprojekt & RFP Konfigurator -->
+    <section class="section rfp-section" id="rfp-section">
+      <div class="container">
+        <div class="rfp-card">
+          <div class="rfp-header">
+            <div class="section-tag mono-code" data-i18n="rfp.tag">// MODUL 05: PILOTPROJEKT & AUSSCHREIBUNG</div>
+            <h2 class="section-title" data-i18n="rfp.title">
+              Starten Sie ein risikofreies 60-Tage Pilotprojekt.
+            </h2>
+            <p class="section-subtitle" data-i18n="rfp.subtitle">
+              Wir installieren das Edge-System an bis zu 3 Produktionsanlagen in Ihrem Werk. Volle NDA-Absicherung (Geheimhaltungsvereinbarung) vor jedem Datenaustausch.
+            </p>
+          </div>
+
+          <form class="rfp-form" id="rfpForm" novalidate>
+            <div class="form-grid">
+              <!-- Sector Selector -->
+              <div class="form-group">
+                <label for="rfpSector" class="form-label" data-i18n="rfp.fieldSector">Branche / Industriesektor *</label>
+                <select id="rfpSector" class="form-control" required>
+                  <option value="" disabled selected data-i18n="rfp.selectPlaceholder">Bitte Branche auswählen...</option>
+                  <option value="automotive">Automotive & Zulieferindustrie (OEM / Tier-1)</option>
+                  <option value="machinery">Maschinen- & Anlagenbau (Mittelstand)</option>
+                  <option value="aerospace">Luft- & Raumfahrttechnik</option>
+                  <option value="chemicals">Chemie-, Pharma- & Prozesstechnik</option>
+                  <option value="energy">Energieerzeugung & Netzbetrieb</option>
+                </select>
+              </div>
+
+              <!-- Machine Count -->
+              <div class="form-group">
+                <label for="rfpPlantSize" class="form-label" data-i18n="rfp.fieldPlant">Maschinenpark-Größe *</label>
+                <select id="rfpPlantSize" class="form-control" required>
+                  <option value="" disabled selected data-i18n="rfp.selectPlantPlaceholder">Anzahl der Anlagen...</option>
+                  <option value="1-5">1 – 5 Pilot-Anlagen (Proof of Concept)</option>
+                  <option value="6-20">6 – 20 Anlagen (Werksbereich)</option>
+                  <option value="21-100">21 – 100 Anlagen (Gesamtes Werk)</option>
+                  <option value="100+">> 100 Anlagen (Multi-Site Konzern)</option>
+                </select>
+              </div>
+
+              <!-- Company Name -->
+              <div class="form-group">
+                <label for="rfpCompany" class="form-label" data-i18n="rfp.fieldCompany">Unternehmen / Konzern *</label>
+                <input type="text" id="rfpCompany" class="form-control" placeholder="z.B. Müller Präzisionstechnik GmbH & Co. KG" required>
+              </div>
+
+              <!-- Contact Person -->
+              <div class="form-group">
+                <label for="rfpName" class="form-label" data-i18n="rfp.fieldName">Ansprechpartner / Position *</label>
+                <input type="text" id="rfpName" class="form-control" placeholder="Dr.-Ing. Thomas Weber, Werksleiter" required>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label for="rfpEmail" class="form-label" data-i18n="rfp.fieldEmail">Geschäftliche E-Mail-Adresse *</label>
+                <input type="email" id="rfpEmail" class="form-control" placeholder="weber@unternehmen.de" required>
+              </div>
+
+              <!-- Phone -->
+              <div class="form-group">
+                <label for="rfpPhone" class="form-label" data-i18n="rfp.fieldPhone">Telefonnummer (Direktwahl) *</label>
+                <input type="tel" id="rfpPhone" class="form-control" placeholder="+49 711 987654-0" required>
+              </div>
+            </div>
+
+            <!-- German Enterprise Compliance Checkboxes -->
+            <div class="compliance-checkboxes">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="checkNda" required checked>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text" data-i18n="rfp.ndaText">
+                  <strong>NDA / Geheimhaltungsvereinbarung:</strong> Ich wünsche vorab die automatische Zusendung einer bilateralen Geheimhaltungsvereinbarung nach deutschem Recht.
+                </span>
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="checkDsgvo" required checked>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text" data-i18n="rfp.dsgvoText">
+                  Ich habe die <strong>Datenschutzerklärung</strong> zur Kenntnis genommen und willige in die zweckgebundene Verarbeitung meiner Kontaktdaten gemäß Art. 6 Abs. 1 lit. a DSGVO ein.
+                </span>
+              </label>
+            </div>
+
+            <div class="rfp-submit-bar">
+              <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitRfp">
+                <span data-i18n="rfp.submitBtn">Technisches Pilotprojekt anfragen</span>
+                <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="rfp-guarantee mono-code" data-i18n="rfp.guarantee">
+                ANTWORT DURCH SENIOR INDUSTRIAL ARCHITECT INNERHALB VON 4 WERKSTUNDEN
+              </div>
+            </div>
+          </form>
+
+          <!-- Success Confirmation Notice (Hidden until submit) -->
+          <div class="rfp-success-banner" id="rfpSuccessBanner" style="display: none;">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00E599" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="success-text">
+              <h4 data-i18n="rfp.successTitle">Pilotprojekt-Anfrage erfolgreich erfasst.</h4>
+              <p data-i18n="rfp.successDesc">
+                Vielen Dank. Ihre Vorgangsnummer lautet <strong class="mono-code" id="refCaseId">KW-2026-DE-8921</strong>. Ihr zuständiger Principal Solutions Engineer wird sich innerhalb von 4 Arbeitsstunden mit dem abgestimmten NDA-Entwurf und dem Termin für die technische Machbarkeitsprüfung bei Ihnen melden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Professional Enterprise Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-name">VN LABS // INDUSTRIAL AI UI</span>
+            <span class="brand-sub">HIGH-PRECISION FRONTEND ARCHITECTURE</span>
+          </div>
+          <p class="footer-company-desc" data-i18n="footer.desc">
+            Interaktives Industrie-UI/UX Showcase & High-Performance Frontend — Entwickelt von VN Labs für deutsche Maschinenbau- und Industrieunternehmen.
+          </p>
+          <div class="footer-server-flag">
+            <span class="flag-icon">⚡</span>
+            <span class="flag-text mono-code">TECH STACK: PURE CLIENT-SIDE JS • 60 FPS CANVAS • ZERO DEPENDENCIES</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col1Title">Technologie</h4>
+          <ul class="footer-links">
+            <li><a href="#digital-twin" data-i18n="nav.twin">Digitaler Zwilling</a></li>
+            <li><a href="#interop" data-i18n="nav.interop">Schnittstellen & OPC UA</a></li>
+            <li><a href="#calculator" data-i18n="nav.calculator">OEE Amortisationsrechner</a></li>
+            <li><a href="#case-studies" data-i18n="nav.cases">Referenzen & Validierung</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col2Title">VN Labs</h4>
+          <address class="footer-address">
+            <strong>VN Labs Engineering:</strong><br>
+            Next-Gen Web & UI Systems<br>
+            Web: <a href="https://vnlabs.in" target="_blank" style="color:var(--accent-blue);text-decoration:none;">vnlabs.in</a><br>
+            E-Mail: <a href="mailto:contact@vnlabs.in" style="color:var(--text-secondary);text-decoration:none;">contact@vnlabs.in</a>
+          </address>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col3Title">Projekt & Info</h4>
+          <ul class="footer-links">
+            <li><button type="button" class="footer-link-btn" id="btnOpenImpressum" data-i18n="footer.impressum">Projekt-Info & Impressum</button></li>
+            <li><button type="button" class="footer-link-btn" id="btnOpenDatenschutz" data-i18n="footer.datenschutz">Datenschutzerklärung (DSGVO)</button></li>
+            <li><button type="button" class="footer-link-btn" id="btnOpenCookies" data-i18n="footer.cookies">Privatsphäre-Einstellungen</button></li>
+            <li><span class="mono-code text-muted">Showcase: Design One (1.0)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-copyright mono-code">
+          © 2026 VN LABS. ALLE RECHTE VORBEHALTEN. BUILT FOR GERMAN ENTERPRISES WITH BAUHAUS & DIETER RAMS RIGOR.
+        </div>
+        <div class="footer-meta-links mono-code">
+          <span>HOSTED ON VNLABS.IN</span>
+          <span>•</span>
+          <span>100% CLIENT-SIDE & GITHUB PAGES READY</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Projekt-Info & Impressum -->
+  <div class="legal-modal-backdrop" id="impressumModal" role="dialog" aria-modal="true" aria-labelledby="impressumTitle" style="display: none;">
+    <div class="legal-modal-box">
+      <div class="modal-header">
+        <div class="modal-badge mono-code">PROJEKT-INFORMATION & CREDITS</div>
+        <h3 id="impressumTitle">Projekt-Info & Impressum</h3>
+        <button type="button" class="modal-close-btn" id="btnCloseImpressum" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Über dieses Projekt:</h4>
+        <p>
+          Dieses interaktive Webportal ist ein High-Performance UI/UX & Frontend-Architektur-Showcase, entwickelt von <strong>VN Labs</strong> für deutsche Industrie-, Automotive- und Mittelstands-Unternehmen.
+        </p>
+
+        <h4>Design-Philosophie:</h4>
+        <p>
+          Inspiriert von den 10 Thesen von Dieter Rams (<em>„Gutes Design ist so wenig Design wie möglich“</em>) und dem deutschen Bauhaus-Funktionalismus: maximale Informationsdichte, Millisekunden-Interaktion und klare technische Ästhetik.
+        </p>
+
+        <h4>Verantwortlich für Konzept & Entwicklung:</h4>
+        <p>
+          <strong>VN Labs</strong><br>
+          Website: <a href="https://vnlabs.in" target="_blank" style="color:var(--accent-blue);">https://vnlabs.in</a><br>
+          Kontakt: contact@vnlabs.in
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnDismissImpressum">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Datenschutz (DSGVO) -->
+  <div class="legal-modal-backdrop" id="datenschutzModal" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle" style="display: none;">
+    <div class="legal-modal-box">
+      <div class="modal-header">
+        <div class="modal-badge mono-code">DATENSCHUTZ NACH ART. 13 & 14 DSGVO</div>
+        <h3 id="datenschutzTitle">Datenschutzerklärung</h3>
+        <button type="button" class="modal-close-btn" id="btnCloseDatenschutz" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. Datenschutz auf einen Blick</h4>
+        <p>
+          Als deutsches Industrie-Technologieunternehmen hat der Schutz Ihrer Betriebs- und personenbezogenen Daten für KRAFTWERK DYNAMICS höchste Priorität. Diese Website verzichtet vollständig auf externe US-amerikanische Tracking-Dienste, Werbe-Pixel oder ungeprüfte CDN-Weiterleitungen.
+        </p>
+
+        <h4>2. Verantwortliche Stelle</h4>
+        <p>
+          KRAFTWERK DYNAMICS GmbH, Industriestraße 48, 70565 Stuttgart.<br>
+          Datenschutzbeauftragter erreichbar unter: <code>datenschutz@kraftwerk-dynamics.de</code>
+        </p>
+
+        <h4>3. Datenerfassung & Hosting in Frankfurt am Main</h4>
+        <p>
+          Die Serverinfrastruktur wird ausschließlich in einem nach ISO 27001 zertifizierten Hochsicherheitsrechenzentrum im Großraum Frankfurt am Main (Deutschland) betrieben. Es erfolgt keinerlei Datentransfer in Drittstaaten außerhalb des Europäischen Wirtschaftsraums (EWR).
+        </p>
+
+        <h4>4. Ihre Rechte nach DSGVO</h4>
+        <p>
+          Sie haben jederzeit das Recht auf unentgeltliche Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO) sowie Einschränkung der Verarbeitung und Datenübertragbarkeit.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnDismissDatenschutz">Verstanden & Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cookie Consent Banner (Strict German standard) -->
+  <div class="cookie-banner" id="cookieBanner" role="region" aria-label="Cookie Einstellungen">
+    <div class="container cookie-inner">
+      <div class="cookie-text">
+        <strong data-i18n="cookie.title">Datenschutz & Essenzielle Cookies nach TTDSG / DSGVO:</strong>
+        <p data-i18n="cookie.desc">
+          Wir setzen ausschließlich technisch notwendige Session-Cookies zur Bereitstellung der interaktiven Telemetrie-Simulation und Sprachauswahl ein. Es erfolgt kein Tracking und kein Profiling.
+        </p>
+      </div>
+      <div class="cookie-actions">
+        <button type="button" class="btn btn-sm btn-ghost" id="btnCookieEssential" data-i18n="cookie.essential">Nur Essenzielle</button>
+        <button type="button" class="btn btn-sm btn-primary" id="btnCookieAccept" data-i18n="cookie.accept">Alle Bestätigen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/digital-twin.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
