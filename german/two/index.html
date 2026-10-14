@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEROX MOBILITY // Next-Gen E-Powertrain & Autonomous Architecture</title>
+  <meta name="description" content="Hochvolt-Antriebsarchitektur (800V SiC) und autonome Fahrzeugsoftware für deutsche Automobil-Pioniere und Tier-1 Zulieferer. ISO 26262 ASIL-D, AUTOSAR Adaptive, UN ECE R155/156.">
+  <meta name="keywords" content="Automotive E-Mobility, 800V SiC Inverter, AUTOSAR Adaptive, ISO 26262 ASIL-D, CAN-FD, SOME/IP, Batteriemanagementsystem, Made in Germany">
+  
+  <!-- Typography: Modern Aerodynamic Sans & Technical Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Precision Aerodynamic Background Grid & Carbon Wave -->
+  <div class="aero-grid-bg" aria-hidden="true"></div>
+
+  <!-- Header Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#hero" class="brand-logo" id="brandLogo" aria-label="AEROX Mobility Home">
+        <div class="brand-mark">
+          <svg viewBox="0 0 32 32" fill="none" class="brand-svg">
+            <polygon points="16,2 30,10 30,22 16,30 2,22 2,10" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 16L16 7L25 16" stroke="#00F0FF" stroke-width="2.5" stroke-linecap="round"/>
+            <circle cx="16" cy="20" r="3" fill="#00E599"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">AEROX</span>
+          <span class="brand-sub">MOBILITY // E-POWERTRAIN & ADAS</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Hauptnavigation">
+        <ul class="nav-links">
+          <li><a href="#powertrain" class="nav-link" data-i18n="nav.powertrain">Antriebssimulation</a></li>
+          <li><a href="#range-calc" class="nav-link" data-i18n="nav.calculator">Reichweitenrechner</a></li>
+          <li><a href="#autosar" class="nav-link" data-i18n="nav.autosar">CAN-FD & AUTOSAR</a></li>
+          <li><a href="#cases" class="nav-link" data-i18n="nav.cases">OEM-Referenzen</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switch-group" role="group" aria-label="Sprachauswahl">
+          <button type="button" class="lang-btn active" id="langDe" data-lang="de" aria-pressed="true">DE</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" id="langEn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+
+        <!-- Dark / Light Theme Toggle (Icon Only, No Label) -->
+        <button type="button" class="theme-toggle-btn" id="themeToggleBtn" aria-label="Farbmodus umschalten / Toggle Dark/Light Mode" title="Dark / Light Mode">
+          <svg class="theme-icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Direct CTA -->
+        <a href="#engineering-rfp" class="btn btn-primary" id="headerCtaBtn" data-i18n="nav.cta">
+          <span class="btn-text">Engineering Evaluation</span>
+          <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <span class="badge-accent">GERMAN AUTOMOTIVE EXCELLENCE</span>
+            <span class="eyebrow-id">PLATFORM // 800V-SiC-GEN3</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero.title">
+            Hochvolt-Effizienz & Software-Defined Powertrain <span class="gradient-text">für Premium-Fahrzeuge.</span>
+          </h1>
+
+          <p class="hero-lead" data-i18n="hero.lead">
+            AEROX MOBILITY liefert hochintegrierte 800-Volt Siliziumkarbid (SiC) Inverter-Elektronik und AUTOSAR-Adaptive Steuerungsarchitektur für deutsche Premium-Automobilhersteller und Tier-1 Systemlieferanten. ASIL-D zertifiziert und UN ECE R155 konform.
+          </p>
+
+          <div class="hero-metrics-row">
+            <div class="hero-stat">
+              <span class="stat-value text-cyan">99.1%</span>
+              <span class="stat-label" data-i18n="hero.stat1">Inverter-Wirkungsgrad</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value text-green">14.2 min</span>
+              <span class="stat-label" data-i18n="hero.stat2">HPC Ladezeit (10-80%)</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="stat-value text-accent">< 0.25 ms</span>
+              <span class="stat-label" data-i18n="hero.stat3">Torque-Vectoring Latenz</span>
+            </div>
+          </div>
+
+          <div class="hero-cta-group">
+            <a href="#powertrain" class="btn btn-secondary" id="heroDemoBtn">
+              <svg viewBox="0 0 16 16" fill="none" class="btn-icon" aria-hidden="true">
+                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <polygon points="6.5,5 11,8 6.5,11" fill="currentColor"/>
+              </svg>
+              <span data-i18n="hero.ctaSecondary">Antriebs-Simulator starten</span>
+            </a>
+            <a href="#range-calc" class="btn btn-ghost" id="heroCalcBtn">
+              <span data-i18n="hero.ctaCalc">WLTP-Reichweite berechnen</span>
+              <span class="icon-right">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Visual: 60 FPS EV Powertrain Telemetry HUD -->
+        <div class="hero-visual">
+          <div class="powertrain-card">
+            <div class="card-header-bar">
+              <div class="twin-id-tag">
+                <span class="mono-code">TELEMETRY_BUS://800V_AXLE_REAR_DUAL</span>
+              </div>
+              <div class="twin-status-chip ok" id="quickStatusChip">
+                <span class="dot"></span>
+                <span id="quickStatusText" data-i18n="sim.nominal">NOMINALER FAHRMODUS (ECO-CRUISE)</span>
+              </div>
+            </div>
+
+            <!-- Canvas Container -->
+            <div class="canvas-wrapper">
+              <canvas id="powertrainCanvas" width="620" height="420" aria-label="Interaktive Simulation des Elektroantriebs"></canvas>
+              
+              <!-- HUD Overlays -->
+              <div class="hud-readouts">
+                <div class="hud-item">
+                  <span class="hud-label">DREHMOMENT (NM)</span>
+                  <span class="hud-val mono-code" id="hudTorque">420 Nm</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">LEISTUNG (KW)</span>
+                  <span class="hud-val mono-code" id="hudPower">180 kW</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">ZELL-TEMPERATUR</span>
+                  <span class="hud-val mono-code" id="hudCellTemp">32.4 °C</span>
+                </div>
+                <div class="hud-item">
+                  <span class="hud-label">REKUPERATION</span>
+                  <span class="hud-val mono-code text-safe" id="hudRegen">94.8% (EFFIZIENT)</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Simulation Controls Bar -->
+            <div class="card-footer-controls">
+              <div class="ctrl-mode-label" data-i18n="sim.ctrlTitle">FAHRDYNA-MODUS WÄHLEN:</div>
+              <div class="ctrl-btn-group">
+                <button type="button" class="btn-ctrl active" id="btnCruise" data-i18n="sim.modeCruise">
+                  <span>●</span> Autobahn Cruise (130 km/h)
+                </button>
+                <button type="button" class="btn-ctrl" id="btnLaunch" data-i18n="sim.modeLaunch">
+                  <span>▲</span> Launch Control (Peak 680 kW)
+                </button>
+                <button type="button" class="btn-ctrl warning" id="btnDerate" data-i18n="sim.modeDerate">
+                  <span>⚡</span> Thermisches Derating
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- German Automotive Standards Alignment Strip -->
+    <section class="trust-strip-section" aria-label="Automobil-Industriestandards">
+      <div class="container">
+        <div class="trust-strip-inner">
+          <div class="trust-strip-label" data-i18n="standards.label">ARCHITECTED FOR GERMAN AUTOMOTIVE STANDARDS:</div>
+          <div class="trust-badges-grid">
+            <div class="trust-badge-item" title="ISO 26262 ASIL-D Funktionale Sicherheit">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>ISO 26262 ASIL-D</strong>
+                <span data-i18n="standards.b1">Funktionale Sicherheit</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="AUTOSAR Adaptive Platform Software">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>AUTOSAR ADAPTIVE</strong>
+                <span data-i18n="standards.b2">Software-Architektur</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="UN ECE R155 / R156 Automotive Cybersecurity">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>UN ECE R155 / 156</strong>
+                <span data-i18n="standards.b3">Cybersecurity & OTA</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="VDA 320 800V Siliziumkarbid (SiC)">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>800V SiC INVERTER</strong>
+                <span data-i18n="standards.b4">Ultra-Fast HPC</span>
+              </div>
+            </div>
+
+            <div class="trust-badge-item" title="In-Vehicle Data Privacy & DSGVO">
+              <div class="badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8v4"/>
+                  <path d="M12 16h.01"/>
+                </svg>
+              </div>
+              <div class="badge-info">
+                <strong>DSGVO PRIVACY</strong>
+                <span data-i18n="standards.b5">On-Vehicle Sovereignty</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deep-Dive Powertrain Architecture -->
+    <section class="section powertrain-section" id="powertrain">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="pwt.tag">// MODUL 01: E-POWERTRAIN & SILICON CARBIDE ARCHITECTURE</div>
+          <h2 class="section-title" data-i18n="pwt.title">
+            Maximale Leistungsdichte. <br>Minimaler Schaltverlust durch 800V SiC.
+          </h2>
+          <p class="section-subtitle" data-i18n="pwt.subtitle">
+            Unsere Traktionswechselrichter nutzen modernste Siliziumkarbid-MOSFETs mit Schaltfrequenzen bis zu 40 kHz. Dies reduziert die magnetischen Verluste im Elektromotor um über 45% bei doppelter Leistungsdichte.
+          </p>
+        </div>
+
+        <div class="twin-features-grid">
+          <div class="twin-card">
+            <div class="card-num mono-code">01</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <h3 data-i18n="pwt.f1Title">800V SiC Inverter-Topologie</h3>
+            <p data-i18n="pwt.f1Desc">
+              Direktkühlung mit Pin-Fin Bodenplatte aus Kupfer. Bis zu 35 kW/Liter Leistungsdichte bei einem Spitzenwirkungsgrad von 99,1% im WLTP-Zyklus.
+            </p>
+            <div class="twin-card-tag mono-code">VDA 320 KONFORM</div>
+          </div>
+
+          <div class="twin-card">
+            <div class="card-num mono-code">02</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M12 3C8 3 4 7 4 12C4 17 8 21 12 21"/>
+              </svg>
+            </div>
+            <h3 data-i18n="pwt.f2Title">Sub-Millisekunden Torque Vectoring</h3>
+            <p data-i18n="pwt.f2Desc">
+              Einzelrad-Ansteuerung an der Hinterachse. Erkennt Schlupf und Gierwinkel-Abweichungen innerhalb von 250 Mikrosekunden und stabilisiert ohne mechanischen Bremseingriff.
+            </p>
+            <div class="twin-card-tag mono-code">ISO 26262 ASIL-D ZERTIFIZIERT</div>
+          </div>
+
+          <div class="twin-card">
+            <div class="card-num mono-code">03</div>
+            <div class="card-icon-box">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <path d="M18 20V10"/>
+                <path d="M12 20V4"/>
+                <path d="M6 20v-6"/>
+              </svg>
+            </div>
+            <h3 data-i18n="pwt.f3Title">Adaptives Zell-Balancing & Thermal Runaway Guard</h3>
+            <p data-i18n="pwt.f3Desc">
+              Echtzeit-Impedanzspektroskopie überwacht jede einzelne Pouch- und Rundzelle im Batteriepack zur frühzeitigen Verhinderung von Lithium-Plating bei Minustemperaturen.
+            </p>
+            <div class="twin-card-tag mono-code">BMS-REAKTIONSZEIT: 50 ms</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive WLTP Range & Consumption Calculator -->
+    <section class="section calculator-section" id="range-calc">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="calc.tag">// MODUL 02: WLTP-REICHWEITE & ENERGIEEFFIZIENZ</div>
+          <h2 class="section-title" data-i18n="calc.title">
+            Fahrwiderstands- & Verbrauchsrechner.
+          </h2>
+          <p class="section-subtitle" data-i18n="calc.subtitle">
+            Simulieren Sie den Einfluss von Batteriekapazität, cw-Wert und Reisegeschwindigkeit auf die reale Autobahn- und WLTP-Reichweite.
+          </p>
+        </div>
+
+        <div class="calculator-panel">
+          <div class="calc-inputs-column">
+            <!-- Slider 1: Battery Capacity -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeBattery" class="control-label" data-i18n="calc.labelBattery">
+                  Batterie-Nettokapazität (NMC / LFP):
+                </label>
+                <span class="control-display mono-code" id="displayBattery">92 kWh</span>
+              </div>
+              <input type="range" id="rangeBattery" min="50" max="130" step="1" value="92" class="calc-slider">
+              <div class="slider-scale">
+                <span>50 kWh (Kompakt)</span>
+                <span>85 kWh (Standard)</span>
+                <span>130 kWh (Long Range)</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Aerodynamic Drag (cw-Wert) -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeDrag" class="control-label" data-i18n="calc.labelDrag">
+                  Aerodynamischer Luftwiderstandsbeiwert (cw-Wert):
+                </label>
+                <span class="control-display mono-code" id="displayDrag">cw 0,21</span>
+              </div>
+              <input type="range" id="rangeDrag" min="19" max="32" step="1" value="21" class="calc-slider">
+              <div class="slider-scale">
+                <span>0,19 (Streamliner)</span>
+                <span>0,24 (Limousine)</span>
+                <span>0,32 (SUV)</span>
+              </div>
+            </div>
+
+            <!-- Slider 3: Cruising Speed -->
+            <div class="calc-control-group">
+              <div class="control-header">
+                <label for="rangeSpeed" class="control-label" data-i18n="calc.labelSpeed">
+                  Reisegeschwindigkeit (Autobahn-Profil):
+                </label>
+                <span class="control-display mono-code" id="displaySpeed">130 km/h</span>
+              </div>
+              <input type="range" id="rangeSpeed" min="90" max="180" step="5" value="130" class="calc-slider">
+              <div class="slider-scale">
+                <span>90 km/h (Landstraße)</span>
+                <span>130 km/h (Richtgeschw.)</span>
+                <span>180 km/h (High Speed)</span>
+              </div>
+            </div>
+
+            <div class="calc-footnote" data-i18n="calc.footnote">
+              *Physikalische Modellierung: Stirnfläche A=2,25 m², Rollwiderstandsbeiwert cr=0,008, 800V SiC-Wirkungsgradkennfeld.
+            </div>
+          </div>
+
+          <!-- Output Metrics Box -->
+          <div class="calc-results-column">
+            <div class="results-card">
+              <div class="results-header">
+                <span class="results-badge" data-i18n="calc.resBadge">SIMULIERTE FAHRLEISTUNG</span>
+                <span class="calc-indicator mono-code">ISO 8718 AUDITIERT</span>
+              </div>
+
+              <div class="main-saving-box">
+                <span class="saving-label" data-i18n="calc.mainRange">Reale Autobahn-Reichweite:</span>
+                <div class="saving-amount" id="resRangeKm">548 km</div>
+                <span class="saving-sub" data-i18n="calc.rangeSub">Bei konstanter Reisegeschwindigkeit und Klimatisierung</span>
+              </div>
+
+              <div class="kpi-mini-grid">
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiCons">Durchschnittsverbrauch</span>
+                  <strong class="kpi-value mono-code" id="resConsumption">16,8 kWh/100km</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiHpc">10-80% Ladezeit (HPC 350kW)</span>
+                  <strong class="kpi-value mono-code text-cyan" id="resChargeTime">14,2 Minuten</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiWltp">Normreichweite (WLTP kombiniert)</span>
+                  <strong class="kpi-value mono-code text-green" id="resWltpRange">685 km</strong>
+                </div>
+                <div class="kpi-box">
+                  <span class="kpi-label" data-i18n="calc.kpiRecup">Rekuperationsrückgewinnung</span>
+                  <strong class="kpi-value mono-code" id="resRecupShare">32,4 %</strong>
+                </div>
+              </div>
+
+              <div class="results-action">
+                <a href="#engineering-rfp" class="btn btn-primary btn-block" id="calcCtaBtn" data-i18n="calc.cta">
+                  Automotive Powertrain Spezifikation anfordern
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOSAR Adaptive & CAN-FD Bus Protocol Section -->
+    <section class="section interop-section" id="autosar">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="bus.tag">// MODUL 03: FAHRZEUG-BUS & AUTOSAR ADAPTIVE</div>
+          <h2 class="section-title" data-i18n="bus.title">
+            Echtzeit-Bussysteme nach VDA-Standard.
+          </h2>
+          <p class="section-subtitle" data-i18n="bus.subtitle">
+            Volle Integration in moderne E/E-Architekturen. Direkte Schnittstellen für CAN-FD, Automotive Ethernet (1000BASE-T1) und SOME/IP Service-Oriented Middleware.
+          </p>
+        </div>
+
+        <div class="interop-container">
+          <div class="protocol-tabs" role="tablist" aria-label="Automotive Bussysteme">
+            <button class="proto-tab active" role="tab" aria-selected="true" data-tab="someip" id="tabSomeIp">
+              <span class="proto-name">SOME/IP (Ethernet)</span>
+              <span class="proto-type">Service-Oriented</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="canfd" id="tabCanFd">
+              <span class="proto-name">CAN-FD (ISO 11898-1)</span>
+              <span class="proto-type">8 Mbps Powertrain Bus</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="autosar" id="tabAutosar">
+              <span class="proto-name">AUTOSAR Adaptive</span>
+              <span class="proto-type">ara::com Interface</span>
+            </button>
+            <button class="proto-tab" role="tab" aria-selected="false" data-tab="uds" id="tabUds">
+              <span class="proto-name">UDS (ISO 14229)</span>
+              <span class="proto-type">Flashing & Diagnostics</span>
+            </button>
+          </div>
+
+          <div class="proto-content-card">
+            <div class="proto-card-topbar">
+              <div class="dot-indicators">
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+                <span class="window-dot"></span>
+              </div>
+              <div class="proto-path mono-code" id="protoPath">
+                /etc/autosar/services/traction_inverter_rear.arxml [SECURITY: SecOC / MAC_AES128]
+              </div>
+              <button class="btn-copy-code mono-code" id="btnCopyBus" data-i18n="bus.copy">
+                TELEMETRIE KOPIEREN
+              </button>
+            </div>
+
+            <pre class="code-terminal"><code id="codeViewer" class="mono-code">{
+  "protocol": "SOME_IP_AUTOMOTIVE_ETHERNET",
+  "interface_id": "0x4021",
+  "service_instance": "0x0001",
+  "method_id": "0x8004_NotifyPowertrainTelemetry",
+  "sec_oc_authentication": {
+    "freshness_value": 4920412,
+    "mac_truncated_64bit": "0xA8F2BC49E10432DA"
+  },
+  "payload": {
+    "timestamp_monotonic_us": 1792019482100,
+    "inverter_dc_voltage_volts": 798.4,
+    "inverter_dc_current_amps": 225.8,
+    "motor_rotor_speed_rpm": 14250,
+    "actual_torque_nm": 420.5,
+    "stator_winding_temp_celsius": 68.2,
+    "sic_junction_temp_celsius": 74.1,
+    "torque_vectoring_status": "CLOSED_LOOP_ACTIVE",
+    "asil_d_safety_crc": "0x9F42"
+  }
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automotive OEM Case Studies -->
+    <section class="section cases-section" id="cases">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag mono-code" data-i18n="cases.tag">// MODUL 04: AUTOMOTIVE PROJEKT-BENCHMARKS</div>
+          <h2 class="section-title" data-i18n="cases.title">
+            Validiert auf Nürburgring & Prüfständen.
+          </h2>
+          <p class="section-subtitle" data-i18n="cases.subtitle">
+            Entwickelt in enger Kooperation mit süddeutschen Sportwagen- und Oberklasse-Herstellern.
+          </p>
+        </div>
+
+        <div class="cases-grid">
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">SPORTWAGEN-OEM // STUTTGART</div>
+            <h3 class="case-headline" data-i18n="cases.c1Title">Hochdrehzahl-Hinterachs-Inverter (20.000 U/min)</h3>
+            <p class="case-text" data-i18n="cases.c1Desc">
+              Thermische Absicherung für 10 aufeinanderfolgende Beschleunigungsvorgänge von 0 auf 200 km/h ohne thermisches Derating dank fortschrittlicher SiC-Pin-Fin Kühlung.
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-cyan">< 2,4 s</span>
+                <span class="m-lbl" data-i18n="cases.c1m1">0-100 km/h Beschleunigung</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-accent">0%</span>
+                <span class="m-lbl" data-i18n="cases.c1m2">Leistungs-Derating</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">ISO 26262 ASIL-D validiert</span>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">PREMIUM-OEM // MÜNCHEN</div>
+            <h3 class="case-headline" data-i18n="cases.c2Title">Flottenweites BMS-Zell-Monitoring über SOME/IP</h3>
+            <p class="case-text" data-i18n="cases.c2Desc">
+              Echtzeit-Erkennung von dendritischem Wachstum in Lithium-Zellen. 100% datenschutzkonforme On-Vehicle Analyse ohne unverschlüsselte Cloud-Übertragung.
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-cyan">+18%</span>
+                <span class="m-lbl" data-i18n="cases.c2m1">Zell-Lebensdauer (Zyklen)</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-green">100%</span>
+                <span class="m-lbl" data-i18n="cases.c2m2">DSGVO Fahrzeug-Konformität</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">UN ECE R155/156 zertifiziert</span>
+            </div>
+          </article>
+
+          <article class="case-card">
+            <div class="case-industry-tag mono-code">TIER-1 SYSTEMLIEFERANT // FRIEDRICHSHAFEN</div>
+            <h3 class="case-headline" data-i18n="cases.c3Title">All-In-One E-Achse mit integriertem SiC-Modul</h3>
+            <p class="case-text" data-i18n="cases.c3Desc">
+              Kompakte Koaxial-Integration von Planetengetriebe, E-Maschine und Inverter. Reduktion des Bauraums um 32% gegenüber bisherigen 400V-Serienlösungen.
+            </p>
+            <div class="case-metrics">
+              <div class="case-metric">
+                <span class="m-val mono-code text-cyan">74 kg</span>
+                <span class="m-lbl" data-i18n="cases.c3m1">Gesamtgewicht E-Achse</span>
+              </div>
+              <div class="case-metric">
+                <span class="m-val mono-code text-accent">350 kW</span>
+                <span class="m-lbl" data-i18n="cases.c3m2">Dauer-Spitzenleistung</span>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span class="compliance-chip">VDA 320 Standard konform</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engineering Evaluation & Technical RFP -->
+    <section class="section rfp-section" id="engineering-rfp">
+      <div class="container">
+        <div class="rfp-card">
+          <div class="rfp-header">
+            <div class="section-tag mono-code" data-i18n="rfp.tag">// MODUL 05: TECHNISCHE EVALUATION & AUSSCHREIBUNG</div>
+            <h2 class="section-title" data-i18n="rfp.title">
+              Starten Sie ein Automotive Co-Engineering Projekt.
+            </h2>
+            <p class="section-subtitle" data-i18n="rfp.subtitle">
+              Wir stellen Ihnen ein hardware-in-the-loop (HIL) Testkit für Ihre Prüfstände zur Verfügung. Volle NDA-Absicherung nach VDA-Richtlinien.
+            </p>
+          </div>
+
+          <form class="rfp-form" id="rfpForm" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="rfpVehicleType" class="form-label" data-i18n="rfp.fieldVehicle">Fahrzeugsegment / Plattform *</label>
+                <select id="rfpVehicleType" class="form-control" required>
+                  <option value="" disabled selected data-i18n="rfp.selectVehicle">Bitte Fahrzeugklasse wählen...</option>
+                  <option value="sports">High-Performance Sportwagen & GT</option>
+                  <option value="premium">Premium E-Limousine / SUV (D/E-Segment)</option>
+                  <option value="commercial">Leichte & schwere E-Nutzfahrzeuge (LCV/HCV)</option>
+                  <option value="motorsport">Formel-E & Kundensport Plattformen</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="rfpVoltage" class="form-label" data-i18n="rfp.fieldVoltage">Spannungsebene & Halbleiter *</label>
+                <select id="rfpVoltage" class="form-control" required>
+                  <option value="" disabled selected data-i18n="rfp.selectVoltage">Spannungsarchitektur...</option>
+                  <option value="800v-sic">800V SiC (Siliziumkarbid High-Performance)</option>
+                  <option value="400v-sic">400V SiC (Kostenoptimierte Effizienz)</option>
+                  <option value="48v">48V Mild-Hybrid / Zusatzantriebe</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="rfpCompany" class="form-label" data-i18n="rfp.fieldCompany">OEM / Zulieferunternehmen *</label>
+                <input type="text" id="rfpCompany" class="form-control" placeholder="z.B. ZF E-Mobility GmbH oder Porsche AG" required>
+              </div>
+
+              <div class="form-group">
+                <label for="rfpName" class="form-label" data-i18n="rfp.fieldName">Lead Powertrain Engineer / Titel *</label>
+                <input type="text" id="rfpName" class="form-control" placeholder="Dipl.-Ing. Markus Lindner, HV-Systems" required>
+              </div>
+
+              <div class="form-group">
+                <label for="rfpEmail" class="form-label" data-i18n="rfp.fieldEmail">Geschäftliche E-Mail-Adresse *</label>
+                <input type="email" id="rfpEmail" class="form-control" placeholder="lindner@automotive-oem.de" required>
+              </div>
+
+              <div class="form-group">
+                <label for="rfpPhone" class="form-label" data-i18n="rfp.fieldPhone">Telefonnummer (Direktdurchwahl) *</label>
+                <input type="tel" id="rfpPhone" class="form-control" placeholder="+49 711 78912-0" required>
+              </div>
+            </div>
+
+            <div class="compliance-checkboxes">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="checkNda" required checked>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text" data-i18n="rfp.ndaText">
+                  <strong>VDA-Geheimhaltungsvereinbarung (NDA):</strong> Bitte übermitteln Sie vor dem ersten Datenaustausch den standardisierten bilateralen Geheimhaltungsvertrag.
+                </span>
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" id="checkDsgvo" required checked>
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text" data-i18n="rfp.dsgvoText">
+                  Ich willige in die zweckgebundene Verarbeitung meiner Kontaktdaten zur Beantwortung der technischen Anfrage gemäß Art. 6 Abs. 1 lit. a DSGVO ein.
+                </span>
+              </label>
+            </div>
+
+            <div class="rfp-submit-bar">
+              <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitRfp">
+                <span data-i18n="rfp.submitBtn">HIL-Prüfstandsevaluation anfragen</span>
+                <svg class="btn-arrow" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L8.5 3.5M13 8L8.5 12.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="rfp-guarantee mono-code" data-i18n="rfp.guarantee">
+                ANTWORT DURCH AUTOMOTIVE CHIEF ARCHITECT INNERHALB VON 4 WERKSTUNDEN
+              </div>
+            </div>
+          </form>
+
+          <!-- Success Banner -->
+          <div class="rfp-success-banner" id="rfpSuccessBanner" style="display: none;">
+            <div class="success-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#00F0FF" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </div>
+            <div class="success-text">
+              <h4 data-i18n="rfp.successTitle">Evaluations-Anfrage erfolgreich erfasst.</h4>
+              <p data-i18n="rfp.successDesc">
+                Vielen Dank. Ihre Vorgangsnummer lautet <strong class="mono-code" id="refCaseId">AEROX-AUTO-2026-4491</strong>. Unser Principal Automotive Systems Architect wird sich innerhalb von 4 Arbeitsstunden mit den HIL-Spezifikationen und dem VDA-NDA-Entwurf bei Ihnen melden.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Professional Footer -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="container footer-inner">
+      <div class="footer-top-row">
+        <div class="footer-brand">
+          <div class="brand-text">
+            <span class="brand-name">VN LABS // AUTOMOTIVE UI SHOWCASE</span>
+            <span class="brand-sub">DESIGN TWO: GERMAN E-MOBILITY & POWERTRAIN</span>
+          </div>
+          <p class="footer-company-desc" data-i18n="footer.desc">
+            Interaktives Automotive UI/UX Showcase & Frontend-Architektur — Entwickelt von VN Labs für deutsche Automobilhersteller, E-Mobility Pioniere und Tier-1 Zulieferer.
+          </p>
+          <div class="footer-server-flag">
+            <span class="flag-icon">⚡</span>
+            <span class="flag-text mono-code">TECH STACK: PURE CLIENT-SIDE JS • 60 FPS CANVAS • ZERO DEPENDENCIES</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col1Title">Technologie</h4>
+          <ul class="footer-links">
+            <li><a href="#powertrain" data-i18n="nav.powertrain">Antriebssimulation</a></li>
+            <li><a href="#range-calc" data-i18n="nav.calculator">Reichweitenrechner</a></li>
+            <li><a href="#autosar" data-i18n="nav.autosar">CAN-FD & AUTOSAR</a></li>
+            <li><a href="#cases" data-i18n="nav.cases">OEM-Referenzen</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col2Title">VN Labs</h4>
+          <address class="footer-address">
+            <strong>VN Labs Automotive:</strong><br>
+            High-Performance Web Engineering<br>
+            Web: <a href="https://vnlabs.in" target="_blank" style="color:var(--accent-cyan);text-decoration:none;">vnlabs.in</a><br>
+            E-Mail: <a href="mailto:contact@vnlabs.in" style="color:var(--text-secondary);text-decoration:none;">contact@vnlabs.in</a>
+          </address>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-col-title" data-i18n="footer.col3Title">Projekt & Info</h4>
+          <ul class="footer-links">
+            <li><button type="button" class="footer-link-btn" id="btnOpenImpressum" data-i18n="footer.impressum">Projekt-Info & Impressum</button></li>
+            <li><button type="button" class="footer-link-btn" id="btnOpenDatenschutz" data-i18n="footer.datenschutz">Datenschutzerklärung (DSGVO)</button></li>
+            <li><a href="../one/" class="footer-link-btn" style="color:var(--accent-cyan);">➔ Zu Design 1: Industrie 4.0</a></li>
+            <li><span class="mono-code text-muted">Showcase: Design Two (2.0)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <div class="footer-copyright mono-code">
+          © 2026 VN LABS. ALLE RECHTE VORBEHALTEN. ARCHITECTED FOR GERMAN AUTOMOTIVE EXCELLENCE.
+        </div>
+        <div class="footer-meta-links mono-code">
+          <span>HOSTED ON VNLABS.IN/GERMAN/TWO</span>
+          <span>•</span>
+          <span>100% CLIENT-SIDE & GITHUB PAGES READY</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal: Projekt-Info & Impressum -->
+  <div class="legal-modal-backdrop" id="impressumModal" role="dialog" aria-modal="true" aria-labelledby="impressumTitle" style="display: none;">
+    <div class="legal-modal-box">
+      <div class="modal-header">
+        <div class="modal-badge mono-code">AUTOMOTIVE SHOWCASE // DESIGN TWO</div>
+        <h3 id="impressumTitle">Projekt-Info & Impressum</h3>
+        <button type="button" class="modal-close-btn" id="btnCloseImpressum" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>Über dieses Projekt:</h4>
+        <p>
+          Dieses interaktive Automotive-Webportal ist Teil des Multi-Sector Showcase von <strong>VN Labs</strong> für deutsche Automobilkonzerne (OEMs) und Tier-1 Zulieferer im süddeutschen Automobil-Cluster (Baden-Württemberg & Bayern).
+        </p>
+
+        <h4>Design-Philosophie:</h4>
+        <p>
+          Aerodynamisches High-Contrast Cockpit-Design mit 60 FPS HTML5-Canvas Powertrain-Simulation, präziser Fahrwiderstandsberechnung und authentischer AUTOSAR/SOME-IP Telemetrie.
+        </p>
+
+        <h4>Verantwortlich für Konzept & Entwicklung:</h4>
+        <p>
+          <strong>VN Labs</strong><br>
+          Website: <a href="https://vnlabs.in" target="_blank" style="color:var(--accent-cyan);">https://vnlabs.in</a><br>
+          Kontakt: contact@vnlabs.in
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnDismissImpressum">Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Datenschutz (DSGVO) -->
+  <div class="legal-modal-backdrop" id="datenschutzModal" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle" style="display: none;">
+    <div class="legal-modal-box">
+      <div class="modal-header">
+        <div class="modal-badge mono-code">DATENSCHUTZ NACH ART. 13 & 14 DSGVO</div>
+        <h3 id="datenschutzTitle">Datenschutzerklärung</h3>
+        <button type="button" class="modal-close-btn" id="btnCloseDatenschutz" aria-label="Schließen">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h4>1. Datenschutz im Automobilsektor</h4>
+        <p>
+          Als Technologiedemonstrator von VN Labs sammelt diese Website keinerlei biometrische, fahrerspezifische oder externe Telemetriedaten. Alle Simulationen laufen vollständig lokal in Ihrem Webbrowser.
+        </p>
+        <h4>2. Hosting</h4>
+        <p>
+          Bereitgestellt über statisches Hosting auf GitHub Pages unter der Domäne <code>vnlabs.in</code>.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="btnDismissDatenschutz">Verstanden & Schließen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/powertrain-sim.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
