@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - GATE Tracker for Windows | VN Labs</title>
+    <meta name="description" content="Privacy Policy for GATE Tracker Windows application by VN Labs. Learn how we handle your data, cloud sync, security, and payments.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090d16;
+            --surface: #111827;
+            --surface-elevated: #1a2234;
+            --border: #1f293d;
+            --border-light: #2e3c54;
+            --primary: #3b82f6;
+            --primary-glow: rgba(59, 130, 246, 0.25);
+            --accent: #6366f1;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --text-sub: #6b7280;
+            --tag-bg: rgba(59, 130, 246, 0.12);
+            --tag-text: #60a5fa;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Top Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+        }
+
+        .header-content {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 1.15rem;
+        }
+
+        .brand-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 0.95rem;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .brand span {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3.5rem 1.5rem 6rem;
+        }
+
+        .hero {
+            text-align: left;
+            margin-bottom: 3.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.25;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        .meta-item strong {
+            color: var(--text-main);
+        }
+
+        /* Content Sections */
+        .policy-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: border-color 0.2s ease;
+        }
+
+        .policy-card:hover {
+            border-color: var(--border-light);
+        }
+
+        h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #e5e7eb;
+            margin: 1.25rem 0 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        ul, ol {
+            color: var(--text-muted);
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        li strong {
+            color: var(--text-main);
+        }
+
+        .callout {
+            background: var(--surface-elevated);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.25rem;
+            margin: 1.25rem 0;
+        }
+
+        .callout p {
+            margin: 0;
+            color: var(--text-main);
+            font-size: 0.9rem;
+        }
+
+        .callout.alert {
+            border-left-color: #f59e0b;
+        }
+
+        code {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #93c5fd;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            color: var(--text-sub);
+            font-size: 0.85rem;
+            background: rgba(9, 13, 22, 0.95);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.85rem; }
+            .container { padding-top: 2rem; }
+            .policy-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <a href="https://vnlabs.in" class="brand">
+                <div class="brand-icon">GT</div>
+                <div>GATE Tracker <span>by VN Labs</span></div>
+            </a>
+            <a href="https://vnlabs.in" class="back-link">&larr; Back to VN Labs</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="hero">
+            <div class="badge">Official Microsoft Store &amp; Windows Edition</div>
+            <h1>Privacy Policy for GATE Tracker (Windows)</h1>
+            <div class="meta-bar">
+                <div class="meta-item">Application: <strong>GATE Tracker — CSE &amp; DA Prep</strong></div>
+                <div class="meta-item">Publisher: <strong>VN Labs</strong></div>
+                <div class="meta-item">Last Updated: <strong>November 2, 2026</strong></div>
+                <div class="meta-item">Effective Date: <strong>November 2, 2026</strong></div>
+            </div>
+        </div>
+
+        <!-- 1. Introduction -->
+        <section class="policy-card">
+            <h2>1. Introduction</h2>
+            <p>Welcome to <strong>GATE Tracker for Windows</strong>, developed and published by <strong>VN Labs</strong> ("we", "our", or "us"). We build high-performance productivity and exam preparation software designed to help engineering students prepare for the GATE (Graduate Aptitude Test in Engineering) examination.</p>
+            <p>We believe in privacy by design. This Privacy Policy outlines what information we collect, how it is processed and secured, and your rights regarding your personal information when using our Windows desktop application (Package Identity: <code>VNLabs.GATETracker-CSEPrep</code>) and associated synchronization services.</p>
+        </section>
+
+        <!-- 2. Information We Collect -->
+        <section class="policy-card">
+            <h2>2. Information We Collect</h2>
+            <p>We collect only the minimum information necessary to authenticate your account, maintain your study records, and provide seamless multi-device synchronization:</p>
+
+            <h3>A. Account &amp; Authentication Information</h3>
+            <ul>
+                <li><strong>Google Sign-In:</strong> When you sign into GATE Tracker, we receive your basic public profile information from Google Firebase Authentication, which includes your display name, email address, profile picture URL, and a unique Firebase User ID (UID).</li>
+                <li>We do not have access to your Google account password.</li>
+            </ul>
+
+            <h3>B. Academic &amp; Study Progress Data</h3>
+            <ul>
+                <li><strong>Syllabus &amp; Lecture Progress:</strong> Completed topics, subject completion milestones, and GO Classes lecture progress tracker.</li>
+                <li><strong>Practice &amp; Test Records:</strong> Solved question records, test timestamps, accuracy metrics, bookmarked PYQs (Previous Year Questions), and custom Mistake Notebook entries.</li>
+                <li><strong>Study Preferences:</strong> Selected branch (Computer Science &amp; Information Technology [CS] or Data Science &amp; Artificial Intelligence [DA]), daily goals, and exam countdown target dates.</li>
+            </ul>
+
+            <h3>C. Device &amp; Session Verification Data</h3>
+            <ul>
+                <li><strong>Device Identifier &amp; OS Version:</strong> To ensure single-device active session integrity for desktop licenses and prevent unauthorized account abuse, we record a hashed device identifier and operating system version (Windows 10/11).</li>
+                <li><strong>Diagnostic &amp; Performance Telemetry:</strong> Anonymized crash logs and app performance data collected through Firebase Analytics to troubleshoot Windows runtime issues and enhance reliability.</li>
+            </ul>
+        </section>
+
+        <!-- 3. Payment Processing & Monetization -->
+        <section class="policy-card">
+            <h2>3. Payment Processing &amp; Subscriptions</h2>
+            <p>GATE Tracker offers optional Pro subscription plans for advanced analytics, cloud sync, and full question solutions.</p>
+
+            <div class="callout alert">
+                <p><strong>Microsoft Store Notice:</strong> Pro subscription purchases are processed externally via <strong>Razorpay</strong> (an RBI-regulated payment aggregator). Microsoft Store credits, gift cards, and Microsoft family spending controls do not apply to purchases made via Razorpay.</p>
+            </div>
+
+            <ul>
+                <li><strong>Zero Payment Credentials Stored:</strong> All payment transactions occur directly via Razorpay's PCI-DSS compliant secure checkout. VN Labs <strong>never</strong> collects, sees, or stores your credit/debit card numbers, CVVs, net banking credentials, or UPI PINs.</li>
+                <li><strong>Transaction Records:</strong> Upon successful payment completion, we receive an encrypted payment ID, transaction status, and validity timeframe from Razorpay's server API to activate your Pro status in our database.</li>
+            </ul>
+        </section>
+
+        <!-- 4. Third-Party Infrastructure Services -->
+        <section class="policy-card">
+            <h2>4. Third-Party Services We Use</h2>
+            <p>We work with industry-standard, secure cloud infrastructure providers to run our backend systems:</p>
+            <ul>
+                <li><strong>Google Firebase (Alphabet Inc.):</strong> Used for user authentication, real-time database listener, and security rule enforcement.</li>
+                <li><strong>Supabase (Supabase Inc.):</strong> Used for fast, relational cloud synchronization of bookmarks, lecture tracking, and mistake notebook data for Pro accounts.</li>
+                <li><strong>Razorpay Software Private Limited:</strong> Used for secure payment processing under Indian banking regulations.</li>
+                <li><strong>Microsoft Store (Microsoft Corporation):</strong> App distribution, packaging verification, and platform integrity.</li>
+            </ul>
+            <p>We do <strong>not</strong> sell, rent, monetize, or lease your personal data or study history to advertisers, data brokers, or any third parties.</p>
+        </section>
+
+        <!-- 5. Data Storage, Security & Encryption -->
+        <section class="policy-card">
+            <h2>5. Data Storage &amp; Security</h2>
+            <p>We maintain high security standards to keep your data safe:</p>
+            <ul>
+                <li><strong>Local-First Architecture:</strong> Your study progress is cached locally on your device for fast offline access.</li>
+                <li><strong>Transport Layer Security:</strong> All data transmissions between the Windows application, Firebase, Supabase, and Razorpay APIs use modern TLS 1.3 / HTTPS encryption.</li>
+                <li><strong>Granular Authorization:</strong> Database access is strictly governed by authenticated Row Level Security (RLS) and security rules ensuring users can only read and write their own data.</li>
+            </ul>
+        </section>
+
+        <!-- 6. User Rights & Data Deletion -->
+        <section class="policy-card">
+            <h2>6. Your Rights &amp; Data Deletion</h2>
+            <p>You retain full control over your data stored with GATE Tracker:</p>
+            <ul>
+                <li><strong>Access &amp; Export:</strong> You can view all your study progress, bookmarks, and mistake notebook entries directly within the app at any time.</li>
+                <li><strong>Account &amp; Data Deletion:</strong> You have the right to request permanent deletion of your account and all associated cloud records. You can initiate account deletion by emailing us at <code>vnlabs.in@gmail.com</code> or visiting our data management portal at <a href="https://vnlabs.in/gate-tracker/delete-data.html" style="color: var(--primary);">vnlabs.in/gate-tracker/delete-data.html</a>. All personal records will be permanently purged within 30 days of verified request.</li>
+            </ul>
+        </section>
+
+        <!-- 7. Children's Privacy -->
+        <section class="policy-card">
+            <h2>7. Children's Privacy</h2>
+            <p>GATE Tracker is intended for higher education students and graduates preparing for national engineering entrance exams. We do not knowingly collect personal information from individuals under the age of 13. If you believe a minor has registered an account with us, please contact us immediately for account removal.</p>
+        </section>
+
+        <!-- 8. Changes to This Privacy Policy -->
+        <section class="policy-card">
+            <h2>8. Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect operational, legal, or regulatory updates. Any changes will be posted on this page with an updated "Last Updated" date. Continued use of the application after such changes indicates acceptance of the updated policy.</p>
+        </section>
+
+        <!-- 9. Contact Us -->
+        <section class="policy-card">
+            <h2>9. Contact Us</h2>
+            <p>If you have questions, concerns, or requests regarding this Privacy Policy or how your data is handled in the Windows application, please reach out to us:</p>
+            <ul>
+                <li><strong>Publisher:</strong> VN Labs</li>
+                <li><strong>Application:</strong> GATE Tracker (Windows)</li>
+                <li><strong>Email:</strong> <a href="mailto:vnlabs.in@gmail.com" style="color: var(--primary);">vnlabs.in@gmail.com</a></li>
+                <li><strong>Official Website:</strong> <a href="https://vnlabs.in" target="_blank" rel="noopener" style="color: var(--primary);">https://vnlabs.in</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 VN Labs. All rights reserved. GATE Tracker is an independent preparation tool and is not affiliated with or endorsed by GATE or any IIT/IISc organizing committee.</p>
+        <p style="margin-top: 8px;"><a href="https://vnlabs.in">VN Labs Home</a> &bull; <a href="https://vnlabs.in/gate-tracker-windows">Privacy Policy</a></p>
+    </footer>
+
+</body>
+</html>
+
